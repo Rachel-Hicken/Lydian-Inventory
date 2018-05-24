@@ -1,0 +1,12 @@
+img{
+    height: 100px;
+    width: 100px;
+}
+.welcome{
+    display: flex;
+    align-content: space-between;
+    
+}
+.userInfo{
+    display: flex;
+}
