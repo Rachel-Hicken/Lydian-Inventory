@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+
 
 export default class Add_Inst extends Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state={
             instrument: '',
             student: '',
@@ -12,15 +14,15 @@ export default class Add_Inst extends Component{
         }
     }
 
-    // componentDidMount() {
-    //     //get selected instrument
-    //     axios.get('/instrument/view/:id').then(res => {
-    //         this.setState({
-    //             instrument: res.data
-    //         })
-    //         toast.success("Successfully got Instruments")
-    //     }).catch(()=>toast.error("Failed to Fetch Instruments"));
-    // }
+    componentDidMount() {
+        //get selected instrument
+        axios.get('/instrument/view/:id').then(res => {
+            this.setState({
+                instrument: res.data
+            })
+            toast.success("Successfully got Instruments")
+        }).catch(()=>toast.error("Failed to Fetch Instruments"));
+    }
     studentHandler(){
 
     }

@@ -1,11 +1,13 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Login from './components/Login/Login';
-import Private from '../src/components/Private/Private';
-import InstInv from '../src/components/instruments/InstInv/InstInv';
-import AddInst from '../src/components/instruments/AddInst/AddInst';
-import AssignInst from '../src/components/instruments/AssignInst/AssignInst';
-import UpdateInst from '../src/components/instruments/UpdateInst/UpdateInst';
+import Private from './components/Private/Private';
+import InstInv from './components/instruments/InstInv/InstInv';
+import AddInst from './components/instruments/AddInst/AddInst';
+import AssignInst from './components/instruments/AssignInst/AssignInst';
+import UpdateInst from './components/instruments/UpdateInst/UpdateInst';
+import ViewInst from './components/instruments/ViewInst/ViewInst';
+import ViewOut from './components/instruments/ViewOut/ViewOut';
 
 
 
@@ -14,10 +16,13 @@ export default (
         <Switch>
             <Route path='/' component={Login} exact />
             <Route path='/private' component={Private} />
-            <Route path='/instruments' component={InstInv} />
+            <Route path='/instruments' component={InstInv} exact />
             <Route path='/instrument/add' component={AddInst} />
             <Route path='/instrument/assign' component={AssignInst} />
             <Route path='/instrument/update/:id' component={UpdateInst} />
+            <Route path='/instruments/view' component={ViewInst}/>
+            <Route path='/instruments/out' component={ViewOut}/>
+            
         </Switch>
     </div>
 )
