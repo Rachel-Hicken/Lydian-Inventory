@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import { get_inst_id } from '../../../ducks/reducer';
+import {connect} from 'react-redux'
 // import UpdateInst from '../UpdateInst/UpdateInst';
 // import AssignInst from '../AssignInst/AssignInst';
 
-export default class InstInv extends Component {
+class InstInv extends Component {
     constructor() {
         super()
         this.state = {
@@ -47,11 +49,12 @@ export default class InstInv extends Component {
     checkboxHandler(event) {
         const target = event.target;
         const value = target.value;
-
+console.log(value)
 
         this.setState({
             checked: value
         });
+        this.props.get_inst_id(value);
     }
 
     render() {
@@ -124,8 +127,8 @@ export default class InstInv extends Component {
 
                 <div className="buttonBar">
                     <p>Select One Item From List</p>
-                    <Link to='/instrument/assign'><button>Assign</button></Link>
-                    <Link to='/instrument/update'><button>Update</button></Link>
+                    <Link to={`/instrument/assign/${this.state.checked}`}><button>Assign</button></Link>
+                    <Link to={`/instrument/update/${this.state.checked}`}><button>Update</button></Link>
                 </div>
                 <div className="addInstrument">
                     <Link to='/instrument/add'><button>Add</button></Link>
@@ -144,3 +147,6 @@ export default class InstInv extends Component {
         )
     }
 }
+
+
+export default connect(null, { get_inst_id })(InstInv);

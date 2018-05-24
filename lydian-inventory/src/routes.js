@@ -18,7 +18,7 @@ export default (
             <Route path='/private' component={Private} />
             <Route path='/instruments' component={InstInv} exact />
             <Route path='/instrument/add' component={AddInst} />
-            <Route path='/instrument/assign' component={AssignInst} />
+            <Route path='/instrument/assign/:id' component={AssignInst} />
             <Route path='/instrument/update/:id' component={UpdateInst} />
             <Route path='/instruments/view' component={ViewInst}/>
             <Route path='/instruments/out' component={ViewOut}/>

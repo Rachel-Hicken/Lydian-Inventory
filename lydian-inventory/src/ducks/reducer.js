@@ -33,6 +33,7 @@ export default function reducer(state=initialState, action){
         case GET_USER + '_FULFILLED':
         return Object.assign({}, state, {user:action.payload}) 
         case GET_INST_ID:
+        console.log(action.payload);
         return Object.assign({}, state, {instId: action.payload})    
         default:
         return state;

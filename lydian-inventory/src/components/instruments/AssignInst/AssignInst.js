@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import {connect} from 'react-redux';
 
-
-export default class Add_Inst extends Component{
+class AssignInst extends Component{
     constructor(props){
         super(props)
         this.state={
@@ -51,7 +51,20 @@ export default class Add_Inst extends Component{
                 <input type="date" name="due"/>
                 </div>
                 <button>Assign</button>
+                <div>
+                <p>Stuff</p>
+                {this.props.instId}
+            </div>
             </div>
         )
     }
 }
+
+function mapStateToProps(state) {
+    const { instId } = state;
+    return {
+        instId
+    }
+}
+
+export default connect(mapStateToProps)(AssignInst);
