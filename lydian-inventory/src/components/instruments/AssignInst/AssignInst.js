@@ -8,14 +8,19 @@ class AssignInst extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            instrument: {},
-            students: {},
-            studCriteria: '',
+            instrument: [],
+            students: [],
+            criteria: 'student_school_id',
+            checked: -1,
             search: '',
             student: '',
             checkout: '',
             due: ''
         }
+        this.filterHandler = this.filterHandler.bind(this);
+        this.studentHandler = this.studentHandler.bind(this);
+        this.selectHandler = this.selectHandler.bind(this);
+        this.checkboxHandler = this.checkboxHandler.bind(this);
     }
 
     componentDidMount() {
@@ -23,10 +28,10 @@ class AssignInst extends Component {
         axios.get(`/instrument/view/${this.props.instId}`).then(res => {
             this.setState({
                 instrument: res.data[0]
-            })
+            });
             toast.success("Successfully got Instruments")
         }).catch(() => toast.error("Failed to Fetch Instruments"));
-
+        // get all students
         axios.get('/students/view').then(res => {
             this.setState({
                 students: res.data
@@ -49,7 +54,7 @@ class AssignInst extends Component {
 
     selectHandler(value) {
         this.setState({
-            studCriteria: value
+            criteria: value
         })
     }
 
@@ -61,7 +66,6 @@ class AssignInst extends Component {
         this.setState({
             checked: value
         });
-        this.props.get_student_id(value);
     }
 
     filterHandler(filter) {
@@ -72,9 +76,13 @@ class AssignInst extends Component {
 
     render() {
         let el = this.state.instrument;
-
+        console.log(this.inst_school_id)
+        console.log(this.props.instId)
+        console.log(this.state.instrument)
+        console.log(this.state.students)
+        
         let students = this.state.students.filter((el, i) => {
-            switch (this.state.studCriteria) {
+            switch (this.state.criteria) {
                 case 'student_school_id':
                     if (el.student_school_id.includes(this.state.search)) {
                         return true;
@@ -94,7 +102,7 @@ class AssignInst extends Component {
                         return false;
                     }
                 case 'phone':
-                    if (el.phone.includes(this.state.search)) {
+                    if (el.student_phone.includes(this.state.search)) {
                         return true;
                     } else {
                         return false;
@@ -106,7 +114,7 @@ class AssignInst extends Component {
             return (
                 <div key={el.student_id}>
                     <input type='checkbox' checked={this.state.checked == el.student_id} onChange={this.checkboxHandler} value={el.student_id} />
-                    <p>School ID: {el.student_school_id}, First Name: {el.student_first}, Last Name: {el.student_last}, Phone: {el.phone}</p>
+                    <p>School ID: {el.student_school_id}, First Name: {el.student_first}, Last Name: {el.student_last}, Phone: {el.student_phone}</p>
                     <br />
                 </div>
 
@@ -115,24 +123,25 @@ class AssignInst extends Component {
 
         return (
             <div>
+                
+                {/* Display instrument seleceted from InstInv */}
                 <h1>Instrument Being Assigned:</h1>
                 <div key={el.inst_id} >
                     <p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</p>
                     <p>Make: {el.make}, Model: {el.model}, Year: {el.inst_year}, Purchase Price: {el.purchase_price}</p>
                 </div>
                 <div>
-                    <h1>Search Students</h1>
-                    <select onChange={(e) => this.selectHandler(e.target.value)} name="searchStudCriteria">
+                    {/* Search for student to assign */}
+                    <h1>Search For a Student</h1>
+                    <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">
                         <option value="student_school_id">Student School ID</option>
                         <option value="student_first">First Name</option>
                         <option value="student_last">Last Name</option>
-                        <option value="student_phone">Phone</option>
+                        <option value="phone">Phone</option>
                     </select>
                     <input onChange={(e) => this.filterHandler(e.target.value)} type="text" />
-                    <button>Search</button>
                     <p>{this.search}</p>
-                    <p>Student Name:</p>
-                    <input type="text" />
+                    {students}
                 </div>
                 <div>
                     <p>Checkout Date</p>
@@ -141,10 +150,6 @@ class AssignInst extends Component {
                     <input type="date" name="due" />
                 </div>
                 <button>Assign</button>
-                <div>
-                    <p>Stuff</p>
-                    {this.props.instId}
-                </div>
             </div>
         )
     }

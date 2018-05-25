@@ -15,8 +15,8 @@ class UpdateInst extends Component {
             
         }
         this.inst_school_id = createRef()
-        // this.hideEdit = this.hideEdit.bind(this);
-        // this.showEdit = this.showEdit.bind(this);
+        this.hideEdit = this.hideEdit.bind(this);
+        this.showEdit = this.showEdit.bind(this);
         this._handleFocus = this._handleFocus.bind(this);
         this._handleFocusOut = this._handleFocusOut.bind(this);
     }
@@ -39,18 +39,18 @@ class UpdateInst extends Component {
             }).catch(() => toast.error("Failed to Fetch Instruments"));
     }
 
-    // showEdit() {
-    //     this.setState({ editing: true });
-    // }
+    showEdit() {
+        this.setState({ editing: true });
+    }
 
-    // hideEdit() {
-    //     this.setState({ editing: false });
-    // }
+    hideEdit() {
+        this.setState({ editing: false });
+    }
 
-    // updateText(value) {
-    //     this.setState({ text: value });
-    //     this.hideEdit();
-    // }
+    updateText(value) {
+        this.setState({ text: value });
+        this.hideEdit();
+    }
 
     _handleFocus(text) {
         console.log('Focused with text: ' + text);
@@ -61,7 +61,7 @@ class UpdateInst extends Component {
         this.setState({
             text: value
         })
-        console.log(this.state.text)
+        // console.log(this.state.text)
     }
 
     warningHandler(){
@@ -70,9 +70,9 @@ class UpdateInst extends Component {
 
 
     render() {
-        console.log(this.inst_school_id)
-        console.log(this.props.instId)
-        console.log(this.state.instrument)
+        // console.log(this.inst_school_id)
+        // console.log(this.props.instId)
+        // console.log(this.state.instrument)
         let el = this.state.instrument;
         return (
             <div>
@@ -80,13 +80,12 @@ class UpdateInst extends Component {
                 <div key={el.inst_id} ref={this.inst_school_id} >
                     <p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</p>
                     <p>Make: {el.make}, Model: {el.model}, Year: {el.inst_year}, Purchase Price: {el.purchase_price}</p>
-                    {/* <textarea onClick={this.updateText} className="school id" value={this.state.text} onChange={(e) => this.updateText(e.target.value)}></textarea> */}
-                    <EditableLabel text={el.inst_school_id}
+                    <textarea onClick={this.updateText} className="school id" value={el.inst_school_id} onChange={(e) => this.updateText(e.target.value)}></textarea>
+                    {/* <EditableLabel text={el.inst_school_id}
                         onFocus={this._handleFocus}
                         onFocusOut={this._handleFocusOut}
-                    />
+                    /> */}
                 </div>
-                <button>Delete Instrument</button>
                 <button>Submit</button>
 
             </div>

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { get_inst_id } from '../../../ducks/reducer';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 // import UpdateInst from '../UpdateInst/UpdateInst';
 // import AssignInst from '../AssignInst/AssignInst';
 
@@ -20,6 +20,7 @@ class InstInv extends Component {
         this.filterHandler = this.filterHandler.bind(this);
         this.selectHandler = this.selectHandler.bind(this);
         this.checkboxHandler = this.checkboxHandler.bind(this);
+        this.deletePost = this.deletePost.bind(this);
     }
 
     //get all instruments
@@ -31,6 +32,15 @@ class InstInv extends Component {
             toast.success("Successfully got Instruments")
         }).catch(() => toast.error("Failed to Fetch Instruments"));
     }
+
+    //remove an instrument from inventory
+    deletePost(id) {
+        axios.delete(`/instrument/delete/${id}`).then(res => {
+            console.log(res.data)
+            this.setState({ all_instruments: res.data })
+        });
+    }
+
 
     //search field handlers
     filterHandler(filter) {
@@ -49,7 +59,7 @@ class InstInv extends Component {
     checkboxHandler(event) {
         const target = event.target;
         const value = target.value;
-console.log(value)
+        // console.log(value)
 
         this.setState({
             checked: value
@@ -63,7 +73,7 @@ console.log(value)
         // }).map((el, i) => {
         //     return <h2 key={i}>{el}</h2>
         // })
-        console.log(this.state)
+        // console.log(this.state)
         let instruments = this.state.all_instruments.filter((el, i) => {
             switch (this.state.criteria) {
                 case 'inst_school_id':
@@ -90,7 +100,7 @@ console.log(value)
         }).map(el => {
             return (
                 <div key={el.inst_id}>
-                    <input type='checkbox' checked={this.state.checked == el.inst_id} onChange={this.checkboxHandler} value={el.inst_id}/>
+                    <input type='checkbox' checked={this.state.checked == el.inst_id} onChange={this.checkboxHandler} value={el.inst_id} />
                     <p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</p>
                     <p>Make: {el.make}, Model: {el.model}, Year: {el.inst_year}, Purchase Price: {el.purchase_price}</p>
                     <br />
@@ -99,9 +109,9 @@ console.log(value)
             )
         })
 
-//only allow one item to be checked
-//checked item sent to props for Assign and Update?
-//
+        //only allow one item to be checked
+        //checked item sent to props for Assign and Update?
+        //
 
 
         return (
@@ -129,6 +139,10 @@ console.log(value)
                     <p>Select One Item From List</p>
                     <Link to={`/instrument/assign/${this.state.checked}`}><button>Assign</button></Link>
                     <Link to={`/instrument/update/${this.state.checked}`}><button>Update</button></Link>
+                    {/* <Link to {`/instrument/return/${this.state.checked}`}><button>Return</button></Link> */}
+                </div>
+                <div>
+                    <button onClick={() => this.deletePost(this.state.checked)}>Delete Selected Instrument</button>
                 </div>
                 <div className="addInstrument">
                     <Link to='/instrument/add'><button>Add</button></Link>
@@ -141,7 +155,7 @@ console.log(value)
                 </div>
                 {/* <UpdateInst inst_id={this.state.checked}/>
                 <AssignInst inst_id={this.state.checked}/> */}
-                
+
             </div>
 
         )

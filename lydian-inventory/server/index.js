@@ -89,7 +89,7 @@ app.post('/instrument/add', ic.create_inst);
 //update instrument
 app.put('/instrument/update/:id', ic.update_inst);
 //delete an instrument
-app.delete('/instrument/update/:id', ic.delete_inst);
+app.delete('/instrument/delete/:id', ic.delete_inst);
 //view all instruments
 app.get('/instruments/view', ic.view_all_inst);
 //view one instrument

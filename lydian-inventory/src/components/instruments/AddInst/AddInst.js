@@ -5,13 +5,13 @@ export default class Add_Inst extends Component{
     constructor(){
         super()
         this.state={
-            inst_school_id: '',
-            inst_type: '',
-            serial_num: '',
-            make: '',
-            model: '',
-            inst_year: '',
-            purchase_price: ''
+            inst_school_id: 'erwe',
+            inst_type: 'awer',
+            serial_num: 'awe',
+            make: 'war',
+            model: 'awer',
+            inst_year: '1234',
+            purchase_price: '234'
         }
         this.addInst = this.addInst.bind(this);
         this.schoolIdHandler = this.schoolIdHandler.bind(this);
@@ -72,24 +72,24 @@ export default class Add_Inst extends Component{
     }
 
     render(){
-        console.log(this.props)
+        // console.log(this.props)
         return(
             <div>
                 <h1>Add_Inst</h1>
                 <p>Instrument School ID:</p>
-                <input onChange={(e)=>this.schoolIdHandler(e.target.value)} type="text"/>
+                <input onChange={(e)=>this.schoolIdHandler(e.target.value)} type="text" value={this.state.inst_school_id}/>
                 <p>Type:</p>
-                <input onChange={(e)=>this.typeHandler(e.target.value)} type="text"/>
+                <input onChange={(e)=>this.typeHandler(e.target.value)} type="text" value={this.state.inst_type}/>
                 <p>Serial Number:</p>
-                <input onChange={(e)=>this.serialNumHandler(e.target.value)} type="text"/>
+                <input onChange={(e)=>this.serialNumHandler(e.target.value)} type="text" value={this.state.serial_num}/>
                 <p>Make:</p>
-                <input onChange={(e)=>this.makeHandler(e.target.value)} type="text"/>
+                <input onChange={(e)=>this.makeHandler(e.target.value)} type="text" value={this.state.make}/>
                 <p>Model:</p>
-                <input onChange={(e)=>this.modelHandler(e.target.value)} type="text"/>
+                <input onChange={(e)=>this.modelHandler(e.target.value)} type="text" value={this.state.model}/>
                 <p>Year:</p>
-                <input onChange={(e)=>this.yearHandler(e.target.value)} type="text"/>
+                <input onChange={(e)=>this.yearHandler(e.target.value)} type="text" value={this.state.inst_year}/>
                 <p>Purchase Price:</p>
-                <input onChange={(e)=>this.priceHandler(e.target.value)} type="text"/>
+                <input onChange={(e)=>this.priceHandler(e.target.value)} type="text" value={this.state.purchase_price}/>
                 <button onClick={this.addInst}>Add to Inventory</button>
                 </div>
 
