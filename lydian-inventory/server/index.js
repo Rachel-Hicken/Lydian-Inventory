@@ -5,7 +5,8 @@ const express = require('express'),
       session = require('express-session'),
       passport = require('passport'),
       Auth0Strategy = require('passport-auth0');
-const ic = require('./instrument_controller');
+const ic = require('./instrument_controller'),
+      sc = require('./student_controller');
 
 
 
@@ -95,7 +96,7 @@ app.get('/instruments/view', ic.view_all_inst);
 app.get('/instrument/view/:id', ic.view_inst);
 
 //Endpoints for students
-
+app.get('/students/view', sc.view_all_students);
 
 
 

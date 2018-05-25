@@ -13,6 +13,7 @@
     "passport-auth0": "^0.6.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-inline-editing": "^1.0.10",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
@@ -27,5 +28,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:3011"
+  "proxy": "http://localhost:3011",
+  "devDependencies": {
+    "react-edit-inline": "^1.0.8"
+  }
 }
