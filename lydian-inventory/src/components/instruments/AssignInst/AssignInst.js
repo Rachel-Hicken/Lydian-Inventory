@@ -3,6 +3,9 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import { get_inst_id } from '../../../ducks/reducer';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import 'react-datepicker/dist/react-datepicker.css';
 
 class AssignInst extends Component {
     constructor(props) {
@@ -14,13 +17,15 @@ class AssignInst extends Component {
             checked: -1,
             search: '',
             student: '',
-            checkout: '',
-            due: ''
+            checkoutDate: moment(),
+            dueDate: moment()
         }
         this.filterHandler = this.filterHandler.bind(this);
         this.studentHandler = this.studentHandler.bind(this);
         this.selectHandler = this.selectHandler.bind(this);
         this.checkboxHandler = this.checkboxHandler.bind(this);
+        this.dueDateHandler = this.dueDateHandler.bind(this);
+        this.checkoutHandler = this.checkoutHandler.bind(this);
     }
 
     componentDidMount() {
@@ -44,12 +49,16 @@ class AssignInst extends Component {
 
     }
 
-    checkoutHandler() {
-
+    checkoutHandler(date) {
+        this.setState({
+            checkoutDate: date
+        })
     }
 
-    dueDateHandler() {
-
+    dueDateHandler(date) {
+        this.setState({
+            dueDate: date
+        })
     }
 
     selectHandler(value) {
@@ -76,11 +85,13 @@ class AssignInst extends Component {
 
     render() {
         let el = this.state.instrument;
-        console.log(this.inst_school_id)
-        console.log(this.props.instId)
-        console.log(this.state.instrument)
-        console.log(this.state.students)
-        
+        // console.log(this.inst_school_id)
+        // console.log(this.props.instId)
+        // console.log(this.state.instrument)
+        // console.log(this.state.students)
+        console.log(this.state.dueDate)
+        console.log(this.state.checkoutDate)
+
         let students = this.state.students.filter((el, i) => {
             switch (this.state.criteria) {
                 case 'student_school_id':
@@ -123,7 +134,7 @@ class AssignInst extends Component {
 
         return (
             <div>
-                
+
                 {/* Display instrument seleceted from InstInv */}
                 <h1>Instrument Being Assigned:</h1>
                 <div key={el.inst_id} >
@@ -146,8 +157,16 @@ class AssignInst extends Component {
                 <div>
                     <p>Checkout Date</p>
                     <input type="date" name="checkout" />
+                    <DatePicker
+                        selected={this.state.checkoutDate}
+                        onChange={this.checkoutHandler}
+                    />
                     <p>Due Date</p>
                     <input type="date" name="due" />
+                    <DatePicker
+                        selected={this.state.dueDate}
+                        onChange={this.dueDateHandler}
+                    />
                 </div>
                 <button>Assign</button>
             </div>

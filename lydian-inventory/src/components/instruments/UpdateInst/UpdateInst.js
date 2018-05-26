@@ -12,67 +12,143 @@ class UpdateInst extends Component {
             editing: false,
             instrument: {},
             text: 'This stuff',
-            
+            inst_id: '',
+            inst_type: '',
+            serial_num: '',
+            make: '',
+            model: '',
+            inst_year: 0,
+            purchase_price: 0
         }
-        this.inst_school_id = createRef()
-        this.hideEdit = this.hideEdit.bind(this);
-        this.showEdit = this.showEdit.bind(this);
+        // this.inst_school_id = createRef()
+        // this.hideEdit = this.hideEdit.bind(this);
+        // this.showEdit = this.showEdit.bind(this);
         this._handleFocus = this._handleFocus.bind(this);
         this._handleFocusOut = this._handleFocusOut.bind(this);
+        this.instID_handleFocus = this.instID_handleFocus.bind(this);
+        this.instID_handleFocusOut = this.instID_handleFocusOut.bind(this);
+        this.type_handleFocus = this.type_handleFocus.bind(this);
+        this.type_handleFocusOut = this.type_handleFocusOut.bind(this);
+        this.serialNum_handleFocus = this.serialNum_handleFocus.bind(this);
+        this.serialNum_handleFocusOut = this.serialNum_handleFocusOut.bind(this);
+        this.make_handleFocus = this.make_handleFocus.bind(this);
+        this.make_handleFocusOut = this.make_handleFocusOut.bind(this);
+        this.model_handleFocus = this.model_handleFocus.bind(this);
+        this.model_handleFocusOut = this.model_handleFocusOut.bind(this);
+        this.year_handleFocus = this.year_handleFocus.bind(this);
+        this.year_handleFocusOut = this.year_handleFocusOut.bind(this);
+        this.price_handleFocus = this.price_handleFocus.bind(this);
+        this.price_handleFocusOut = this.price_handleFocusOut.bind(this);
+
     }
     componentDidMount() {
         axios.get(`/instrument/view/${this.props.instId}`).then(res => {
             this.setState({ instrument: res.data[0] });
-        
-        toast.success("Successfully got Instruments")
-    }).catch(()=>toast.error("Failed to Fetch Instruments"));
+
+            toast.success("Successfully got Instruments")
+        }).catch(() => toast.error("Failed to Fetch Instruments"));
     }
 
     updateInst(inst_school_id, inst_type, serial_num, make, model, inst_year, purchase_price) {
         axios.put(`/instrument/update/${this.props.instId}`,
-            { inst_school_id, inst_type, serial_num, make, model, inst_year, purchase_price })
+            this.state.inst_school_id, this.state.inst_type, this.state.serial_num, this.state.make, this.state.model, this.state.inst_year, this.state.purchase_price )
             .then(res => {
                 this.setState({
                     instrument: res.data
                 })
+                this.props.history.push('/instruments')
                 toast.success("Successfully got Instruments")
             }).catch(() => toast.error("Failed to Fetch Instruments"));
     }
 
-    showEdit() {
-        this.setState({ editing: true });
-    }
+    // showEdit() {
+    //     this.setState({ editing: true });
+    // }
 
-    hideEdit() {
-        this.setState({ editing: false });
-    }
+    // hideEdit() {
+    //     this.setState({ editing: false });
+    // }
 
-    updateText(value) {
-        this.setState({ text: value });
-        this.hideEdit();
-    }
+    // updateText(value) {
+    //     this.setState({ text: value });
+    //     this.hideEdit();
+    // }
 
     _handleFocus(text) {
-        console.log('Focused with text: ' + text);
+        // console.log('Focused with text: ' + text);
     }
 
     _handleFocusOut(value) {
-        console.log('Left editor with text: ' + value);
+        // console.log('Left editor with text: ' + value);
         this.setState({
             text: value
         })
         // console.log(this.state.text)
     }
-
-    warningHandler(){
-
+    instID_handleFocus(text) {
+        // console.log('Focused with text: ' + text);
     }
 
+    instID_handleFocusOut(value) {
+        // console.log('Left editor with text: ' + value);
+        this.setState({
+            inst_id: value
+        })
+        // console.log(this.state.text)
+    }
+    type_handleFocus(text) {
+    }
+
+    type_handleFocusOut(value) {
+        this.setState({
+            inst_type: value
+        })
+    }
+    serialNum_handleFocus(text) {
+    }
+
+    serialNum_handleFocusOut(value) {
+        this.setState({
+            serial_num: value
+        })
+    }
+    make_handleFocus(text) {
+    }
+
+    make_handleFocusOut(value) {
+        this.setState({
+            make: value
+        })
+    }
+    model_handleFocus(text) {
+    }
+
+    model_handleFocusOut(value) {
+        this.setState({
+            model: value
+        })
+    }
+    year_handleFocus(text) {
+    }
+
+    year_handleFocusOut(value) {
+        this.setState({
+            inst_year: value
+        })
+    }
+    price_handleFocus(text) {
+    }
+
+    price_handleFocusOut(value) {
+        this.setState({
+            purchase_price: value
+        })
+    }
 
     render() {
         // console.log(this.inst_school_id)
         // console.log(this.props.instId)
-        // console.log(this.state.instrument)
+        console.log(this.state)
         let el = this.state.instrument;
         return (
             <div>
@@ -80,13 +156,41 @@ class UpdateInst extends Component {
                 <div key={el.inst_id} ref={this.inst_school_id} >
                     <p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</p>
                     <p>Make: {el.make}, Model: {el.model}, Year: {el.inst_year}, Purchase Price: {el.purchase_price}</p>
-                    <textarea onClick={this.updateText} className="school id" value={el.inst_school_id} onChange={(e) => this.updateText(e.target.value)}></textarea>
-                    {/* <EditableLabel text={el.inst_school_id}
+                    <EditableLabel
+                        text={this.state.text}
                         onFocus={this._handleFocus}
                         onFocusOut={this._handleFocusOut}
-                    /> */}
+                    />
+                    <EditableLabel text={el.inst_school_id}
+                        onFocus={this.instID_handleFocus}
+                        onFocusOut={this.instID_handleFocusOut}
+                    />
+                    <EditableLabel text={el.inst_type}
+                        onFocus={this.type_handleFocus}
+                        onFocusOut={this.type_handleFocusOut}
+                    />
+                       <EditableLabel text={el.serial_num}
+                        onFocus={this.serialNum_handleFocus}
+                        onFocusOut={this.serialNum_handleFocusOut}
+                    />
+                       <EditableLabel text={el.make}
+                        onFocus={this.make_handleFocus}
+                        onFocusOut={this.make_handleFocusOut}
+                    />
+                       <EditableLabel text={el.model}
+                        onFocus={this.model_handleFocus}
+                        onFocusOut={this.model_handleFocusOut}
+                    />
+                       <EditableLabel text={el.inst_year}
+                        onFocus={this.year_handleFocus}
+                        onFocusOut={this.year_handleFocusOut}
+                    />
+                       <EditableLabel text={el.purchase_price}
+                        onFocus={this.price_handleFocus}
+                        onFocusOut={this.price_handleFocusOut}
+                    />
                 </div>
-                <button>Submit</button>
+                <button onClick={this.updateInst(this.state.instId)}>Submit</button>
 
             </div>
         )
