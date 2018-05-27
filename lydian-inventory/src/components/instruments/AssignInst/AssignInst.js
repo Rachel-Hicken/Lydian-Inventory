@@ -45,6 +45,10 @@ class AssignInst extends Component {
         }).catch(() => toast.error("Failed to Fetch Students"));
     }
 
+    assignHandler(){
+        
+    }
+    
     studentHandler() {
 
     }

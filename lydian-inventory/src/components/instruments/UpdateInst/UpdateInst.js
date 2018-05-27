@@ -51,7 +51,7 @@ class UpdateInst extends Component {
 
     updateInst(inst_school_id, inst_type, serial_num, make, model, inst_year, purchase_price) {
         axios.put(`/instrument/update/${this.props.instId}`,
-            this.state.inst_school_id, this.state.inst_type, this.state.serial_num, this.state.make, this.state.model, this.state.inst_year, this.state.purchase_price )
+            {inst_school_id: this.state.inst_school_id, inst_type: this.state.inst_type, serial_num: this.state.serial_num, make: this.state.make, model: this.state.model, inst_year: this.state.inst_year, purchase_price: this.state.purchase_price} )
             .then(res => {
                 this.setState({
                     instrument: res.data
