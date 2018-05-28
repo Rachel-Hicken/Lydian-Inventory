@@ -77,6 +77,12 @@ class InstInv extends Component {
         let instruments = this.state.all_instruments.filter((el, i) => {
             switch (this.state.criteria) {
                 case 'inst_school_id':
+                // console.log('blah');
+                // console.log(el);
+                // console.log(el.inst_school_id);
+                    if(el === null || el.inst_school_id === null){
+                        return false;
+                    }
                     if (el.inst_school_id.includes(this.state.search)) {
                         return true;
                     } else {
