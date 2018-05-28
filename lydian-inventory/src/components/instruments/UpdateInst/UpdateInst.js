@@ -12,7 +12,7 @@ class UpdateInst extends Component {
             editing: false,
             instrument: {},
             text: 'This stuff',
-            inst_id: '',
+            inst_school_id: '',
             inst_type: '',
             serial_num: '',
             make: '',
@@ -44,7 +44,16 @@ class UpdateInst extends Component {
     }
     componentDidMount() {
         axios.get(`/instrument/view/${this.props.instId}`).then(res => {
-            this.setState({ instrument: res.data[0] });
+            this.setState({
+                instrument: res.data[0],
+                inst_school_id: res.data[0].inst_school_id,
+                inst_type: res.data[0].inst_type,
+                serial_num: res.data[0].serial_num,
+                make: res.data[0].make,
+                model: res.data[0].model,
+                inst_year: res.data[0].inst_year,
+                purchase_price: res.data[0].purchase_price
+            });
 
             toast.success("Successfully got Instruments")
         }).catch(() => toast.error("Failed to Fetch Instruments"));
@@ -53,7 +62,7 @@ class UpdateInst extends Component {
     updateInst(inst_school_id, inst_type, serial_num, make, model, inst_year, purchase_price) {
         console.log(this);
         axios.put(`/instrument/update/${this.props.instId}`,
-            {inst_school_id: this.state.inst_school_id, inst_type: this.state.inst_type, serial_num: this.state.serial_num, make: this.state.make, model: this.state.model, inst_year: this.state.inst_year, purchase_price: this.state.purchase_price} )
+            { inst_school_id: this.state.inst_school_id, inst_type: this.state.inst_type, serial_num: this.state.serial_num, make: this.state.make, model: this.state.model, inst_year: this.state.inst_year, purchase_price: this.state.purchase_price })
             .then(res => {
                 this.setState({
                     instrument: res.data
@@ -171,23 +180,23 @@ class UpdateInst extends Component {
                         onFocus={this.type_handleFocus}
                         onFocusOut={this.type_handleFocusOut}
                     />
-                       <EditableLabel text={el.serial_num}
+                    <EditableLabel text={el.serial_num}
                         onFocus={this.serialNum_handleFocus}
                         onFocusOut={this.serialNum_handleFocusOut}
                     />
-                       <EditableLabel text={el.make}
+                    <EditableLabel text={el.make}
                         onFocus={this.make_handleFocus}
                         onFocusOut={this.make_handleFocusOut}
                     />
-                       <EditableLabel text={el.model}
+                    <EditableLabel text={el.model}
                         onFocus={this.model_handleFocus}
                         onFocusOut={this.model_handleFocusOut}
                     />
-                       <EditableLabel text={el.inst_year}
+                    <EditableLabel text={el.inst_year}
                         onFocus={this.year_handleFocus}
                         onFocusOut={this.year_handleFocusOut}
                     />
-                       <EditableLabel text={el.purchase_price}
+                    <EditableLabel text={el.purchase_price}
                         onFocus={this.price_handleFocus}
                         onFocusOut={this.price_handleFocusOut}
                     />
