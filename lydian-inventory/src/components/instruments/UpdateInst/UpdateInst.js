@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 import EditableLabel from 'react-inline-editing';
 
 class UpdateInst extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             editing: false,
             instrument: {},
@@ -23,10 +23,10 @@ class UpdateInst extends Component {
         // this.inst_school_id = createRef()
         // this.hideEdit = this.hideEdit.bind(this);
         // this.showEdit = this.showEdit.bind(this);
-        this._handleFocus = this._handleFocus.bind(this);
-        this._handleFocusOut = this._handleFocusOut.bind(this);
-        this.instID_handleFocus = this.instID_handleFocus.bind(this);
-        this.instID_handleFocusOut = this.instID_handleFocusOut.bind(this);
+        // this._handleFocus = this._handleFocus.bind(this);
+        // this._handleFocusOut = this._handleFocusOut.bind(this);
+        this.instSchoolID_handleFocus = this.instSchoolID_handleFocus.bind(this);
+        this.instSchoolID_handleFocusOut = this.instSchoolID_handleFocusOut.bind(this);
         this.type_handleFocus = this.type_handleFocus.bind(this);
         this.type_handleFocusOut = this.type_handleFocusOut.bind(this);
         this.serialNum_handleFocus = this.serialNum_handleFocus.bind(this);
@@ -39,6 +39,7 @@ class UpdateInst extends Component {
         this.year_handleFocusOut = this.year_handleFocusOut.bind(this);
         this.price_handleFocus = this.price_handleFocus.bind(this);
         this.price_handleFocusOut = this.price_handleFocusOut.bind(this);
+        this.updateInst = this.updateInst.bind(this);
 
     }
     componentDidMount() {
@@ -50,6 +51,7 @@ class UpdateInst extends Component {
     }
 
     updateInst(inst_school_id, inst_type, serial_num, make, model, inst_year, purchase_price) {
+        console.log(this);
         axios.put(`/instrument/update/${this.props.instId}`,
             {inst_school_id: this.state.inst_school_id, inst_type: this.state.inst_type, serial_num: this.state.serial_num, make: this.state.make, model: this.state.model, inst_year: this.state.inst_year, purchase_price: this.state.purchase_price} )
             .then(res => {
@@ -74,25 +76,25 @@ class UpdateInst extends Component {
     //     this.hideEdit();
     // }
 
-    _handleFocus(text) {
+    // _handleFocus(text) {
+    //     // console.log('Focused with text: ' + text);
+    // }
+
+    // _handleFocusOut(value) {
+    //     // console.log('Left editor with text: ' + value);
+    //     this.setState({
+    //         text: value
+    //     })
+    //     // console.log(this.state.text)
+    // }
+    instSchoolID_handleFocus(text) {
         // console.log('Focused with text: ' + text);
     }
 
-    _handleFocusOut(value) {
+    instSchoolID_handleFocusOut(value) {
         // console.log('Left editor with text: ' + value);
         this.setState({
-            text: value
-        })
-        // console.log(this.state.text)
-    }
-    instID_handleFocus(text) {
-        // console.log('Focused with text: ' + text);
-    }
-
-    instID_handleFocusOut(value) {
-        // console.log('Left editor with text: ' + value);
-        this.setState({
-            inst_id: value
+            inst_school_id: value
         })
         // console.log(this.state.text)
     }
@@ -156,14 +158,14 @@ class UpdateInst extends Component {
                 <div key={el.inst_id} ref={this.inst_school_id} >
                     <p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</p>
                     <p>Make: {el.make}, Model: {el.model}, Year: {el.inst_year}, Purchase Price: {el.purchase_price}</p>
-                    <EditableLabel
+                    {/* <EditableLabel
                         text={this.state.text}
                         onFocus={this._handleFocus}
                         onFocusOut={this._handleFocusOut}
-                    />
+                    /> */}
                     <EditableLabel text={el.inst_school_id}
-                        onFocus={this.instID_handleFocus}
-                        onFocusOut={this.instID_handleFocusOut}
+                        onFocus={this.instSchoolID_handleFocus}
+                        onFocusOut={this.instSchoolID_handleFocusOut}
                     />
                     <EditableLabel text={el.inst_type}
                         onFocus={this.type_handleFocus}
@@ -190,7 +192,8 @@ class UpdateInst extends Component {
                         onFocusOut={this.price_handleFocusOut}
                     />
                 </div>
-                <button onClick={this.updateInst(this.state.instId)}>Submit</button>
+                <button onClick={this.updateInst}>Submit</button>
+                <Link to='/instruments'><button>Cancel</button></Link>
 
             </div>
         )
