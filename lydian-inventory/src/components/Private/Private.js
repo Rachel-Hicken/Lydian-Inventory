@@ -14,11 +14,11 @@ class Private extends Component {
     render() {
         let { user_name, img } = this.props.user;
         return (
-            <div className="private">
+            <div>
 
                 {
                     user_name ?
-                        <div>
+                        <div className="private">
                             <div className='userInfo'>
                                 <h1 className='welcome'>Welcome to</h1>
                                 <h1 className='lydianWelcome'>Lydian!</h1>                                
