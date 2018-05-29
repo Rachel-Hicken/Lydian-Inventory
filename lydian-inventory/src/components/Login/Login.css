@@ -1,15 +1,14 @@
-nav{
-    height: 12vh;
+.loginPg{
+    height: 100%;
     width: 100%;
-    background: #0D4D4B;
-  }
-
+    background: #67989A;
+    
+}
 .company_name{
     background: #0D4D4B;
     display: flex;
+    height: 14%;
    
-
-
 }
 .lydian{
     margin-left: 2%;
@@ -28,8 +27,18 @@ nav{
     display: flex;
 }
 
+.login{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+	align-items: center;
+    align-content: stretch;
+    background: #0D4D4B;    
+    margin-right: 3%;
+    width: 700px;
+}
 .loginBtn{
-    left: 0;
     -moz-box-shadow: 3px 4px 0px 0px #276873;
 	-webkit-box-shadow: 3px 4px 0px 0px #276873;
 	box-shadow: 1px 2px 0px 0px #276873;
@@ -41,27 +50,23 @@ nav{
 	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#599bb3', endColorstr='#408c99',GradientType=0);
 	background-color:#59b3a4;
-	-moz-border-radius:15px;
-	-webkit-border-radius:15px;
-	border-radius:15px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
 	border:1px solid #29888f;
 	display:inline-block;
 	cursor:pointer;
 	color:#ddfff9;
 	font-family:Arial;
-	font-size:20px;
-	padding:10px 33px;
+	font-size:18px;
+	padding:5px 5px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #499b86;
 
 }
 .home_img{
-    height: 88vh;
-    width: 70%;
-    margin-left: 15%;
+    height: 88%;
+    width: 100%;
     display: flex;
     align-content: center;
-}
-div{
-    background: #41817F;
 }

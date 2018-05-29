@@ -14,16 +14,21 @@ class Private extends Component {
     render() {
         let { user_name, img } = this.props.user;
         return (
-            <div>
+            <div className="private">
 
                 {
                     user_name ?
-                        <div className='userInfo'>
-                            <h1 className='welcome'>Welcome to Lydian!</h1>
-                            <img src={img} alt='' />
-                            <p>Account Name: {user_name} </p>
-                            <Link to='/'><button>Logout</button></Link>
-                            <div>
+                        <div>
+                            <div className='userInfo'>
+                                <h1 className='welcome'>Welcome to</h1>
+                                <h1 className='lydianWelcome'>Lydian!</h1>                                
+                                <div className="accountInfo">
+                                    <p className="accountName">Account Name: {user_name} </p>
+                                    <img className="loginPic" src={img} alt='' />
+                                    <Link to='/'><button className="logoutWelcome">Logout</button></Link>
+                                </div>
+                            </div>
+                            <div className="instStudBtns">
                                 <Link to='/instruments'><button className='instruments'>Instruments</button></Link>
                                 <button className='students'>Students</button>
                             </div>
