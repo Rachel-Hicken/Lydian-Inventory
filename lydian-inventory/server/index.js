@@ -81,7 +81,7 @@ app.get('/auth/me', function(req,res){
     }
 })
 
-//Endpoints for instruments
+//ENDPOINTS FOR INSTRUMENTS
 //create a new instrument
 app.post('/instrument/add', ic.create_inst);
 //assign
@@ -95,9 +95,17 @@ app.get('/instruments/view', ic.view_all_inst);
 //view one instrument
 app.get('/instrument/view/:id', ic.view_inst);
 
-//Endpoints for students
+//ENDPOINTS FOR STUDENTS
+//create new student
+app.post('/student/add', sc.create_student);
+//update student
+app.put('/student/update/:id', sc.update_student);
+//delete student
+app.delete('/student/delete/:id', sc.delete_student);
+//view all students
 app.get('/students/view', sc.view_all_students);
-
+//view one student
+app.get('/student/view/:id', sc.view_student);
 
 
 
