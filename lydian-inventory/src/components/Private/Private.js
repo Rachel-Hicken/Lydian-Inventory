@@ -30,7 +30,7 @@ class Private extends Component {
                             </div>
                             <div className="instStudBtns">
                                 <Link to='/instruments'><button className='instruments'>Instruments</button></Link>
-                                <button className='students'>Students</button>
+                                <Link to='/students'><button className='students'>Students</button></Link>
                             </div>
                         </div>
                         :

@@ -9,6 +9,9 @@ import UpdateInst from './components/instruments/UpdateInst/UpdateInst';
 import ReturnInst from './components/instruments/ReturnInst/ReturnInst';
 import ViewInst from './components/instruments/ViewInst/ViewInst';
 import ViewOut from './components/instruments/ViewOut/ViewOut';
+import StudentView from './components/students/StudentView/StudentView';
+import AddStudent from './components/students/AddStudent/AddStudent';
+import UpdateStudent from './components/students/UpdateStudent/UpdateStudent';
 
 
 
@@ -21,9 +24,13 @@ export default (
             <Route path='/instrument/add' component={AddInst} />
             <Route path='/instrument/assign/:id' component={AssignInst} />
             <Route path='/instrument/update/:id' component={UpdateInst} />
-            <Route path='/instruments/return/:id' component={ReturnInst}/>            
-            <Route path='/instruments/view' component={ViewInst}/>
+            <Route path='/instruments/return/:id' component={ReturnInst} />
+            <Route path='/instruments/view' component={ViewInst} />
             {/* <Route path='/instruments/out' component={ViewOut}/> */}
+
+            <Route path='/students' component={StudentView} exact />
+            <Route path='/student/add' component={AddStudent} />
+            <Route path='/student/update/:id' component={UpdateStudent} />
         </Switch>
     </div>
 )

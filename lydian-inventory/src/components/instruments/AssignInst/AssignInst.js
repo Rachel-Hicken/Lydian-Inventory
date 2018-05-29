@@ -116,7 +116,7 @@ class AssignInst extends Component {
                     } else {
                         return false;
                     }
-                case 'phone':
+                case 'student_phone':
                     if (el.student_phone.includes(this.state.search)) {
                         return true;
                     } else {
@@ -152,7 +152,7 @@ class AssignInst extends Component {
                         <option value="student_school_id">Student School ID</option>
                         <option value="student_first">First Name</option>
                         <option value="student_last">Last Name</option>
-                        <option value="phone">Phone</option>
+                        <option value="student_phone">Phone</option>
                     </select>
                     <input onChange={(e) => this.filterHandler(e.target.value)} type="text" />
                     <p>{this.search}</p>
