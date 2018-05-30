@@ -85,7 +85,7 @@ app.get('/auth/me', function(req,res){
 //create a new instrument
 app.post('/instrument/add', ic.create_inst);
 //assign
-
+app.put('/instrument/assign/:id', ic.assign_inst);
 //update instrument
 app.put('/instrument/update/:id', ic.update_inst);
 //delete an instrument

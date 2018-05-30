@@ -59,7 +59,7 @@ class InstInv extends Component {
     checkboxHandler(event) {
         const target = event.target;
         const value = target.value;
-        // console.log(value)
+        console.log(value)
 
         this.setState({
             checked: value

@@ -18,7 +18,8 @@ class AssignInst extends Component {
             search: '',
             student: '',
             checkoutDate: moment(),
-            dueDate: moment()
+            dueDate: moment(),
+            returnDate: null
         }
         this.filterHandler = this.filterHandler.bind(this);
         this.studentHandler = this.studentHandler.bind(this);
@@ -26,6 +27,7 @@ class AssignInst extends Component {
         this.checkboxHandler = this.checkboxHandler.bind(this);
         this.dueDateHandler = this.dueDateHandler.bind(this);
         this.checkoutHandler = this.checkoutHandler.bind(this);
+        this.assignInst = this.assignInst.bind(this);
     }
 
     componentDidMount() {
@@ -45,8 +47,17 @@ class AssignInst extends Component {
         }).catch(() => toast.error("Failed to Fetch Students"));
     }
 
-    assignHandler(){
-        
+    assignInst( student_id, checkout_date, due_date, return_date) {
+        console.log(this);
+        axios.put(`/instrument/assign/${this.props.instId}`,
+            { student_id: this.state.checked, checkout_date: this.state.checkoutDate, due_date: this.state.dueDate, return_date: this.state.returnDate })
+            .then(res => {
+                this.setState({
+                    instrument: res.data
+                })
+                this.props.history.push('/instruments')
+                toast.success("Successfully got Instruments")
+            }).catch(() => toast.error("Failed to Fetch Instruments"));
     }
     
     studentHandler() {
@@ -90,7 +101,7 @@ class AssignInst extends Component {
     render() {
         let el = this.state.instrument;
         // console.log(this.inst_school_id)
-        // console.log(this.props.instId)
+        console.log(this.props.instId)
         // console.log(this.state.instrument)
         // console.log(this.state.students)
         console.log(this.state.dueDate)
@@ -160,19 +171,19 @@ class AssignInst extends Component {
                 </div>
                 <div>
                     <p>Checkout Date</p>
-                    <input type="date" name="checkout" />
+                    {/* <input type="date" name="checkout" /> */}
                     <DatePicker
                         selected={this.state.checkoutDate}
                         onChange={this.checkoutHandler}
                     />
                     <p>Due Date</p>
-                    <input type="date" name="due" />
+                    {/* <input type="date" name="due" /> */}
                     <DatePicker
                         selected={this.state.dueDate}
                         onChange={this.dueDateHandler}
                     />
                 </div>
-                <button>Assign</button>
+                <button onClick={this.assignInst}>Assign</button>
             </div>
         )
     }
