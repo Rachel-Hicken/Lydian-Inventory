@@ -8,6 +8,7 @@ import AssignInst from './components/instruments/AssignInst/AssignInst';
 import UpdateInst from './components/instruments/UpdateInst/UpdateInst';
 import ReturnInst from './components/instruments/ReturnInst/ReturnInst';
 import ViewInst from './components/instruments/ViewInst/ViewInst';
+import ViewAvailable from './components/instruments/ViewAvailable/ViewAvailable';
 import ViewOut from './components/instruments/ViewOut/ViewOut';
 import StudentView from './components/students/StudentView/StudentView';
 import AddStudent from './components/students/AddStudent/AddStudent';
@@ -26,6 +27,7 @@ export default (
             <Route path='/instrument/update/:id' component={UpdateInst} />
             <Route path='/instrument/return/:id' component={ReturnInst} />
             <Route path='/instruments/view' component={ViewInst} />
+            <Route path='/instruments/available' component={ViewAvailable}/>
             {/* <Route path='/instruments/out' component={ViewOut}/> */}
 
             <Route path='/students' component={StudentView} exact />

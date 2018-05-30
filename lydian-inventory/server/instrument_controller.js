@@ -53,6 +53,12 @@ module.exports = {
         dbInstance.assign_inst([params.id, student_id, checkout_date, due_date, return_date])
         .then(() => res.status(200).send())
         .catch((e) => { console.log(e); res.sendStatus(500)});
+    },
+    out_inst: (req,res,next)=>{
+        const dbInstance = req.app.get('db');
+        dbInstance.out_inst()
+        .then((instruments) => res.status(200).send(instruments))
+        .catch((e) => { console.log(e); res.sendStatus(500)});
     }
     // return_inst: (req, res, next) => {
     //     const dbInstance = req.app.get('db');

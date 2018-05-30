@@ -94,6 +94,8 @@ app.delete('/instrument/delete/:id', ic.delete_inst);
 app.get('/instruments/view', ic.view_all_inst);
 //view one instrument
 app.get('/instrument/view/:id', ic.view_inst);
+//view checked out instruments
+app.get('/instruments/out', ic.out_inst);
 
 //ENDPOINTS FOR STUDENTS
 //create new student
