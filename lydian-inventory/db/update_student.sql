@@ -7,5 +7,5 @@ student_phone = $5,
 student_address = $6,
 student_city = $7,
 student_state = $8,
-student_zip = $9,
-WHERE inst_id = $10;
+student_zip = $9
+WHERE student_id = $10;

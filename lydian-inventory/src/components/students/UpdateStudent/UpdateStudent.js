@@ -66,7 +66,7 @@ class UpdateStudent extends Component {
     updateStudent(student_school_id, student_first, student_last, 
         student_email, student_phone, student_address, 
         student_city, student_state, student_zip) {
-        console.log(this);
+        console.log(this.state);
         axios.put(`/student/update/${this.props.studentID}`,
             { student_school_id: this.state.student_school_id, student_first: this.state.student_first, student_last: this.state.student_last, student_email: this.state.student_email, student_phone: this.state.student_phone, student_address: this.state.student_address, student_city: this.state.student_city, student_state: this.state.student_state, student_zip: this.state.student_zip })
             .then(res => {
@@ -158,7 +158,7 @@ class UpdateStudent extends Component {
 
     render() {
         // console.log(this.student_school_id)
-        // console.log(this.props.studentID)
+        console.log(this.props.studentID)
         console.log(this.state)
         let el = this.state.student;
         return (
@@ -200,7 +200,7 @@ class UpdateStudent extends Component {
                         onFocus={this.state_handleFocus}
                         onFocusOut={this.state_handleFocusOut}
                     />
-                     <EditableLabel text={el.student_zip}
+                     <EditableLabel text={Number(el.student_zip)}
                         onFocus={this.zip_handleFocus}
                         onFocusOut={this.zip_handleFocusOut}
                     />
