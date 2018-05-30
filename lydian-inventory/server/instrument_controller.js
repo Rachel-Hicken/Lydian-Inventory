@@ -61,12 +61,12 @@ module.exports = {
         .catch((e) => { console.log(e); res.sendStatus(500)});
     },
     return_inst: (req, res, next) => {
+        console.log("return_inst hit")
         const dbInstance = req.app.get('db');
         const { return_date, status_id } = req.body;
-        const { params } = req;
-        // console.log(req.body)
-        dbInstance.update_inst([return_date, status_id])
-            .then(() => res.status(200).send())
-            .catch((e) => { console.log(e); res.sendStatus(500)});
+        console.log(req.body)
+        dbInstance.return_inst([return_date, status_id])
+            .then(() => res.status(200).send("Instrument returned"))
+            .catch((e) => { console.log(e); res.status(500).send("Couldn't get return_inst")});
     }
 };

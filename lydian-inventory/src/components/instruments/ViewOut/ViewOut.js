@@ -38,8 +38,10 @@ class ViewOut extends Component {
         }).catch(() => toast.error("Failed to Fetch Instruments"));
     }
 
-    returnInst(return_date, status_id){
-        axios.put(`/instrument/return/${this.state.checked}`,
+    returnInst(){
+        // console.log(this.state.returnDate)
+        // console.log(this.state.checked)
+        axios.put(`/instrument/return`,
         { return_date: this.state.returnDate, status_id: this.state.checked })
         .then(res => {
             this.setState({
