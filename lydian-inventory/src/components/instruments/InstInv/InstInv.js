@@ -145,7 +145,7 @@ class InstInv extends Component {
                     <p>Select One Item From List</p>
                     <Link to={`/instrument/assign/${this.state.checked}`}><button>Assign</button></Link>
                     <Link to={`/instrument/update/${this.state.checked}`}><button>Update</button></Link>
-                    {/* <Link to {`/instrument/return/${this.state.checked}`}><button>Return</button></Link> */}
+                    <Link to={`/instrument/return/${this.state.checked}`}><button>Return</button></Link>
                 </div>
                 <div>
                     <button onClick={() => this.deletePost(this.state.checked)}>Delete Selected Instrument</button>

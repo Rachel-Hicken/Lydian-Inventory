@@ -24,7 +24,7 @@ export default (
             <Route path='/instrument/add' component={AddInst} />
             <Route path='/instrument/assign/:id' component={AssignInst} />
             <Route path='/instrument/update/:id' component={UpdateInst} />
-            <Route path='/instruments/return/:id' component={ReturnInst} />
+            <Route path='/instrument/return/:id' component={ReturnInst} />
             <Route path='/instruments/view' component={ViewInst} />
             {/* <Route path='/instruments/out' component={ViewOut}/> */}
 

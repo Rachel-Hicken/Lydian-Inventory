@@ -54,4 +54,8 @@ module.exports = {
         .then(() => res.status(200).send())
         .catch((e) => { console.log(e); res.sendStatus(500)});
     }
+    // return_inst: (req, res, next) => {
+    //     const dbInstance = req.app.get('db');
+        
+    // }
 };
