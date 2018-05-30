@@ -58,12 +58,13 @@ class StudentView extends Component {
     checkboxHandler(event) {
         const target = event.target;
         const value = target.value;
-        // console.log(value)
+        console.log(value)
 
         this.setState({
             checked: value
         });
         this.props.get_student_id(value);
+        // console.log(checked)
     }
 
     render() {
@@ -128,7 +129,6 @@ class StudentView extends Component {
                 <input onChange={(e) => this.filterHandler(e.target.value)} type="text" />
                 <button>Search</button>
                 <p>{this.search}</p>
-                {/* <p>{searchInput}</p> */}
 
                 <div className="inventoryList">
                     <h1>STUDENT LIST</h1>

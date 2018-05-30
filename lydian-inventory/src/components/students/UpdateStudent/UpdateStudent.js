@@ -3,6 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+// import {get_student_id} from '../../../ducks/reducer';
 import EditableLabel from 'react-inline-editing';
 
 class UpdateStudent extends Component {
@@ -14,7 +15,7 @@ class UpdateStudent extends Component {
             student_first : '',
             student_last : '',
             student_email : '',
-            student_phone : 0,
+            student_phone :'',
             student_address : '',
             student_city : '',
             student_state : '',
@@ -44,7 +45,7 @@ class UpdateStudent extends Component {
 
     }
     componentDidMount() {
-        axios.get(`/student/view/${this.props.studentId}`).then(res => {
+        axios.get(`/student/view/${this.props.studentID}`).then(res => {
             this.setState({
                 student: res.data[0],
                 student_school_id: res.data[0].student_school_id,
@@ -66,7 +67,7 @@ class UpdateStudent extends Component {
         student_email, student_phone, student_address, 
         student_city, student_state, student_zip) {
         console.log(this);
-        axios.put(`/student/update/${this.props.studentId}`,
+        axios.put(`/student/update/${this.props.studentID}`,
             { student_school_id: this.state.student_school_id, student_first: this.state.student_first, student_last: this.state.student_last, student_email: this.state.student_email, student_phone: this.state.student_phone, student_address: this.state.student_address, student_city: this.state.student_city, student_state: this.state.student_state, student_zip: this.state.student_zip })
             .then(res => {
                 this.setState({
@@ -157,15 +158,15 @@ class UpdateStudent extends Component {
 
     render() {
         // console.log(this.student_school_id)
-        console.log(this.props.studentId)
+        // console.log(this.props.studentID)
         console.log(this.state)
         let el = this.state.student;
         return (
             <div>
-                {this.props.studentId}
+                {/* {this.props.studentID} */}
                 <div key={el.student_id} >
-                    <p>School ID: {el.student_school_id}, First: {el.student_first}, Last: {el.student_last}, Phone: {el.student_phone}</p>
-                    <p>Email: {el.student_email}, Address: {el.student_address}, City: {el.student_city}, State: {el.student_state}, Zipcode: {el.student_zip}</p>
+                    {/* <p>School ID: {el.student_school_id}, First: {el.student_first}, Last: {el.student_last}, Phone: {el.student_phone}</p>
+                    <p>Email: {el.student_email}, Address: {el.student_address}, City: {el.student_city}, State: {el.student_state}, Zipcode: {el.student_zip}</p> */}
                   
                     <EditableLabel text={el.student_school_id}
                         onFocus={this.schoolID_handleFocus}
@@ -213,9 +214,9 @@ class UpdateStudent extends Component {
 }
 
 function mapStateToProps(state) {
-    const { studentId } = state;
+    const { studentID } = state;
     return {
-        studentId
+        studentID
     }
 }
 
