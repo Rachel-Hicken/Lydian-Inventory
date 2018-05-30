@@ -25,10 +25,10 @@ export default (
             <Route path='/instrument/add' component={AddInst} />
             <Route path='/instrument/assign/:id' component={AssignInst} />
             <Route path='/instrument/update/:id' component={UpdateInst} />
-            <Route path='/instrument/return/:id' component={ReturnInst} />
+            {/* <Route path='/instrument/return/:id' component={ReturnInst} /> */}
             <Route path='/instruments/view' component={ViewInst} />
             <Route path='/instruments/available' component={ViewAvailable}/>
-            {/* <Route path='/instruments/out' component={ViewOut}/> */}
+            <Route path='/instruments/out' component={ViewOut}/>
 
             <Route path='/students' component={StudentView} exact />
             <Route path='/student/add' component={AddStudent} />

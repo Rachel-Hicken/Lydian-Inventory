@@ -59,9 +59,14 @@ module.exports = {
         dbInstance.out_inst()
         .then((instruments) => res.status(200).send(instruments))
         .catch((e) => { console.log(e); res.sendStatus(500)});
+    },
+    return_inst: (req, res, next) => {
+        const dbInstance = req.app.get('db');
+        const { return_date, status_id } = req.body;
+        const { params } = req;
+        // console.log(req.body)
+        dbInstance.update_inst([return_date, status_id])
+            .then(() => res.status(200).send())
+            .catch((e) => { console.log(e); res.sendStatus(500)});
     }
-    // return_inst: (req, res, next) => {
-    //     const dbInstance = req.app.get('db');
-        
-    // }
 };

@@ -28,6 +28,10 @@ class ReturnInst extends Component {
         }).catch(() => toast.error("Failed to Fetch Instruments"));
     }
 
+    returnInst(){
+
+    }
+
     returnDateHandler(date) {
         this.setState({
             dueDate: date
@@ -39,7 +43,7 @@ class ReturnInst extends Component {
         return (
             <div>ReturnInst
 
-                <div key={el.inst_id} >
+                <div key={el.status_id} >
                     <p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</p>
                     <p>Make: {el.make}, Model: {el.model}, Year: {el.inst_year}, Purchase Price: {el.purchase_price}</p>
                 </div>
@@ -47,6 +51,8 @@ class ReturnInst extends Component {
                         selected={this.state.returnDate}
                         onChange={this.returnDateHandler}
                     />
+                <button>Return</button>
+                <Link to='/instruments/out'><button>Cancel</button></Link>
 
             </div>
         )
