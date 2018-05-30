@@ -34,7 +34,7 @@ module.exports={
             student_city, student_state, student_zip } = req.body;
         const { params } = req;
         // console.log(req.body)
-        dbInstance.update_inst([student_school_id, student_first, student_last, 
+        dbInstance.update_student([student_school_id, student_first, student_last, 
             student_email, student_phone, student_address, 
             student_city, student_state, student_zip, params.id])
             .then(() => res.status(200).send())

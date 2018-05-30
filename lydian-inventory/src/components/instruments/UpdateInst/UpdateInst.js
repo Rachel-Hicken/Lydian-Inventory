@@ -159,12 +159,12 @@ class UpdateInst extends Component {
     render() {
         // console.log(this.inst_school_id)
         // console.log(this.props.instId)
-        console.log(this.state)
+        // console.log(this.state)
         let el = this.state.instrument;
         return (
             <div>
                 {this.props.instId}
-                <div key={el.inst_id} ref={this.inst_school_id} >
+                <div key={el.inst_id} >
                     <p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</p>
                     <p>Make: {el.make}, Model: {el.model}, Year: {el.inst_year}, Purchase Price: {el.purchase_price}</p>
                     {/* <EditableLabel

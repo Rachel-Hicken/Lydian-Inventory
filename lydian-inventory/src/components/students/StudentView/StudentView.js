@@ -19,7 +19,7 @@ class StudentView extends Component {
         this.filterHandler = this.filterHandler.bind(this);
         this.selectHandler = this.selectHandler.bind(this);
         this.checkboxHandler = this.checkboxHandler.bind(this);
-        this.deletePost = this.deletePost.bind(this);
+        this.deleteStudent = this.deleteStudent.bind(this);
     }
 
     //get all students
@@ -33,9 +33,9 @@ class StudentView extends Component {
     }
 
     //remove an studnet from db
-    deletePost(id) {
+    deleteStudent(id) {
         axios.delete(`/student/delete/${id}`).then(res => {
-            console.log(res.data)
+            // console.log(res.data)
             this.setState({ all_students: res.data })
         });
     }
@@ -131,7 +131,7 @@ class StudentView extends Component {
                 {/* <p>{searchInput}</p> */}
 
                 <div className="inventoryList">
-                    <h1>INVENTORY</h1>
+                    <h1>STUDENT LIST</h1>
                     {students}
 
                 </div>
@@ -141,9 +141,9 @@ class StudentView extends Component {
                     <Link to={`/student/update/${this.state.checked}`}><button>Update</button></Link>
                 </div>
                 <div>
-                    <button onClick={() => this.deletePost(this.state.checked)}>Delete Selected Student</button>
+                    <button onClick={() => this.deleteStudent(this.state.checked)}>Delete Selected Student</button>
                 </div>
-                <div className="addInstrument">
+                <div className="addStudent">
                     <Link to='/student/add'><button>Add</button></Link>
                 </div>
             </div>
