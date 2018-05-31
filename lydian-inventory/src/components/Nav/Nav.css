@@ -1,7 +1,8 @@
 nav{
-    height: 15vh;
+    height: 16vh;
     width: 100%;
     background: #115576;
+    position: fixed;
   }
 .navBtn{
   width: 25%;

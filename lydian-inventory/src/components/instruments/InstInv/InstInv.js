@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { get_inst_id } from '../../../ducks/reducer';
 import { connect } from 'react-redux'
 import Nav from '../../Nav/Nav';
+import './InstInv.css'
 // import UpdateInst from '../UpdateInst/UpdateInst';
 // import AssignInst from '../AssignInst/AssignInst';
 
@@ -78,10 +79,10 @@ class InstInv extends Component {
         let instruments = this.state.all_instruments.filter((el, i) => {
             switch (this.state.criteria) {
                 case 'inst_school_id':
-                // console.log('blah');
-                // console.log(el);
-                // console.log(el.inst_school_id);
-                    if(el === null || el.inst_school_id === null){
+                    // console.log('blah');
+                    // console.log(el);
+                    // console.log(el.inst_school_id);
+                    if (el === null || el.inst_school_id === null) {
                         return false;
                     }
                     if (el.inst_school_id.includes(this.state.search)) {
@@ -123,46 +124,49 @@ class InstInv extends Component {
 
         return (
             <div>
-                <Nav/>
-                <h1>Instrument Inventory</h1>
-                <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">
-                    <option value="inst_school_id">Instrument School ID</option>
-                    <option value="inst_type">Type</option>
-                    <option value="serial_num">Serial Number</option>
-                </select>
+                <Nav />
+                <div className="main">
+                    <div className="mainBody">
+                        <h1 className="title">Instrument Inventory</h1>
+                        <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">
+                            <option value="inst_school_id">Instrument School ID</option>
+                            <option value="inst_type">Type</option>
+                            <option value="serial_num">Serial Number</option>
+                        </select>
 
-                {/* search input and filtering */}
-                <input onChange={(e) => this.filterHandler(e.target.value)} type="text" />
-                <button>Search</button>
-                {/* <p>{this.search}</p> */}
-                {/* <p>{searchInput}</p> */}
+                        {/* search input and filtering */}
+                        <input onChange={(e) => this.filterHandler(e.target.value)} type="text" />
+                        <button>Search</button>
+                        {/* <p>{this.search}</p> */}
+                        {/* <p>{searchInput}</p> */}
 
-                <div className="inventoryList">
-                    {instruments}
-                </div>
+                        <div className="inventoryList">
+                            {instruments}
+                        </div>
 
-                <div className="buttonBar">
-                    <p>Select One Item From the List Above</p>
-                    
-                    <Link to={`/instrument/update/${this.state.checked}`}><button>Update</button></Link>
-                    <button onClick={() => this.deletePost(this.state.checked)}>Delete</button>
-                    {/* <Link to={`/instrument/return/${this.state.checked}`}><button>Return</button></Link> */}
-                </div>
-                <div>
-                <Link to={`/instrument/assign/${this.state.checked}`}><button>Assign</button></Link>
-                </div>
-                <div className="addInstrument">
-                    <Link to='/instrument/add'><button>Add</button></Link>
-                </div>
-                <div className="sideBar">
-                    <h1>View Instruments</h1>
-                    <Link to="/instruments/view"><p>All</p></Link>
-                    <Link to="/instruments/out"><p>Checked Out</p></Link>
-                    <Link to="/instruments/available"><p>Available</p></Link>
-                </div>
-                {/* <UpdateInst inst_id={this.state.checked}/>
+                        <div className="buttonBar">
+                            <p>Select One Item From the List Above</p>
+
+                            <Link to={`/instrument/update/${this.state.checked}`}><button>Update</button></Link>
+                            <button onClick={() => this.deletePost(this.state.checked)}>Delete</button>
+                            {/* <Link to={`/instrument/return/${this.state.checked}`}><button>Return</button></Link> */}
+                        </div>
+                        <div>
+                            <Link to={`/instrument/assign/${this.state.checked}`}><button>Assign</button></Link>
+                        </div>
+                        <div className="addInstrument">
+                            <Link to='/instrument/add'><button>Add</button></Link>
+                        </div>
+                    </div>
+                    <div className="sideBar">
+                        <h1>View Instruments</h1>
+                        <Link to="/instruments/view"><p>All</p></Link>
+                        <Link to="/instruments/out"><p>Checked Out</p></Link>
+                        <Link to="/instruments/available"><p>Available</p></Link>
+                    </div>
+                    {/* <UpdateInst inst_id={this.state.checked}/>
                 <AssignInst inst_id={this.state.checked}/> */}
-
+                </div>
             </div>
 
         )

@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import EditableLabel from 'react-inline-editing';
+import './UpdateInst.css';
 
 class UpdateInst extends Component {
     constructor(props) {
@@ -162,7 +163,7 @@ class UpdateInst extends Component {
         // console.log(this.state)
         let el = this.state.instrument;
         return (
-            <div>
+            <div className="main">
                 {this.props.instId}
                 <div key={el.inst_id} >
                     <p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</p>

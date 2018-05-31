@@ -1,0 +1,28 @@
+.title{
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.main{
+    background: #dbdbdb;
+    height: 100%;
+    width: 100%;
+}
+.mainBody{
+    margin-left: 160px;
+    padding: 18vh;
+}
+
+.sideBar{
+    height: 100%; 
+    width: 160px; 
+    position: fixed; 
+    z-index: 1; 
+    top: 16vh; 
+    left: 0;
+    background-color: #67989A; 
+    overflow-x: hidden; 
+    padding-top: 20px;
+}

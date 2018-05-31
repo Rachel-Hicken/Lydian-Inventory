@@ -5,7 +5,6 @@
     
 }
 nav{
-   
     display: flex;
 }
 .company_name{
@@ -15,20 +14,21 @@ nav{
    
 }
 .lydian{
-    margin-left: 2%;
     font-family: 'Lovers Quarrel', cursive;
     font-size: 80px;
     color: rgb(133, 192, 194);
     text-shadow: 2px 2px #272727;
-    margin-right: 5px;
     display: flex;
-
+    margin-left: 2%;
+    margin-right: 2%;
 }
 .inventory{
     font-family: 'Playfair Display', serif;
-    font-size: 36px;
+    font-size: 40px;
     color: #67989A;
     display: flex;
+    align-content: center;
+    margin-top: 1.5%;
 }
 
 .login{
