@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { get_inst_id } from '../../../ducks/reducer';
 import { connect } from 'react-redux'
+import Nav from '../../Nav/Nav';
 // import UpdateInst from '../UpdateInst/UpdateInst';
 // import AssignInst from '../AssignInst/AssignInst';
 
@@ -122,6 +123,7 @@ class InstInv extends Component {
 
         return (
             <div>
+                <Nav/>
                 <h1>Instrument Inventory</h1>
                 <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">
                     <option value="inst_school_id">Instrument School ID</option>

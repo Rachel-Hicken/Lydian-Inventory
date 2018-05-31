@@ -25,7 +25,7 @@ class Private extends Component {
                                 <div className="accountInfo">
                                     <p className="accountName">Account Name: {user_name} </p>
                                     <img className="loginPic" src={img} alt='' />
-                                    <Link to='/'><button className="logoutWelcome">Logout</button></Link>
+                                    <Link to='/'><button className="logout">Logout</button></Link>
                                 </div>
                             </div>
                             <div className="instStudBtns">

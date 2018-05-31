@@ -50,7 +50,7 @@
     color: #67989A;
 
 }
-.logoutWelcome{
+.logout{
     -moz-box-shadow: 0px 10px 14px -7px #276873;
 	-webkit-box-shadow: 0px 10px 14px -7px #276873;
 	box-shadow: 0px 10px 14px -7px #276873;
@@ -68,10 +68,10 @@
 	text-decoration:none;
 	text-shadow:0px 1px 0px #3d768a;
 }
-.logoutWelcome:hover{
+.logout:hover{
     background-color:#67989A;
 }
-.logoutWelcome:active{
+.logout:active{
     position:relative;
 	top:1px;
 }

@@ -1,5 +1,64 @@
 .nav{
-    height: 10vh;
+    height: 15vh;
     width: 100%;
     background: #0D4D4B;
   }
+.navBtn{
+  width: 60%;
+}
+.homeBtn{
+  display: flex;
+  justify-content: space-between;
+  -moz-box-shadow: 0px 10px 14px -7px #276873;
+	-webkit-box-shadow: 0px 10px 14px -7px #276873;
+	box-shadow: 0px 10px 14px -7px #276873;
+	background-color:transparent;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ddfff9;
+	font-family:Arial;
+	font-size:16px;
+	font-weight:bold;
+	padding:13px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+}
+.homeBtn:hover{
+  background-color:#67989A;
+  
+}
+.homeBtn:active{
+  position:relative;
+	top:1px;
+}
+
+.logoutNav{
+  display: flex;
+  justify-content: space-between;
+  -moz-box-shadow: 0px 10px 14px -7px #276873;
+-webkit-box-shadow: 0px 10px 14px -7px #276873;
+box-shadow: 0px 10px 14px -7px #276873;
+background-color:transparent;
+-moz-border-radius:8px;
+-webkit-border-radius:8px;
+border-radius:8px;
+display:inline-block;
+cursor:pointer;
+color:#ddfff9;
+font-family:Arial;
+font-size:16px;
+font-weight:bold;
+padding:13px 15px;
+text-decoration:none;
+text-shadow:0px 1px 0px #3d768a;
+}
+.logoutNav:hover{
+  background-color:#67989A;
+}
+.logoutNav:active{
+  position:relative;
+ top:1px;
+}
