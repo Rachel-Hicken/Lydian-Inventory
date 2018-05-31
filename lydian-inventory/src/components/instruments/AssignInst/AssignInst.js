@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import { get_inst_id } from '../../../ducks/reducer';
@@ -184,6 +185,7 @@ class AssignInst extends Component {
                     />
                 </div>
                 <button onClick={this.assignInst}>Assign</button>
+                <Link to='/instruments'><button>Cancel</button></Link>
             </div>
         )
     }

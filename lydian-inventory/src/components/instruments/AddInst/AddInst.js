@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 
 export default class Add_Inst extends Component{
@@ -92,6 +93,7 @@ export default class Add_Inst extends Component{
                 <p>Purchase Price:</p>
                 <input onChange={(e)=>this.priceHandler(e.target.value)} type="text" value={this.state.purchase_price}/>
                 <button onClick={this.addInst}>Add to Inventory</button>
+                <Link to='/instruments'><button>Cancel</button></Link>
                 </div>
 
         )

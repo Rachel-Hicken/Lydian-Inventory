@@ -3,7 +3,8 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { get_student_id } from '../../../ducks/reducer';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import Nav from '../../Nav/Nav';
 
 
 class StudentView extends Component {
@@ -117,6 +118,7 @@ class StudentView extends Component {
 
         return (
             <div>
+                <Nav/>
                 <h1>Search For a Student</h1>
                     <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">
                         <option value="student_school_id">Student School ID</option>
@@ -141,7 +143,7 @@ class StudentView extends Component {
                     <Link to={`/student/update/${this.state.checked}`}><button>Update</button></Link>
                 </div>
                 <div>
-                    <button onClick={() => this.deleteStudent(this.state.checked)}>Delete Selected Student</button>
+                    <button onClick={() => this.deleteStudent(this.state.checked)}>Delete</button>
                 </div>
                 <div className="addStudent">
                     <Link to='/student/add'><button>Add</button></Link>
