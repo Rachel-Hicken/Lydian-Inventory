@@ -122,7 +122,7 @@ class InstInv extends Component {
 
         return (
             <div>
-                <h1>InstInv</h1>
+                <h1>Full Instrument Inventory</h1>
                 <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">
                     <option value="inst_school_id">Instrument School ID</option>
                     <option value="inst_type">Type</option>
@@ -136,7 +136,6 @@ class InstInv extends Component {
                 {/* <p>{searchInput}</p> */}
 
                 <div className="inventoryList">
-                    <h1>INVENTORY</h1>
                     {instruments}
 
                 </div>
@@ -145,10 +144,7 @@ class InstInv extends Component {
                     <p>Select One Item From List</p>
                     <Link to={`/instrument/assign/${this.state.checked}`}><button>Assign</button></Link>
                     <Link to={`/instrument/update/${this.state.checked}`}><button>Update</button></Link>
-                    <Link to={`/instrument/return/${this.state.checked}`}><button>Return</button></Link>
-                </div>
-                <div>
-                    <button onClick={() => this.deletePost(this.state.checked)}>Delete Selected Instrument</button>
+                    <button onClick={() => this.deletePost(this.state.checked)}>Delete</button>
                 </div>
                 <div className="addInstrument">
                     <Link to='/instrument/add'><button>Add</button></Link>
