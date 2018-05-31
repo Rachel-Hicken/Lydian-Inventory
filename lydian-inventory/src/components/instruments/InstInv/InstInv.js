@@ -6,6 +6,7 @@ import { get_inst_id } from '../../../ducks/reducer';
 import { connect } from 'react-redux'
 import Nav from '../../Nav/Nav';
 import './InstInv.css'
+import ReactScrollableList from 'react-scrollable-list';
 // import UpdateInst from '../UpdateInst/UpdateInst';
 // import AssignInst from '../AssignInst/AssignInst';
 
@@ -142,6 +143,11 @@ class InstInv extends Component {
 
                         <div className="inventoryList">
                             {instruments}
+                            <ReactScrollableList
+                                listItems={instruments}
+                                heightofItem={30}
+                                maxItemsToRender={50}
+                                />
                         </div>
 
                         <div className="buttonBar">
