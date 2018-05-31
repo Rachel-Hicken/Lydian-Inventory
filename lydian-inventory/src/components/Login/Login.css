@@ -14,7 +14,7 @@ nav{
     background: #0D4D4B;
     display: flex;
     height: 100%;
-    width: 40%;
+    width: 75%;
    
 }
 .lydian{
@@ -42,7 +42,7 @@ nav{
     align-items: center;
     align-content: stretch;
     background: #0D4D4B;    
-    width: 60%;
+    width: 25%;
     margin-right: 5%;
 }
 .loginBtn{
