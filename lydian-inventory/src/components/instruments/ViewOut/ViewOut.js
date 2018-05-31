@@ -159,7 +159,7 @@ class ViewOut extends Component {
 
         return (
             <div>
-                <h1>InstInv</h1>
+                <h1>CHECKED OUT INSTRUMENTS</h1>
                 <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">
                     <option value="inst_school_id">Instrument School ID</option>
                     <option value="inst_type">Type</option>
@@ -173,17 +173,17 @@ class ViewOut extends Component {
                 <input onChange={(e) => this.filterHandler(e.target.value)} type="text" />
                 <button>Search</button>
                 <div className="checkedOutList">
-                    <h1>INSTRUMENTS OUT</h1>
+                    <h1>Select One to Return</h1>
                     {instruments}
 
                 </div>
+                <h1>Return Date:</h1>
                 <DatePicker
                         selected={this.state.returnDate}
                         onChange={this.returnDateHandler}
                     />
 
                 <div className="buttonBar">
-                    <p>Select One Item From List</p>
                   <button onClick={this.returnInst}>Return</button>
                     <Link to={`/instruments`}><button>Close</button></Link>
                 </div>

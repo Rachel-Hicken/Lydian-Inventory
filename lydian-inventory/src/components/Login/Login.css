@@ -5,13 +5,10 @@
     
 }
 nav{
-    background: #0D4D4B;
-    width: 100%;
-    height: 15vh;
+   
     display: flex;
 }
 .company_name{
-    background: #0D4D4B;
     display: flex;
     height: 100%;
     width: 75%;
@@ -41,7 +38,6 @@ nav{
 	justify-content: flex-end;
     align-items: center;
     align-content: stretch;
-    background: #0D4D4B;    
     width: 25%;
     margin-right: 5%;
 }

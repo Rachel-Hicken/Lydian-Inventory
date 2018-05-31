@@ -47,6 +47,7 @@ class ReturnInst extends Component {
                     <p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</p>
                     <p>Make: {el.make}, Model: {el.model}, Year: {el.inst_year}, Purchase Price: {el.purchase_price}</p>
                 </div>
+                <h1>Return Date:</h1>
                 <DatePicker
                         selected={this.state.returnDate}
                         onChange={this.returnDateHandler}

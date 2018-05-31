@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function Nav() {
     return (
-        <div className="navBar">
+        <div>
             <nav>
                 <div className='company_name'>
                     <p className="lydian">Lydian</p>
