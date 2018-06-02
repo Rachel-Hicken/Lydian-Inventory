@@ -75,7 +75,7 @@
 	top:1px;
 }
 .instStudBtns{
-    background-image: url("../Login/trianglifyBlueGree.png");
+	background-image: url("../Login/trianglifyBlueGree.png");
     height: 83vh;
     width: 100%;
     display: flex;

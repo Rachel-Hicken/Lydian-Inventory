@@ -173,10 +173,10 @@ class UpdateInst extends Component {
                         onFocus={this._handleFocus}
                         onFocusOut={this._handleFocusOut}
                     /> */}
-                    {/* <EditableLabel text={el.inst_school_id}
+                    <EditableLabel text={el.inst_school_id}
                         onFocus={this.instSchoolID_handleFocus}
                         onFocusOut={this.instSchoolID_handleFocusOut}
-                    /> */}
+                    />
                     <EditableLabel text={el.inst_type}
                         onFocus={this.type_handleFocus}
                         onFocusOut={this.type_handleFocusOut}

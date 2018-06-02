@@ -11,8 +11,23 @@
     width: 100%;
 }
 .mainBody{
-    margin-left: 160px;
     padding: 18vh;
+    
+        background-image: url("../../Login/trianglifyBlueGree.png");
+    
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: stretch;
+    
+}
+.buttonBar{
+    display: flex;
+}
+.updateBtns{
+    width: 300px;
 }
 
 .sideBar{
@@ -25,4 +40,41 @@
     background-color: #67989A; 
     overflow-x: hidden; 
     padding-top: 20px;
+}
+
+button{
+    -moz-box-shadow: 0px 10px 14px -7px #276873;
+	-webkit-box-shadow: 0px 10px 14px -7px #276873;
+	box-shadow: 0px 10px 14px -7px #276873;
+	background-color:transparent;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ddfff9;
+	font-family:Arial;
+	font-size:16px;
+	font-weight:bold;
+	padding:8px 10px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+
+}
+button:hover{
+    background-color:#cfe2bd;
+    color: white;
+
+}
+button:active{
+    position:relative;
+	top:1px;
+}
+.inventoryList{
+    background: rgba(223,234,213,0.6);
+    padding: 25px;
+}
+.checkbox{
+    display: flex;
+    padding-bottom: 15px;
 }

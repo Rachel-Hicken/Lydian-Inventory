@@ -6,9 +6,6 @@ import { get_inst_id } from '../../../ducks/reducer';
 import { connect } from 'react-redux'
 import Nav from '../../Nav/Nav';
 import './InstInv.css'
-import ReactScrollableList from 'react-scrollable-list';
-// import UpdateInst from '../UpdateInst/UpdateInst';
-// import AssignInst from '../AssignInst/AssignInst';
 
 class InstInv extends Component {
     constructor() {
@@ -71,12 +68,6 @@ class InstInv extends Component {
     }
 
     render() {
-        // let searchInput = this.state.all_instruments.filter((element, i) => {
-        //     return [element].includes(this.state.search);
-        // }).map((el, i) => {
-        //     return <h2 key={i}>{el}</h2>
-        // })
-        // console.log(this.state)
         let instruments = this.state.all_instruments.filter((el, i) => {
             switch (this.state.criteria) {
                 case 'inst_school_id':
@@ -108,20 +99,16 @@ class InstInv extends Component {
             }
         }).map(el => {
             return (
-                <div key={el.inst_id}>
+                <div key={el.inst_id} className="checkbox">
                     <input type='checkbox' checked={this.state.checked == el.inst_id} onChange={this.checkboxHandler} value={el.inst_id} />
+                    <div className="invItem">
                     <p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</p>
                     <p>Make: {el.make}, Model: {el.model}, Year: {el.inst_year}, Purchase Price: {el.purchase_price}</p>
-                    <br />
+                    </div>
                 </div>
 
             )
         })
-
-        //only allow one item to be checked
-        //checked item sent to props for Assign and Update?
-        //
-
 
         return (
             <div>
@@ -129,40 +116,39 @@ class InstInv extends Component {
                 <div className="main">
                     <div className="mainBody">
                         <h1 className="title">Instrument Inventory</h1>
-                        <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">
-                            <option value="inst_school_id">Instrument School ID</option>
-                            <option value="inst_type">Type</option>
-                            <option value="serial_num">Serial Number</option>
-                        </select>
+                        <div className="searchBar">
+                            <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">
+                                <option value="inst_school_id">Instrument School ID</option>
+                                <option value="inst_type">Type</option>
+                                <option value="serial_num">Serial Number</option>
+                            </select>
 
-                        {/* search input and filtering */}
-                        <input onChange={(e) => this.filterHandler(e.target.value)} type="text" />
-                        <button>Search</button>
-                        {/* <p>{this.search}</p> */}
-                        {/* <p>{searchInput}</p> */}
+                            {/* search input and filtering */}
+                            <input onChange={(e) => this.filterHandler(e.target.value)} type="text" />
+                            <button>Search</button>
+                        </div>
+                        <div className="buttonBar">
+                            <div className="updateBtns">
+                                <p>Select One Item Below</p>
+                                <Link to={`/instrument/update/${this.state.checked}`}><button>Update</button></Link>
+                                <button onClick={() => this.deletePost(this.state.checked)}>Delete</button>
+                            </div>
+                            <div className="addInstrument">
+                                <p>Add an Instrument</p>
+                                <Link to='/instrument/add'><button>Add</button></Link>
+                            </div>
+                        </div>
 
                         <div className="inventoryList">
                             {instruments}
-                            <ReactScrollableList
-                                listItems={instruments}
-                                heightofItem={30}
-                                maxItemsToRender={50}
-                                />
                         </div>
 
-                        <div className="buttonBar">
-                            <p>Select One Item From the List Above</p>
 
-                            <Link to={`/instrument/update/${this.state.checked}`}><button>Update</button></Link>
-                            <button onClick={() => this.deletePost(this.state.checked)}>Delete</button>
-                            {/* <Link to={`/instrument/return/${this.state.checked}`}><button>Return</button></Link> */}
-                        </div>
+
                         <div>
                             <Link to={`/instrument/assign/${this.state.checked}`}><button>Assign</button></Link>
                         </div>
-                        <div className="addInstrument">
-                            <Link to='/instrument/add'><button>Add</button></Link>
-                        </div>
+
                     </div>
                     <div className="sideBar">
                         <h1>View Instruments</h1>
@@ -170,8 +156,6 @@ class InstInv extends Component {
                         <Link to="/instruments/out"><p>Checked Out</p></Link>
                         <Link to="/instruments/available"><p>Available</p></Link>
                     </div>
-                    {/* <UpdateInst inst_id={this.state.checked}/>
-                <AssignInst inst_id={this.state.checked}/> */}
                 </div>
             </div>
 
