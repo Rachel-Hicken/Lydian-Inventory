@@ -89,15 +89,20 @@ class ViewAvailable extends Component {
                     return true;
             }
         }).map(el => {
-            return (
-                <div key={el.inst_id} className="checkbox">
-                    <input type='checkbox' checked={this.state.checked == el.inst_id} onChange={this.checkboxHandler} value={el.inst_id} />
-                    <div className="invItem">
-                    <p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}, Available: {el.status}</p>
+            if (el.status === 'Available') {
+                return (
+                    <div key={el.inst_id} className="checkbox">
+                        <input type='checkbox' checked={this.state.checked == el.inst_id} onChange={this.checkboxHandler} value={el.inst_id} />
+                        <div className="invItem">
+                            <p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}, Available: {el.status}</p>
+                        </div>
                     </div>
-                </div>
 
-            )
+                )
+            }
+            else{
+                return false;
+            }
         })
 
         return (
