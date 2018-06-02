@@ -13,6 +13,7 @@ const GET_USER='GET_USER';
 const GET_INST_ID='GET_INST_ID';
 const GET_STUDENT_ID='GET_STUDENT_ID';
 const GET_STATUS_ID='GET_STATUS_ID';
+const GET_INST_SCHOOL_ID='GET_INST_SCHOOL_ID';
 
 export function get_inst_id(instId){
     return{
@@ -32,6 +33,13 @@ export function get_status_id(statusID){
     return{
         type: GET_STATUS_ID,
         payload: statusID
+    }
+}
+
+export function get_inst_school_id(inst_schoolID){
+    return{
+        type: GET_INST_SCHOOL_ID,
+        payload: inst_schoolID
     }
 }
 
@@ -59,6 +67,9 @@ export default function reducer(state=initialState, action){
         case GET_STATUS_ID:
         // console.log(action.payload);        
         return Object.assign({}, state, {statusID: action.payload})  
+        case GET_INST_SCHOOL_ID:
+        // console.log(action.payload);        
+        return Object.assign({}, state, {inst_schoolID: action.payload})  
         default:
         return state;
     }

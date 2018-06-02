@@ -96,6 +96,8 @@ app.get('/instruments/view', ic.view_all_inst);
 app.get('/instrument/view/:id', ic.view_inst);
 //view checked out instruments
 app.get('/instruments/out', ic.out_inst);
+//view available instruments
+app.get('/instruments/available', ic.available_inst);
 //retur inst
 app.put('/instrument/return', ic.return_inst);
 

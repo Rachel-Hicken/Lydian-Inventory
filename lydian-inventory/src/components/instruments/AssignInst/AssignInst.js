@@ -3,7 +3,7 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
-import { get_inst_id } from '../../../ducks/reducer';
+import { get_inst_id, get_student_id } from '../../../ducks/reducer';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -91,6 +91,8 @@ class AssignInst extends Component {
         this.setState({
             checked: value
         });
+        this.props.get_student_id(value);
+        
     }
 
     filterHandler(filter) {
@@ -155,7 +157,7 @@ class AssignInst extends Component {
                 <h1>Instrument Being Assigned:</h1>
                 <div key={el.inst_id} >
                     <p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</p>
-                    <p>Make: {el.make}, Model: {el.model}, Year: {el.inst_year}, Purchase Price: {el.purchase_price}</p>
+                    {/* <p>Make: {el.make}, Model: {el.model}, Year: {el.inst_year}, Purchase Price: {el.purchase_price}</p> */}
                 </div>
                 <div>
                     {/* Search for student to assign */}
@@ -185,7 +187,7 @@ class AssignInst extends Component {
                     />
                 </div>
                 <button onClick={this.assignInst}>Assign</button>
-                <Link to='/instruments'><button>Cancel</button></Link>
+                <Link to='/instruments/available'><button>Cancel</button></Link>
             </div>
         )
     }
@@ -198,4 +200,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(AssignInst);
+export default connect(mapStateToProps, {get_student_id})(AssignInst);
