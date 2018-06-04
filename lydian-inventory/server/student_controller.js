@@ -63,8 +63,8 @@ module.exports = {
         const mailOptions = {
             from: TRANSPORT_EMAIL, // sender address
             to: 'rachkh22@gmail.com', // list of receivers
-            subject: 'You\'re doing it Peter!', // Subject line
-            html: '<p>The first email</p>'// plain text body
+            subject: 'Testing, Testing', // Subject line
+            html: `<p>You have an instrument checked out</p>`// plain text body
         };
 
         transporter.sendMail(mailOptions, (error, info) => {

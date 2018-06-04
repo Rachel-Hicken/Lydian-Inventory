@@ -22,7 +22,9 @@ class AssignInst extends Component {
             student: '',
             checkoutDate: moment(),
             dueDate: moment(),
-            returnDate: null
+            returnDate: null,
+            to: '',
+            first: ''
         }
         this.filterHandler = this.filterHandler.bind(this);
         this.studentHandler = this.studentHandler.bind(this);
@@ -66,8 +68,11 @@ class AssignInst extends Component {
             })
     }
 
-    studentHandler() {
-
+    studentHandler(email, first) {
+        this.setState({
+            to: email,
+            first: first
+        })
     }
 
     checkoutHandler(date) {
@@ -153,6 +158,12 @@ class AssignInst extends Component {
                 </div>
 
             )
+        })
+
+        let student = this.state.students.filter((el, i) => {
+            if (this.state.checked === el.student_id){
+
+            }
         })
 
         return (
