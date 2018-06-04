@@ -10,10 +10,10 @@
     height: 100%;
     width: 100%;
 }
-.mainBody{
+.mainBodyInv{
     padding: 18vh;
     
-        background-image: url("../../Login/trianglifyBlueGree.png");
+        background-image: url("../../../img/trianglifyBlueGree-1.jpg");
     
         display: flex;
         flex-direction: column;
@@ -25,9 +25,16 @@
 }
 .buttonBar{
     display: flex;
+    align-items: center;
+    position: fixed;
+    height: 10vh;
+    width: 100%;
+    bottom: 0;
+    background: #8f9db8;
 }
 .updateBtns{
     width: 300px;
+    margin-left: 30%;
 }
 
 .sideBar{

@@ -106,47 +106,54 @@ class StudentView extends Component {
             }
         }).map(el => {
             return (
-                <div key={el.student_id}>
-                <input type='checkbox' checked={this.state.checked == el.student_id} onChange={this.checkboxHandler} value={el.student_id} />
-                <p>School ID: {el.student_school_id}, First Name: {el.student_first}, Last Name: {el.student_last}, Phone: {el.student_phone}</p>
-                <p>Email: {el.student_email}, Address: {el.student_address}, City: {el.student_city}, State: {el.student_state}, Zipcode: {el.student_zip}</p>
-                <br />
-            </div>
+                <div key={el.student_id} className="checkbox">
+                    <input type='checkbox' checked={this.state.checked == el.student_id} onChange={this.checkboxHandler} value={el.student_id} />
+                    <div className="invItem">
+                        <p>School ID: {el.student_school_id}, First Name: {el.student_first}, Last Name: {el.student_last}, Phone: {el.student_phone}</p>
+                        <p>Email: {el.student_email}, Address: {el.student_address}, City: {el.student_city}, State: {el.student_state}, Zipcode: {el.student_zip}</p>
+                    </div>
+                </div>
 
             )
         })
 
         return (
             <div>
-                <Nav/>
-                <h1>Search For a Student</h1>
-                    <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">
-                        <option value="student_school_id">Student School ID</option>
-                        <option value="student_first">First Name</option>
-                        <option value="student_last">Last Name</option>
-                        <option value="student_phone">Phone</option>
-                    </select>
+                <Nav />
+                <div className="main">
+                    <div className="mainBodyInv">
+                        <h1 className="title">Student Directory</h1>
+                        <div className="searchBar">
+                            <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">
+                                <option value="student_school_id">Student School ID</option>
+                                <option value="student_first">First Name</option>
+                                <option value="student_last">Last Name</option>
+                                <option value="student_phone">Phone</option>
+                            </select>
 
-                {/* search input and filtering */}
-                <input onChange={(e) => this.filterHandler(e.target.value)} type="text" />
-                <button>Search</button>
-                <p>{this.search}</p>
+                            {/* search input and filtering */}
+                            <input onChange={(e) => this.filterHandler(e.target.value)} type="text" />
+                            <button>Search</button>
+                            <p>{this.search}</p>
+                        </div>
 
-                <div className="inventoryList">
-                    <h1>STUDENT LIST</h1>
-                    {students}
+                        <div className="inventoryList">
+                            {students}
+                        </div>
 
-                </div>
+                        <div className="buttonBar">
+                            <div className="updateBtns">
+                                {/* <p>Select One Item From List</p> */}
+                                <Link to={`/student/update/${this.state.checked}`}><button>Update</button></Link>
+                                <button onClick={() => this.deleteStudent(this.state.checked)}>Delete</button>
+                            </div>
+                            <div className="addBtn">
+                                {/* <p>Add a Student</p> */}
+                                <Link to='/student/add'><button>Add</button></Link>
+                            </div>
+                        </div>
 
-                <div className="buttonBar">
-                    <p>Select One Item From List</p>
-                    <Link to={`/student/update/${this.state.checked}`}><button>Update</button></Link>
-                </div>
-                <div>
-                    <button onClick={() => this.deleteStudent(this.state.checked)}>Delete</button>
-                </div>
-                <div className="addStudent">
-                    <Link to='/student/add'><button>Add</button></Link>
+                    </div>
                 </div>
             </div>
 

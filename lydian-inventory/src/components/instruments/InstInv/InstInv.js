@@ -114,7 +114,7 @@ class InstInv extends Component {
             <div>
                 <Nav />
                 <div className="main">
-                    <div className="mainBody">
+                    <div className="mainBodyInv">
                         <h1 className="title">Instrument Inventory</h1>
                         <div className="searchBar">
                             <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">
@@ -127,27 +127,29 @@ class InstInv extends Component {
                             <input onChange={(e) => this.filterHandler(e.target.value)} type="text" />
                             <button>Search</button>
                         </div>
-                        <div className="buttonBar">
-                            <div className="updateBtns">
-                                <p>Select One Item Below</p>
-                                <Link to={`/instrument/update/${this.state.checked}`}><button>Update</button></Link>
-                                <button onClick={() => this.deletePost(this.state.checked)}>Delete</button>
-                            </div>
-                            <div className="addInstrument">
-                                <p>Add an Instrument</p>
-                                <Link to='/instrument/add'><button>Add</button></Link>
-                            </div>
-                        </div>
 
                         <div className="inventoryList">
                             {instruments}
                         </div>
 
-
-
-                        <div>
-                            <Link to={`/instrument/assign/${this.state.checked}`}><button>Assign</button></Link>
+                        <div className="buttonBar">
+                            <div className="updateBtns">
+                                {/* <p>Select One Item Below</p> */}
+                                <Link to={`/instrument/update/${this.state.checked}`}><button>Update</button></Link>
+                                <button onClick={() => this.deletePost(this.state.checked)}>Delete</button>
+                            </div>
+                            <div className="addBtn">
+                                {/* <p>Add an Instrument</p> */}
+                                <Link to='/instrument/add'><button>Add</button></Link>
+                            </div>
                         </div>
+
+                       
+
+
+                        {/* <div>
+                            <Link to={`/instrument/assign/${this.state.checked}`}><button>Assign</button></Link>
+                        </div> */}
 
                     </div>
                     <div className="sideBar">
