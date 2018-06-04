@@ -70,7 +70,7 @@ module.exports = {
         console.log("return_inst hit")
         const dbInstance = req.app.get('db');
         const { return_date, status_id } = req.body;
-        console.log(req.body)
+        // console.log(req.body)
         dbInstance.return_inst([return_date, status_id])
             .then(() => res.status(200).send("Instrument returned"))
             .catch((e) => { console.log(e); res.status(500).send("Couldn't get return_inst")});

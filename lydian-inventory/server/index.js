@@ -4,7 +4,8 @@ const express = require('express'),
       massive = require('massive'),
       session = require('express-session'),
       passport = require('passport'),
-      Auth0Strategy = require('passport-auth0');
+      Auth0Strategy = require('passport-auth0'),
+      nodemailer = require('nodemailer');
 const ic = require('./instrument_controller'),
       sc = require('./student_controller');
 
@@ -17,12 +18,16 @@ const {
     CLIENT_ID,
     CLIENT_SECRET,
     CALLBACK_URL,
-    CONNECTION_STRING
+    CONNECTION_STRING,
+    TRANSPORT_EMAIL,
+    TRANSPORT_PASSWORD
 }= process.env;
 
 const app = express();
 
 
+
+//massive
 massive(CONNECTION_STRING).then((db)=>{
     console.log('connected to db');
     app.set('db',db);
@@ -35,6 +40,7 @@ app.use(session({
     saveUninitialized: true
 }))
 
+//sessions
 app.use(passport.initialize());
 
 app.use(passport.session());
@@ -112,6 +118,9 @@ app.delete('/student/delete/:id', sc.delete_student);
 app.get('/students/view', sc.view_all_students);
 //view one student
 app.get('/student/view/:id', sc.view_student);
+
+//endpoint for email
+app.post('/email', sc.send_email);
 
 
 

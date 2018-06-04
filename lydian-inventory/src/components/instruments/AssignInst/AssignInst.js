@@ -60,7 +60,10 @@ class AssignInst extends Component {
                 })
                 this.props.history.push('/instruments')
                 toast.success("Successfully got Instruments")
-            }).catch(() => toast.error("Failed to Fetch Instruments"));
+            }).catch(() => toast.error("Failed to Fetch Instruments"))
+            .then(()=>{
+                axios.post(``)
+            })
     }
 
     studentHandler() {
@@ -195,7 +198,9 @@ class AssignInst extends Component {
                     </div>
                     <div className="buttonBarNoNav">
                         <div className="updateBtnsNoNav">
-                            <button onClick={this.assignInst}>Assign</button>
+                            <button onClick={this.assignInst}
+                            
+                            >Assign</button>
                             <Link to='/instruments/available'><button>Cancel</button></Link>
                         </div>
                     </div>
