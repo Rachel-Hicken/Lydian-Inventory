@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import { get_inst_id, get_student_id } from '../../../ducks/reducer';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
+import '../noNav.css';
+import '../InstInv/InstInv.css';
 
 class AssignInst extends Component {
     constructor(props) {
@@ -48,7 +50,7 @@ class AssignInst extends Component {
         }).catch(() => toast.error("Failed to Fetch Students"));
     }
 
-    assignInst( student_id, checkout_date, due_date, return_date) {
+    assignInst(student_id, checkout_date, due_date, return_date) {
         console.log(this);
         axios.put(`/instrument/assign/${this.props.instId}`,
             { student_id: this.state.checked, checkout_date: this.state.checkoutDate, due_date: this.state.dueDate, return_date: this.state.returnDate })
@@ -60,7 +62,7 @@ class AssignInst extends Component {
                 toast.success("Successfully got Instruments")
             }).catch(() => toast.error("Failed to Fetch Instruments"));
     }
-    
+
     studentHandler() {
 
     }
@@ -92,7 +94,7 @@ class AssignInst extends Component {
             checked: value
         });
         this.props.get_student_id(value);
-        
+
     }
 
     filterHandler(filter) {
@@ -104,11 +106,11 @@ class AssignInst extends Component {
     render() {
         let el = this.state.instrument;
         // console.log(this.inst_school_id)
-        console.log(this.props.instId)
+        // console.log(this.props.instId)
         // console.log(this.state.instrument)
         // console.log(this.state.students)
-        console.log(this.state.dueDate)
-        console.log(this.state.checkoutDate)
+        // console.log(this.state.dueDate)
+        // console.log(this.state.checkoutDate)
 
         let students = this.state.students.filter((el, i) => {
             switch (this.state.criteria) {
@@ -141,7 +143,7 @@ class AssignInst extends Component {
             }
         }).map(el => {
             return (
-                <div key={el.student_id}>
+                <div key={el.student_id} className="checkbox">
                     <input type='checkbox' checked={this.state.checked == el.student_id} onChange={this.checkboxHandler} value={el.student_id} />
                     <p>School ID: {el.student_school_id}, First Name: {el.student_first}, Last Name: {el.student_last}, Phone: {el.student_phone}</p>
                     <br />
@@ -151,43 +153,53 @@ class AssignInst extends Component {
         })
 
         return (
-            <div>
+            <div className="main">
+                <div className="mainBody">
+                    {/* Display instrument seleceted from InstInv */}
+                    <h1 className="titleNoNav">Assign an Instrument</h1>
+                    <p className="instructions">Instrument Being Assigned:</p>
 
-                {/* Display instrument seleceted from InstInv */}
-                <h1>Instrument Being Assigned:</h1>
-                <div key={el.inst_id} >
-                    <p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</p>
-                    {/* <p>Make: {el.make}, Model: {el.model}, Year: {el.inst_year}, Purchase Price: {el.purchase_price}</p> */}
+                    <div key={el.inst_id} >
+                        <p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</p>
+                        {/* <p>Make: {el.make}, Model: {el.model}, Year: {el.inst_year}, Purchase Price: {el.purchase_price}</p> */}
+                    </div>
+                    <div>
+                        {/* Search for student to assign */}
+                        <p className="instructions">Search For a Student</p>
+                        <div className="searchBar">
+                            <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">
+                                <option value="student_school_id">Student School ID</option>
+                                <option value="student_first">First Name</option>
+                                <option value="student_last">Last Name</option>
+                                <option value="student_phone">Phone</option>
+                            </select>
+                            <input onChange={(e) => this.filterHandler(e.target.value)} type="text" />
+                        </div>
+                        <div className="inventoryList">
+                            {students}
+                        </div>
+                    </div>
+                    <div>
+                        <p>Checkout Date</p>
+                        {/* <input type="date" name="checkout" /> */}
+                        <DatePicker
+                            selected={this.state.checkoutDate}
+                            onChange={this.checkoutHandler}
+                        />
+                        <p>Due Date</p>
+                        {/* <input type="date" name="due" /> */}
+                        <DatePicker
+                            selected={this.state.dueDate}
+                            onChange={this.dueDateHandler}
+                        />
+                    </div>
+                    <div className="buttonBarNoNav">
+                        <div className="updateBtnsNoNav">
+                            <button onClick={this.assignInst}>Assign</button>
+                            <Link to='/instruments/available'><button>Cancel</button></Link>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    {/* Search for student to assign */}
-                    <h1>Search For a Student</h1>
-                    <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">
-                        <option value="student_school_id">Student School ID</option>
-                        <option value="student_first">First Name</option>
-                        <option value="student_last">Last Name</option>
-                        <option value="student_phone">Phone</option>
-                    </select>
-                    <input onChange={(e) => this.filterHandler(e.target.value)} type="text" />
-                    <p>{this.search}</p>
-                    {students}
-                </div>
-                <div>
-                    <p>Checkout Date</p>
-                    {/* <input type="date" name="checkout" /> */}
-                    <DatePicker
-                        selected={this.state.checkoutDate}
-                        onChange={this.checkoutHandler}
-                    />
-                    <p>Due Date</p>
-                    {/* <input type="date" name="due" /> */}
-                    <DatePicker
-                        selected={this.state.dueDate}
-                        onChange={this.dueDateHandler}
-                    />
-                </div>
-                <button onClick={this.assignInst}>Assign</button>
-                <Link to='/instruments/available'><button>Cancel</button></Link>
             </div>
         )
     }
@@ -200,4 +212,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {get_student_id})(AssignInst);
+export default connect(mapStateToProps, { get_student_id })(AssignInst);

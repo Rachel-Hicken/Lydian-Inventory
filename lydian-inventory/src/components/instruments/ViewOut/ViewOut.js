@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
+import '../noNav.css';
+import '../InstInv/InstInv.css';
 
 
 class ViewOut extends Component {
@@ -20,12 +22,12 @@ class ViewOut extends Component {
             returnDate: moment()
         }
         this.returnInst = this.returnInst.bind(this);
-        
+
         this.filterHandler = this.filterHandler.bind(this);
         this.selectHandler = this.selectHandler.bind(this);
         this.checkboxHandler = this.checkboxHandler.bind(this);
         this.returnDateHandler = this.returnDateHandler.bind(this);
-        
+
     }
 
     //get all instruments
@@ -38,18 +40,18 @@ class ViewOut extends Component {
         }).catch(() => toast.error("Failed to Fetch Instruments"));
     }
 
-    returnInst(){
+    returnInst() {
         // console.log(this.state.returnDate)
         // console.log(this.state.checked)
         axios.put(`/instrument/return`,
-        { return_date: this.state.returnDate, status_id: this.state.checked })
-        .then(res => {
-            this.setState({
-                instrument: res.data
-            })
-            this.props.history.push('/instruments')
-            toast.success("Successfully got Instruments")
-        }).catch(() => toast.error("Failed to Fetch Instruments"));
+            { return_date: this.state.returnDate, status_id: this.state.checked })
+            .then(res => {
+                this.setState({
+                    instrument: res.data
+                })
+                this.props.history.push('/instruments')
+                toast.success("Successfully got Instruments")
+            }).catch(() => toast.error("Failed to Fetch Instruments"));
     }
 
     //search field handlers
@@ -84,9 +86,9 @@ class ViewOut extends Component {
     }
 
     render() {
-        console.log(this.state.checked)
-        console.log(this.props.status_id)
-        console.log(this.state.returnDate)
+        // console.log(this.state.checked)
+        // console.log(this.props.status_id)
+        // console.log(this.state.returnDate)
         let instruments = this.state.out_instruments.filter((el, i) => {
             switch (this.state.criteria) {
                 case 'inst_school_id':
@@ -158,36 +160,41 @@ class ViewOut extends Component {
 
 
         return (
-            <div>
-                <h1>CHECKED OUT INSTRUMENTS</h1>
-                <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">
-                    <option value="inst_school_id">Instrument School ID</option>
-                    <option value="inst_type">Type</option>
-                    <option value="serial_num">Serial Number</option>
-                    <option value="student_school_id">Student School ID</option>
-                    <option value="student_first">First Name</option>
-                    <option value="student_last">Last Name</option>
-                </select>
+            <div className="main">
+                <div className="mainBody">
+                    <h1 className="title">CHECKED OUT INSTRUMENTS</h1>
+                    <div className="searchBar">
+                    <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">
+                        <option value="inst_school_id">Instrument School ID</option>
+                        <option value="inst_type">Type</option>
+                        <option value="serial_num">Serial Number</option>
+                        <option value="student_school_id">Student School ID</option>
+                        <option value="student_first">First Name</option>
+                        <option value="student_last">Last Name</option>
+                    </select>
 
-                {/* search input and filtering */}
-                <input onChange={(e) => this.filterHandler(e.target.value)} type="text" />
-                <button>Search</button>
-                <div className="checkedOutList">
-                    <h1>Select One to Return</h1>
-                    {instruments}
+                    {/* search input and filtering */}
+                    <input onChange={(e) => this.filterHandler(e.target.value)} type="text" />
+                    <button>Search</button>
+                    </div>
+                    <div className="inventoryList">
+                        <p className="instructions">Select One to Return</p>
+                        {instruments}
 
-                </div>
-                <h1>Return Date:</h1>
-                <DatePicker
+                    </div>
+                    <p>Return Date:</p>
+                    <DatePicker
                         selected={this.state.returnDate}
                         onChange={this.returnDateHandler}
                     />
 
-                <div className="buttonBar">
-                  <button onClick={this.returnInst}>Return</button>
-                    <Link to={`/instruments`}><button>Close</button></Link>
+                    <div className="buttonBarNoNav">
+                        <div className="updateBtnsNoNav">
+                            <button onClick={this.returnInst}>Return</button>
+                            <Link to={`/instruments`}><button>Close</button></Link>
+                        </div>
+                    </div>
                 </div>
-
             </div>
 
         )

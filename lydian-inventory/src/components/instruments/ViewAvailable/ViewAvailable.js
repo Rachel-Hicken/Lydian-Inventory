@@ -100,7 +100,7 @@ class ViewAvailable extends Component {
 
                 )
             }
-            else{
+            else {
                 return false;
             }
         })
@@ -128,9 +128,11 @@ class ViewAvailable extends Component {
 
 
 
-                        <div>
-                            <Link to={`/instrument/assign/${this.state.checked}`}><button>Assign</button></Link>
-                            <Link to='/instruments'><button>Close</button></Link>
+                        <div className="buttonBarNoNav">
+                            <div className="updateBtnsNoNav">
+                                <Link to={`/instrument/assign/${this.state.checked}`}><button>Assign</button></Link>
+                                <Link to='/instruments'><button>Close</button></Link>
+                            </div>
                         </div>
 
                     </div>
