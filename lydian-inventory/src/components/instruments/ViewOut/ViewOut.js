@@ -142,12 +142,13 @@ class ViewOut extends Component {
             }
         }).map(el => {
             return (
-                <div key={el.status_id}>
+                <div key={el.status_id} className="checkbox">
                     <input type='checkbox' checked={this.state.checked == el.status_id} onChange={this.checkboxHandler} value={el.status_id} />
+                    <div className="invItem">
                     <p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</p>
                     <p>Student ID: {el.student_school_id}, First: {el.student_first}, Last: {el.student_last}</p>
                     <p>Check Out Date: {el.checkout_date}, Due Date: {el.due_date}</p>
-                    <br />
+                    </div>
                 </div>
                 //i.inst_id, i.inst_school_id, i.inst_type, i.serial_num, 
                 //s.student_id, s.student_first, s.student_last, a.checkout_date, a.due_date, a.return_date
@@ -177,8 +178,9 @@ class ViewOut extends Component {
                     <input onChange={(e) => this.filterHandler(e.target.value)} type="text" />
                     <button>Search</button>
                     </div>
+                    <p className="instructions">Select One to Return</p>
+                    
                     <div className="inventoryList">
-                        <p className="instructions">Select One to Return</p>
                         {instruments}
 
                     </div>

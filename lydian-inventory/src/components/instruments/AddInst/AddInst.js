@@ -95,7 +95,7 @@ export default class Add_Inst extends Component {
                 <input onChange={(e) => this.priceHandler(e.target.value)} type="text" value={this.state.purchase_price} />
                 <div className="buttonBarNoNav">
                 <div className="updateBtnsNoNav">
-                    <button onClick={this.addInst}>Add to Inventory</button>
+                    <button onClick={this.addInst}>Add</button>
                     <Link to='/instruments'><button>Cancel</button></Link>
                     </div>
                 </div>

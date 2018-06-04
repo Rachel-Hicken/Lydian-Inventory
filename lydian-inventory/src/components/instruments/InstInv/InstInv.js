@@ -135,12 +135,13 @@ class InstInv extends Component {
                         <div className="buttonBar">
                             <div className="updateBtns">
                                 {/* <p>Select One Item Below</p> */}
+                                <Link to='/instrument/add'><button>Add</button></Link>
                                 <Link to={`/instrument/update/${this.state.checked}`}><button>Update</button></Link>
                                 <button onClick={() => this.deletePost(this.state.checked)}>Delete</button>
                             </div>
                             <div className="addBtn">
-                                {/* <p>Add an Instrument</p> */}
-                                <Link to='/instrument/add'><button>Add</button></Link>
+                                {/* <p>Add an Instrument</p>
+                                <Link to='/instrument/add'><button>Add</button></Link> */}
                             </div>
                         </div>
 

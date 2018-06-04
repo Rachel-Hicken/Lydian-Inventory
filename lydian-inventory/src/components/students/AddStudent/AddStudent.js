@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 
 export default class AddStudent extends Component {
     constructor() {
         super()
         this.state = {
-            student_school_id : '12345678',
-            student_first : 'Name',
-            student_last : 'Last',
-            student_email : 'email@email.com',
-            student_phone : 1234567890,
-            student_address : 'I live somewhere S 234 W',
-            student_city : 'Provo',
-            student_state : 'UT',
-            student_zip : 12345
+            student_school_id: '12345678',
+            student_first: 'Name',
+            student_last: 'Last',
+            student_email: 'email@email.com',
+            student_phone: 1234567890,
+            student_address: 'I live somewhere S 234 W',
+            student_city: 'Provo',
+            student_state: 'UT',
+            student_zip: 12345
         }
         this.addStudent = this.addStudent.bind(this);
         this.studentIdHandler = this.studentIdHandler.bind(this);
@@ -26,7 +27,7 @@ export default class AddStudent extends Component {
         this.cityHandler = this.cityHandler.bind(this);
         this.stateHandler = this.stateHandler.bind(this);
         this.zipHandler = this.zipHandler.bind(this);
-        
+
     }
 
     addStudent(value) {
@@ -58,7 +59,7 @@ export default class AddStudent extends Component {
             student_email: val
         })
     }
-   phoneHandler(val) {
+    phoneHandler(val) {
         this.setState({
             student_phone: val
         })
@@ -89,8 +90,8 @@ export default class AddStudent extends Component {
     render() {
         // console.log(this.props)
         return (
-            <div>
-                <h1>Add Student</h1>
+            <div className="mainBody">
+                <h1 className="titleNoNav">Add Student</h1>
                 <p>School ID:</p>
                 <input onChange={(e) => this.studentIdHandler(e.target.value)} type="text" value={this.state.student_school_id} />
                 <p>First:</p>
@@ -109,7 +110,13 @@ export default class AddStudent extends Component {
                 <input onChange={(e) => this.stateHandler(e.target.value)} type="text" value={this.state.student_state} />
                 <p>Zipcode:</p>
                 <input onChange={(e) => this.zipHandler(e.target.value)} type="text" value={this.state.student_zip} />
-                <button onClick={this.addStudent}>Add Student</button>
+                
+                <div className="buttonBarNoNav">
+                    <div className="updateBtnsNoNav">
+                        <button onClick={this.addStudent}>Add Student</button>
+                        <Link to='/students'><button>Cancel</button></Link>
+                    </div>
+                </div>
             </div>
 
         )

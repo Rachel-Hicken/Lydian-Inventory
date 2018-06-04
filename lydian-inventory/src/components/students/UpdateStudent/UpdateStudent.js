@@ -11,15 +11,15 @@ class UpdateStudent extends Component {
         super(props)
         this.state = {
             student: {},
-            student_school_id : '',
-            student_first : '',
-            student_last : '',
-            student_email : '',
-            student_phone :'',
-            student_address : '',
-            student_city : '',
-            student_state : '',
-            student_zip : 0
+            student_school_id: '',
+            student_first: '',
+            student_last: '',
+            student_email: '',
+            student_phone: '',
+            student_address: '',
+            student_city: '',
+            student_state: '',
+            student_zip: 0
         }
 
         this.schoolID_handleFocus = this.schoolID_handleFocus.bind(this);
@@ -56,22 +56,22 @@ class UpdateStudent extends Component {
                 student_address: res.data[0].student_address,
                 student_city: res.data[0].student_city,
                 student_state: res.data[0].student_state,
-                student_zip: res.data[0].student_zip                
+                student_zip: res.data[0].student_zip
             });
 
             toast.success("Successfully gotstudents")
         }).catch(() => toast.error("Failed to Fetchstudents"));
     }
 
-    updateStudent(student_school_id, student_first, student_last, 
-        student_email, student_phone, student_address, 
+    updateStudent(student_school_id, student_first, student_last,
+        student_email, student_phone, student_address,
         student_city, student_state, student_zip) {
         console.log(this.state);
         axios.put(`/student/update/${this.props.studentID}`,
             { student_school_id: this.state.student_school_id, student_first: this.state.student_first, student_last: this.state.student_last, student_email: this.state.student_email, student_phone: this.state.student_phone, student_address: this.state.student_address, student_city: this.state.student_city, student_state: this.state.student_state, student_zip: this.state.student_zip })
             .then(res => {
                 this.setState({
-                student: res.data
+                    student: res.data
                 })
                 this.props.history.push('/students')
                 toast.success("Successfully got Students")
@@ -162,60 +162,68 @@ class UpdateStudent extends Component {
         // console.log(this.state)
         let el = this.state.student;
         return (
-            <div>
-                {/* {this.props.studentID} */}
-                <div key={el.student_id} >
-                    {/* <p>School ID: {el.student_school_id}, First: {el.student_first}, Last: {el.student_last}, Phone: {el.student_phone}</p>
-                    <p>Email: {el.student_email}, Address: {el.student_address}, City: {el.student_city}, State: {el.student_state}, Zipcode: {el.student_zip}</p> */}
-                    <p>Student ID:</p>
-                    <EditableLabel text={el.student_school_id}
-                        onFocus={this.schoolID_handleFocus}
-                        onFocusOut={this.schoolID_handleFocusOut}
-                    />
-                    <p>First:</p>
-                    <EditableLabel text={el.student_first}
-                        onFocus={this.first_handleFocus}
-                        onFocusOut={this.first_handleFocusOut}
-                    />
-                    <p>Last:</p>
-                    <EditableLabel text={el.student_last}
-                        onFocus={this.last_handleFocus}
-                        onFocusOut={this.last_handleFocusOut}
-                    />
-                    <p>Email:</p>
-                    <EditableLabel text={el.student_email}
-                        onFocus={this.email_handleFocus}
-                        onFocusOut={this.email_handleFocusOut}
-                    />
-                    <p>Phone:</p>
-                    <EditableLabel text={el.student_phone}
-                        onFocus={this.phone_handleFocus}
-                        onFocusOut={this.phone_handleFocusOut}
-                    />
-                    <p>Address:</p>
-                    <EditableLabel text={el.student_address}
-                        onFocus={this.address_handleFocus}
-                        onFocusOut={this.address_handleFocusOut}
-                    />
-                    <p>City:</p>
-                    <EditableLabel text={el.student_city}
-                        onFocus={this.city_handleFocus}
-                        onFocusOut={this.city_handleFocusOut}
-                    />
-                    <p>State:</p>
-                     <EditableLabel text={el.student_state}
-                        onFocus={this.state_handleFocus}
-                        onFocusOut={this.state_handleFocusOut}
-                    />
-                    <p>Zipcode:</p>
-                     <EditableLabel text={Number(el.student_zip)}
-                        onFocus={this.zip_handleFocus}
-                        onFocusOut={this.zip_handleFocusOut}
-                    />
-                </div>
-                <button onClick={this.updateStudent}>Submit</button>
-                <Link to='/students'><button>Cancel</button></Link>
+            <div className="main">
+                <div className="mainBody">
+                    <p className="instructions">Click in the field to edit text</p>
 
+                    {/* {this.props.studentID} */}
+
+                    <div key={el.student_id} >
+                        {/* <p>School ID: {el.student_school_id}, First: {el.student_first}, Last: {el.student_last}, Phone: {el.student_phone}</p>
+                    <p>Email: {el.student_email}, Address: {el.student_address}, City: {el.student_city}, State: {el.student_state}, Zipcode: {el.student_zip}</p> */}
+                        <p>Student ID:</p>
+                        <EditableLabel text={el.student_school_id}
+                            onFocus={this.schoolID_handleFocus}
+                            onFocusOut={this.schoolID_handleFocusOut}
+                        />
+                        <p>First:</p>
+                        <EditableLabel text={el.student_first}
+                            onFocus={this.first_handleFocus}
+                            onFocusOut={this.first_handleFocusOut}
+                        />
+                        <p>Last:</p>
+                        <EditableLabel text={el.student_last}
+                            onFocus={this.last_handleFocus}
+                            onFocusOut={this.last_handleFocusOut}
+                        />
+                        <p>Email:</p>
+                        <EditableLabel text={el.student_email}
+                            onFocus={this.email_handleFocus}
+                            onFocusOut={this.email_handleFocusOut}
+                        />
+                        <p>Phone:</p>
+                        <EditableLabel text={el.student_phone}
+                            onFocus={this.phone_handleFocus}
+                            onFocusOut={this.phone_handleFocusOut}
+                        />
+                        <p>Address:</p>
+                        <EditableLabel text={el.student_address}
+                            onFocus={this.address_handleFocus}
+                            onFocusOut={this.address_handleFocusOut}
+                        />
+                        <p>City:</p>
+                        <EditableLabel text={el.student_city}
+                            onFocus={this.city_handleFocus}
+                            onFocusOut={this.city_handleFocusOut}
+                        />
+                        <p>State:</p>
+                        <EditableLabel text={el.student_state}
+                            onFocus={this.state_handleFocus}
+                            onFocusOut={this.state_handleFocusOut}
+                        />
+                        <p>Zipcode:</p>
+                        <EditableLabel text={Number(el.student_zip)}
+                            onFocus={this.zip_handleFocus}
+                            onFocusOut={this.zip_handleFocusOut}
+                        />
+                    </div>
+                    <div className="buttonBarNoNav">
+                        <div className="updateBtnsNoNav">
+                            <button onClick={this.updateStudent}>Submit</button>
+                            <Link to='/students'><button>Cancel</button></Link>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

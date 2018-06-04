@@ -144,12 +144,13 @@ class StudentView extends Component {
                         <div className="buttonBar">
                             <div className="updateBtns">
                                 {/* <p>Select One Item From List</p> */}
+                                <Link to='/student/add'><button>Add</button></Link>
                                 <Link to={`/student/update/${this.state.checked}`}><button>Update</button></Link>
                                 <button onClick={() => this.deleteStudent(this.state.checked)}>Delete</button>
                             </div>
                             <div className="addBtn">
-                                {/* <p>Add a Student</p> */}
-                                <Link to='/student/add'><button>Add</button></Link>
+                                {/* <p>Add a Student</p>
+                                <Link to='/student/add'><button>Add</button></Link> */}
                             </div>
                         </div>
 
