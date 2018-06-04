@@ -158,8 +158,8 @@ class UpdateStudent extends Component {
 
     render() {
         // console.log(this.student_school_id)
-        console.log(this.props.studentID)
-        console.log(this.state)
+        // console.log(this.props.studentID)
+        // console.log(this.state)
         let el = this.state.student;
         return (
             <div>
@@ -167,39 +167,47 @@ class UpdateStudent extends Component {
                 <div key={el.student_id} >
                     {/* <p>School ID: {el.student_school_id}, First: {el.student_first}, Last: {el.student_last}, Phone: {el.student_phone}</p>
                     <p>Email: {el.student_email}, Address: {el.student_address}, City: {el.student_city}, State: {el.student_state}, Zipcode: {el.student_zip}</p> */}
-                  
+                    <p>Student ID:</p>
                     <EditableLabel text={el.student_school_id}
                         onFocus={this.schoolID_handleFocus}
                         onFocusOut={this.schoolID_handleFocusOut}
                     />
+                    <p>First:</p>
                     <EditableLabel text={el.student_first}
                         onFocus={this.first_handleFocus}
                         onFocusOut={this.first_handleFocusOut}
                     />
+                    <p>Last:</p>
                     <EditableLabel text={el.student_last}
                         onFocus={this.last_handleFocus}
                         onFocusOut={this.last_handleFocusOut}
                     />
+                    <p>Email:</p>
                     <EditableLabel text={el.student_email}
                         onFocus={this.email_handleFocus}
                         onFocusOut={this.email_handleFocusOut}
                     />
+                    <p>Phone:</p>
                     <EditableLabel text={el.student_phone}
                         onFocus={this.phone_handleFocus}
                         onFocusOut={this.phone_handleFocusOut}
                     />
+                    <p>Address:</p>
                     <EditableLabel text={el.student_address}
                         onFocus={this.address_handleFocus}
                         onFocusOut={this.address_handleFocusOut}
                     />
+                    <p>City:</p>
                     <EditableLabel text={el.student_city}
                         onFocus={this.city_handleFocus}
                         onFocusOut={this.city_handleFocusOut}
                     />
+                    <p>State:</p>
                      <EditableLabel text={el.student_state}
                         onFocus={this.state_handleFocus}
                         onFocusOut={this.state_handleFocusOut}
                     />
+                    <p>Zipcode:</p>
                      <EditableLabel text={Number(el.student_zip)}
                         onFocus={this.zip_handleFocus}
                         onFocusOut={this.zip_handleFocusOut}

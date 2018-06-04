@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import EditableLabel from 'react-inline-editing';
 import './UpdateInst.css';
+import '../noNav.css'
+import '../InstInv/InstInv.css'
 
 class UpdateInst extends Component {
     constructor(props) {
@@ -164,54 +166,61 @@ class UpdateInst extends Component {
         let el = this.state.instrument;
         return (
             <div className="main">
-                {/* {this.props.instId} */}
-                <div key={el.inst_id} >
-                    {/* <p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</p>
+                <div className="mainBody">
+                    {/* {this.props.instId} */}
+                    <p className="instructions">Click in the field to edit text</p>
+
+                    <div key={el.inst_id} >
+                        {/* <p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</p>
                     <p>Make: {el.make}, Model: {el.model}, Year: {el.inst_year}, Purchase Price: {el.purchase_price}</p> */}
-                    {/* <EditableLabel
+                        {/* <EditableLabel
                         text={this.state.text}
                         onFocus={this._handleFocus}
                         onFocusOut={this._handleFocusOut}
                     /> */}
-                    <p>School ID:</p>
-                    <EditableLabel text={el.inst_school_id}
-                        onFocus={this.instSchoolID_handleFocus}
-                        onFocusOut={this.instSchoolID_handleFocusOut}
-                    />
-                    <p>Type:</p>
-                    <EditableLabel text={el.inst_type}
-                        onFocus={this.type_handleFocus}
-                        onFocusOut={this.type_handleFocusOut}
-                    />
-                    <p>Serial Number:</p>
-                    <EditableLabel text={el.serial_num}
-                        onFocus={this.serialNum_handleFocus}
-                        onFocusOut={this.serialNum_handleFocusOut}
-                    />
-                    <p>Make:</p>
-                    <EditableLabel text={el.make}
-                        onFocus={this.make_handleFocus}
-                        onFocusOut={this.make_handleFocusOut}
-                    />
-                    <p>Model:</p>
-                    <EditableLabel text={el.model}
-                        onFocus={this.model_handleFocus}
-                        onFocusOut={this.model_handleFocusOut}
-                    />
-                    <p>Year:</p>
-                    <EditableLabel text={el.inst_year}
-                        onFocus={this.year_handleFocus}
-                        onFocusOut={this.year_handleFocusOut}
-                    />
-                    <p>Purchase Price:</p>
-                    <EditableLabel text={el.purchase_price}
-                        onFocus={this.price_handleFocus}
-                        onFocusOut={this.price_handleFocusOut}
-                    />
+                        <p>School ID:</p>
+                        <EditableLabel text={el.inst_school_id}
+                            onFocus={this.instSchoolID_handleFocus}
+                            onFocusOut={this.instSchoolID_handleFocusOut}
+                        />
+                        <p>Type:</p>
+                        <EditableLabel text={el.inst_type}
+                            onFocus={this.type_handleFocus}
+                            onFocusOut={this.type_handleFocusOut}
+                        />
+                        <p>Serial Number:</p>
+                        <EditableLabel text={el.serial_num}
+                            onFocus={this.serialNum_handleFocus}
+                            onFocusOut={this.serialNum_handleFocusOut}
+                        />
+                        <p>Make:</p>
+                        <EditableLabel text={el.make}
+                            onFocus={this.make_handleFocus}
+                            onFocusOut={this.make_handleFocusOut}
+                        />
+                        <p>Model:</p>
+                        <EditableLabel text={el.model}
+                            onFocus={this.model_handleFocus}
+                            onFocusOut={this.model_handleFocusOut}
+                        />
+                        <p>Year:</p>
+                        <EditableLabel text={el.inst_year}
+                            onFocus={this.year_handleFocus}
+                            onFocusOut={this.year_handleFocusOut}
+                        />
+                        <p>Purchase Price:</p>
+                        <EditableLabel text={el.purchase_price}
+                            onFocus={this.price_handleFocus}
+                            onFocusOut={this.price_handleFocusOut}
+                        />
+                    </div>
                 </div>
-                <button onClick={this.updateInst}>Submit</button>
-                <Link to='/instruments'><button>Cancel</button></Link>
-
+                <div className="buttonBarNoNav">
+                    <div className="updateBtnsNoNav">
+                        <button onClick={this.updateInst}>Submit</button>
+                        <Link to='/instruments'><button>Cancel</button></Link>
+                    </div>
+                </div>
             </div>
         )
     }

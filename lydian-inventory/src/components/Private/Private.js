@@ -14,7 +14,7 @@ class Private extends Component {
     render() {
         let { user_name, img } = this.props.user;
         return (
-            <div>
+            <div className="mainPrivate">
 
                 {
                     user_name ?

@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     align-content: center;
+    margin-bottom: 20px;
 }
 
 .main{
@@ -11,18 +12,18 @@
     width: 100%;
 }
 .mainBodyInv{
-    padding: 18vh;
     
-        background-image: url("../../../img/trianglifyBlueGree-1.jpg");
-    
+        background-image: url("../../../img/trianglifyBlueGree-1.jpg"); 
+        background-size: cover;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
         justify-content: center;
         align-items: center;
         align-content: stretch;
-    
+        padding: 18vh;   
 }
+
 .buttonBar{
     display: flex;
     align-items: center;
@@ -31,10 +32,16 @@
     width: 100%;
     bottom: 0;
     background: #8f9db8;
+    /* background: rgba(143,157,184,0.95); */
+    /* background-color: transparent; */
 }
 .updateBtns{
-    width: 300px;
-    margin-left: 30%;
+    width: 250px;
+    margin-left: 37vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
 }
 
 .sideBar{
@@ -79,7 +86,6 @@ button:active{
 }
 .inventoryList{
     background: rgba(223,234,213,0.6);
-    padding: 25px;
 }
 .checkbox{
     display: flex;

@@ -1,0 +1,33 @@
+.instructions{
+    font-size: 20px;
+}
+.mainBody{
+    
+        background-image: url("../../img/trianglifyBlueGree-1.jpg"); 
+        background-size: cover;
+        height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: stretch;
+}
+.buttonBarNoNav{
+    display: flex;
+    align-items: center;
+    position: fixed;
+    height: 10vh;
+    width: 100%;
+    bottom: 0;
+    background: rgba(143,157,184,0.3);
+}
+.updateBtnsNoNav{
+    width: 250px;
+    margin-left: 37vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
