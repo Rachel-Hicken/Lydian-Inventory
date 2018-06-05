@@ -1,3 +1,17 @@
+.mainBodyStud{
+    background-image: url("../../../img/trianglifyBlueGree-1.jpg"); 
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: stretch;
+    padding-top: 20vh;   
+    padding-bottom: 10vh;
+}
+
 li .stud {
     text-decoration: none;
     color: #000;

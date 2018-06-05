@@ -134,7 +134,7 @@ class StudentView extends Component {
             <div>
                 <Nav />
                 <div className="main">
-                    <div className="mainBodyInv">
+                    <div className="mainBodyStud">
                         <h1 className="title">Student Directory</h1>
                         <div className="searchBar">
                             <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">
@@ -156,17 +156,11 @@ class StudentView extends Component {
 
                         <div className="buttonBar">
                             <div className="updateBtns">
-                                {/* <p>Select One Item From List</p> */}
                                 <Link to='/student/add'><button>Add</button></Link>
                                 <Link to={`/student/update/${this.state.checked}`}><button>Update</button></Link>
                                 <button onClick={() => this.deleteStudent(this.state.checked)}>Delete</button>
                             </div>
-                            <div className="addBtn">
-                                {/* <p>Add a Student</p>
-                                <Link to='/student/add'><button>Add</button></Link> */}
-                            </div>
                         </div>
-
                     </div>
                 </div>
             </div>

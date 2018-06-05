@@ -11,7 +11,7 @@
     height: 100vh;
     width: 100%;
 }
-.mainBodyInv{
+.mainBodyInst{
         background-image: url("../../../img/trianglifyBlueGree-1.jpg"); 
         background-size: cover;
         background-attachment: fixed;
@@ -31,15 +31,15 @@
     align-items: center;
     position: fixed;
     height: 10vh;
-    width: 100%;
+    width: 100vw;
     bottom: 0;
     background: #8f9db8;
     /* background: rgba(143,157,184,0.95); */
     /* background-color: transparent; */
 }
 .updateBtns{
-    width: 250px;
-    margin-left: 37vw;
+    width: 33.3vw;
+    margin-left: 33.3vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -75,7 +75,8 @@ button{
 	padding:8px 10px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #3d768a;
-
+    margin-right: 15px;
+    
 }
 button:hover{
     background-color:#cfe2bd;
@@ -101,7 +102,6 @@ button:active{
 
 h2 {
   font: 400 32px/1.5 Helvetica, Verdana, sans-serif;
-  margin: 0;
   margin-bottom: 20px;
   padding: 0;
 }
@@ -170,10 +170,14 @@ li EditableLabel {
     font-size: 20px;
       
   }
+
+  li .out{
+      width: 650px;
+  }
   .updateEl{
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: flex-start;
 
 }
@@ -181,13 +185,15 @@ li EditableLabel {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 250px;
-    margin-left: 20%; 
+    width: 16.66vw;
+    margin-left: 35.8vw; 
+    padding-right: 5vw;
+    
 }
 .right{
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  width: 250px;
-  margin-right: 20%; 
+  width: 16.66vw;
+  margin-right: 30.8vw; 
 }

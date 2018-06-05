@@ -118,7 +118,7 @@ class InstInv extends Component {
             <div>
                 <Nav />
                 <div className="main">
-                    <div className="mainBodyInv">
+                    <div className="mainBodyInst">
                         <h1 className="title">Instrument Inventory</h1>
                         <div className="searchBar">
                             <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">

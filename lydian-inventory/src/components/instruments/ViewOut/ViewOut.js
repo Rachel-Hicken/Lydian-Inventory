@@ -81,7 +81,7 @@ class ViewOut extends Component {
 
     returnDateHandler(date) {
         this.setState({
-            returnDate: date
+            returnDate: date.startOf('day').format('LL')
         })
     }
 
@@ -145,13 +145,15 @@ class ViewOut extends Component {
                 <div key={el.status_id} className="checkbox">
                     <input type='checkbox' checked={this.state.checked == el.status_id} onChange={this.checkboxHandler} value={el.status_id} />
                     <div className="invItem">
-                    <p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</p>
-                    <p>Student ID: {el.student_school_id}, First: {el.student_first}, Last: {el.student_last}</p>
-                    <p>Check Out Date: {el.checkout_date}, Due Date: {el.due_date}</p>
+                    <ul>
+                    <li><p className="out">School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}
+                    <br/>
+                    Student ID: {el.student_school_id}, First: {el.student_first}, Last: {el.student_last}
+                    <br/>
+                    Check Out Date: {moment(el.checkout_date).format('MMM DD, YYYY')}, Due Date: {moment(el.due_date).format('MMM DD, YYYY')}</p></li>
+                    </ul>
                     </div>
                 </div>
-                //i.inst_id, i.inst_school_id, i.inst_type, i.serial_num, 
-                //s.student_id, s.student_first, s.student_last, a.checkout_date, a.due_date, a.return_date
             )
         })
 

@@ -33,10 +33,9 @@
     background: rgba(143,157,184,0.3);
 }
 .updateBtnsNoNav{
-    width: 200px;
-    margin-left: 37vw;
+    width: 33.33vw;
+    margin-left: 33.3vw;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-
 }
