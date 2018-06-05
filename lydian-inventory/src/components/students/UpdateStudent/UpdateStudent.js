@@ -166,56 +166,56 @@ class UpdateStudent extends Component {
                 <div className="mainBody">
                     <h2>Click in the field to edit text</h2>
 
-                    {/* {this.props.studentID} */}
-
-                    <div key={el.student_id} >
-                        {/* <p>School ID: {el.student_school_id}, First: {el.student_first}, Last: {el.student_last}, Phone: {el.student_phone}</p>
-                    <p>Email: {el.student_email}, Address: {el.student_address}, City: {el.student_city}, State: {el.student_state}, Zipcode: {el.student_zip}</p> */}
-                        <li className="label">Student ID:</li>
-                        <li><p className="studEdit"><EditableLabel text={el.student_school_id}
-                            onFocus={this.schoolID_handleFocus}
-                            onFocusOut={this.schoolID_handleFocusOut}
-                        /></p></li>
-                        <li className="label">First:</li>
-                        <li><p className="studEdit"><EditableLabel text={el.student_first}
-                            onFocus={this.first_handleFocus}
-                            onFocusOut={this.first_handleFocusOut}
-                        /></p></li>
-                        <li className="label">Last:</li>
-                        <li><p className="studEdit"><EditableLabel text={el.student_last}
-                            onFocus={this.last_handleFocus}
-                            onFocusOut={this.last_handleFocusOut}
-                        /></p></li>
-                        <li className="label">Email:</li>
-                        <li><p className="studEdit"><EditableLabel text={el.student_email}
-                            onFocus={this.email_handleFocus}
-                            onFocusOut={this.email_handleFocusOut}
-                        /></p></li>
-                        <li className="label">Phone:</li>
-                        <li><p className="studEdit"><EditableLabel text={el.student_phone}
-                            onFocus={this.phone_handleFocus}
-                            onFocusOut={this.phone_handleFocusOut}
-                        /></p></li>
-                        <li className="label">Address:</li>
-                        <li><p className="studEdit"><EditableLabel text={el.student_address}
-                            onFocus={this.address_handleFocus}
-                            onFocusOut={this.address_handleFocusOut}
-                        /></p></li>
-                        <li className="label">City:</li>
-                        <li><p className="studEdit"> <EditableLabel text={el.student_city}
-                            onFocus={this.city_handleFocus}
-                            onFocusOut={this.city_handleFocusOut}
-                        /></p></li>
-                        <li className="label">State:</li>
-                        <li><p className="studEdit"> <EditableLabel text={el.student_state}
-                            onFocus={this.state_handleFocus}
-                            onFocusOut={this.state_handleFocusOut}
-                        /></p></li>
-                        <li className="label">Zipcode:</li>
-                        <li><p className="studEdit"> <EditableLabel text={Number(el.student_zip)}
-                            onFocus={this.zip_handleFocus}
-                            onFocusOut={this.zip_handleFocusOut}
-                        /></p></li>
+                    <div key={el.student_id} className="updateEl" >
+                        <div className="left">
+                            <li className="label">Student ID:</li>
+                            <li><p className="studEdit"><EditableLabel text={el.student_school_id}
+                                onFocus={this.schoolID_handleFocus}
+                                onFocusOut={this.schoolID_handleFocusOut}
+                            /></p></li>
+                            <li className="label">First:</li>
+                            <li><p className="studEdit"><EditableLabel text={el.student_first}
+                                onFocus={this.first_handleFocus}
+                                onFocusOut={this.first_handleFocusOut}
+                            /></p></li>
+                            <li className="label">Last:</li>
+                            <li><p className="studEdit"><EditableLabel text={el.student_last}
+                                onFocus={this.last_handleFocus}
+                                onFocusOut={this.last_handleFocusOut}
+                            /></p></li>
+                            <li className="label">Email:</li>
+                            <li><p className="studEdit"><EditableLabel text={el.student_email}
+                                onFocus={this.email_handleFocus}
+                                onFocusOut={this.email_handleFocusOut}
+                            /></p></li>
+                            <li className="label">Phone:</li>
+                            <li><p className="studEdit"><EditableLabel text={el.student_phone}
+                                onFocus={this.phone_handleFocus}
+                                onFocusOut={this.phone_handleFocusOut}
+                            /></p></li>
+                        </div>
+                        <div className="right">
+                            <li className="label">Address:</li>
+                            <li><p className="studEdit"><EditableLabel text={el.student_address}
+                                onFocus={this.address_handleFocus}
+                                onFocusOut={this.address_handleFocusOut}
+                            /></p></li>
+                            <li className="label">City:</li>
+                            <li><p className="studEdit"> <EditableLabel text={el.student_city}
+                                onFocus={this.city_handleFocus}
+                                onFocusOut={this.city_handleFocusOut}
+                            /></p></li>
+                            <li className="label">State:</li>
+                            <li><p className="studEdit"> <EditableLabel text={el.student_state}
+                                onFocus={this.state_handleFocus}
+                                onFocusOut={this.state_handleFocusOut}
+                            /></p></li>
+                            <li className="label">Zipcode:</li>
+                            <li><p className="studEdit"> <EditableLabel text={Number(el.student_zip)}
+                                onFocus={this.zip_handleFocus}
+                                onFocusOut={this.zip_handleFocusOut}
+                            /></p></li>
+                        </div>
                     </div>
                     <div className="buttonBarNoNav">
                         <div className="updateBtnsNoNav">

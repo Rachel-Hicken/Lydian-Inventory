@@ -8,20 +8,22 @@
 
 .main{
     background: #dbdbdb;
-    height: 100%;
+    height: 100vh;
     width: 100%;
 }
 .mainBodyInv{
-    
         background-image: url("../../../img/trianglifyBlueGree-1.jpg"); 
         background-size: cover;
+        background-attachment: fixed;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         align-content: stretch;
-        padding: 18vh;   
+        padding-top: 20vh;   
+        padding-left: 10vw;
+        padding-bottom: 10vh;
 }
 
 .buttonBar{
@@ -92,12 +94,6 @@ button:active{
     padding-bottom: 15px;
 }
 
-
-
-
-
-
-
 .invList{
   width: 450px;
   margin: 30px;
@@ -123,7 +119,7 @@ li {
 
 .label{
   font-weight: bold;
-    
+  font-size: 20px;
 }
 
 /* li:last-child {
@@ -168,3 +164,30 @@ li EditableLabel {
   li EditableLabel:hover {
     font-size: 18px;
   }
+
+  li .instEdit{
+    width: 200px;
+    font-size: 20px;
+      
+  }
+  .updateEl{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+
+}
+.left{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 250px;
+    margin-left: 20%; 
+}
+.right{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 250px;
+  margin-right: 20%; 
+}

@@ -170,7 +170,7 @@ class UpdateInst extends Component {
                     {/* {this.props.instId} */}
                     <h2>Click in the field to edit text</h2>
 
-                    <div key={el.inst_id} >
+                    <div key={el.inst_id} className="updateEl">
                         {/* <p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</p>
                     <p>Make: {el.make}, Model: {el.model}, Year: {el.inst_year}, Purchase Price: {el.purchase_price}</p> */}
                         {/* <EditableLabel
@@ -178,42 +178,48 @@ class UpdateInst extends Component {
                         onFocus={this._handleFocus}
                         onFocusOut={this._handleFocusOut}
                     /> */}
-                        <li>School ID:</li>
-                        <li><p><EditableLabel text={el.inst_school_id}
+                    <div className="left">
+                    
+                        <li className="label">School ID:</li>
+                        <li><p className="instEdit"><EditableLabel text={el.inst_school_id}
                             onFocus={this.instSchoolID_handleFocus}
                             onFocusOut={this.instSchoolID_handleFocusOut}
                             className="info"
                         /></p></li>
-                        <li>Type:</li>
-                        <li><p><EditableLabel text={el.inst_type}
+                       <li className="label">Type:</li>
+                       <li><p className="instEdit"><EditableLabel text={el.inst_type}
                             onFocus={this.type_handleFocus}
                             onFocusOut={this.type_handleFocusOut}
                         /></p></li>
-                        <li>Serial Number:</li>
-                        <li><p><EditableLabel text={el.serial_num}
+                        <li className="label">Serial Number:</li>
+                        <li><p className="instEdit"><EditableLabel text={el.serial_num}
                             onFocus={this.serialNum_handleFocus}
                             onFocusOut={this.serialNum_handleFocusOut}
                         /></p></li>
-                        <li>Make:</li>
-                        <li><p><EditableLabel text={el.make}
+                        </div>
+                        <div className="right">
+                        
+                        <li className="label">Make:</li>
+                        <li><p className="instEdit"><EditableLabel text={el.make}
                             onFocus={this.make_handleFocus}
                             onFocusOut={this.make_handleFocusOut}
                         /></p></li>
-                        <li>Model:</li>
-                        <li><p><EditableLabel text={el.model}
+                        <li className="label">Model:</li>
+                        <li><p className="instEdit"><EditableLabel text={el.model}
                             onFocus={this.model_handleFocus}
                             onFocusOut={this.model_handleFocusOut}
                         /></p></li>
-                        <li>Year:</li>
-                        <li><p><EditableLabel text={el.inst_year}
+                        <li className="label">Year:</li>
+                        <li><p className="instEdit"><EditableLabel text={el.inst_year}
                             onFocus={this.year_handleFocus}
                             onFocusOut={this.year_handleFocusOut}
                         /></p></li>
-                        <li>Purchase Price:</li>
-                        <li><p><EditableLabel text={el.purchase_price}
+                        <li className="label">Purchase Price:</li>
+                        <li><p className="instEdit"><EditableLabel text={el.purchase_price}
                             onFocus={this.price_handleFocus}
                             onFocusOut={this.price_handleFocusOut}
                         /></p></li>
+                        </div>
                     </div>
                 </div>
                 <div className="buttonBarNoNav">
