@@ -153,8 +153,9 @@ class AssignInst extends Component {
             return (
                 <div key={el.student_id} className="checkbox">
                     <input type='checkbox' checked={this.state.checked == el.student_id} onChange={this.checkboxHandler} value={el.student_id} />
-                    <p>School ID: {el.student_school_id}, First Name: {el.student_first}, Last Name: {el.student_last}, Phone: {el.student_phone}</p>
-                    <br />
+                    <ul>
+                    <li><p className="assign">School ID: {el.student_school_id}, First Name: {el.student_first}, Last Name: {el.student_last}, Phone: {el.student_phone}</p></li>
+                    </ul>
                 </div>
 
             )
@@ -174,12 +175,12 @@ class AssignInst extends Component {
                     <p className="instructions">Instrument Being Assigned:</p>
 
                     <div key={el.inst_id} >
-                        <p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</p>
+                        <li>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</li>
                         {/* <p>Make: {el.make}, Model: {el.model}, Year: {el.inst_year}, Purchase Price: {el.purchase_price}</p> */}
                     </div>
                     <div>
                         {/* Search for student to assign */}
-                        <p className="instructions">Search For a Student</p>
+                        {/* <p className="instructions">Search For a Student</p> */}
                         <div className="searchBar">
                             <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">
                                 <option value="student_school_id">Student School ID</option>
@@ -193,22 +194,31 @@ class AssignInst extends Component {
                             {students}
                         </div>
                     </div>
-                    <div>
+                    {/* <div>
                         <p>Checkout Date</p>
-                        {/* <input type="date" name="checkout" /> */}
                         <DatePicker
                             selected={this.state.checkoutDate}
                             onChange={this.checkoutHandler}
                         />
                         <p>Due Date</p>
-                        {/* <input type="date" name="due" /> */}
                         <DatePicker
                             selected={this.state.dueDate}
                             onChange={this.dueDateHandler}
                         />
-                    </div>
+                    </div> */}
                     <div className="buttonBarNoNav">
+                    <p>Checkout Date</p>
+                        <DatePicker
+                            selected={this.state.checkoutDate}
+                            onChange={this.checkoutHandler}
+                        />
+                        <p>Due Date</p>
+                        <DatePicker
+                            selected={this.state.dueDate}
+                            onChange={this.dueDateHandler}
+                        />
                         <div className="updateBtnsNoNav">
+                        
                             <button onClick={this.assignInst}
                             
                             >Assign</button>

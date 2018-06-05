@@ -145,13 +145,13 @@ class ViewOut extends Component {
                 <div key={el.status_id} className="checkbox">
                     <input type='checkbox' checked={this.state.checked == el.status_id} onChange={this.checkboxHandler} value={el.status_id} />
                     <div className="invItem">
-                    <ul>
-                    <li><p className="out">School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}
-                    <br/>
-                    Student ID: {el.student_school_id}, First: {el.student_first}, Last: {el.student_last}
-                    <br/>
-                    Check Out Date: {moment(el.checkout_date).format('MMM DD, YYYY')}, Due Date: {moment(el.due_date).format('MMM DD, YYYY')}</p></li>
-                    </ul>
+                        <ul>
+                            <li><p className="out">School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}
+                                <br />
+                                Student ID: {el.student_school_id}, First: {el.student_first}, Last: {el.student_last}
+                                <br />
+                                Check Out Date: {moment(el.checkout_date).format('MMM DD, YYYY')}, Due Date: {moment(el.due_date).format('MMM DD, YYYY')}</p></li>
+                        </ul>
                     </div>
                 </div>
             )
@@ -167,33 +167,35 @@ class ViewOut extends Component {
                 <div className="mainBody">
                     <h1 className="title">CHECKED OUT INSTRUMENTS</h1>
                     <div className="searchBar">
-                    <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">
-                        <option value="inst_school_id">Instrument School ID</option>
-                        <option value="inst_type">Type</option>
-                        <option value="serial_num">Serial Number</option>
-                        <option value="student_school_id">Student School ID</option>
-                        <option value="student_first">First Name</option>
-                        <option value="student_last">Last Name</option>
-                    </select>
+                        <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">
+                            <option value="inst_school_id">Instrument School ID</option>
+                            <option value="inst_type">Type</option>
+                            <option value="serial_num">Serial Number</option>
+                            <option value="student_school_id">Student School ID</option>
+                            <option value="student_first">First Name</option>
+                            <option value="student_last">Last Name</option>
+                        </select>
 
-                    {/* search input and filtering */}
-                    <input onChange={(e) => this.filterHandler(e.target.value)} type="text" />
-                    <button>Search</button>
+                        {/* search input and filtering */}
+                        <input onChange={(e) => this.filterHandler(e.target.value)} type="text" />
+                        <button>Search</button>
                     </div>
                     <p className="instructions">Select One to Return</p>
-                    
+
                     <div className="inventoryList">
                         {instruments}
 
                     </div>
-                    <p>Return Date:</p>
-                    <DatePicker
-                        selected={this.state.returnDate}
-                        onChange={this.returnDateHandler}
-                    />
+
 
                     <div className="buttonBarNoNav">
+
                         <div className="updateBtnsNoNav">
+                            <p>Return Date:</p>
+                            <DatePicker
+                                selected={this.state.returnDate}
+                                onChange={this.returnDateHandler}
+                            />
                             <button onClick={this.returnInst}>Return</button>
                             <Link to={`/instruments`}><button>Close</button></Link>
                         </div>
