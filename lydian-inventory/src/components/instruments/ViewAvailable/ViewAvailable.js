@@ -13,7 +13,7 @@ class ViewAvailable extends Component {
             search: '',
             criteria: 'inst_school_id',
             checked: -1,
-
+            nameDay: ''
         }
         this.filterHandler = this.filterHandler.bind(this);
         this.selectHandler = this.selectHandler.bind(this);
@@ -28,6 +28,11 @@ class ViewAvailable extends Component {
             })
             toast.success("Successfully got Instruments")
         }).catch(() => toast.error("Failed to Fetch Instruments"));
+        axios.get('https://api.abalin.net/get/today?country=cz').then(res=>{
+            this.setState({
+                nameDay: res.data.data.name_cz
+            })
+        })
     }
 
 
@@ -127,6 +132,7 @@ class ViewAvailable extends Component {
                         <div className="inventoryList">
                             {instruments}
                         </div>
+                        <p>Happy Name Day: {this.state.nameDay} !!!</p>
 
 
 
