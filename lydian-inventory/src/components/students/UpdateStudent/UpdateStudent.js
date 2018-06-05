@@ -184,7 +184,7 @@ class UpdateStudent extends Component {
                                 onFocusOut={this.last_handleFocusOut}
                             /></p></li>
                             <li className="label">Email:</li>
-                            <li><p className="studEdit"><EditableLabel text={el.student_email}
+                            <li><p className="emailEdit"><EditableLabel text={el.student_email}
                                 onFocus={this.email_handleFocus}
                                 onFocusOut={this.email_handleFocusOut}
                             /></p></li>

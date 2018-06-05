@@ -28,12 +28,19 @@ li .stud {
   }
   
   li .studEdit{
-    width: 200px;
-      
+    width: 310px;
+    font-size: 20px;
   }
-
-  li .stud:hover {
-    font-size: 18px;
+  li .studEdit:hover {
+    font-size: 22px;
+    background: rgba(223,234,213,0.6);
   }
-
+  li .emailEdit{
+    width: 310px;
+    font-size: 17px;
+  }
+  li .emailEdit:hover {
+    font-size: 19px;
+    background: rgba(223,234,213,0.6);
+  }
 

@@ -87,6 +87,7 @@ button:active{
     position:relative;
 	top:1px;
 }
+
 .inventoryList{
     background: rgba(223,234,213,0.6);
 }
@@ -168,7 +169,10 @@ li EditableLabel {
   li .instEdit{
     width: 200px;
     font-size: 20px;
-      
+  }
+  li .instEdit:hover{
+    font-size: 22px;
+    background: rgba(223,234,213,0.6);
   }
 
   li .out{
@@ -190,8 +194,8 @@ li EditableLabel {
     flex-direction: column;
     justify-content: flex-start;
     width: 16.66vw;
-    margin-left: 35.8vw; 
-    padding-right: 5vw;
+    margin-left: 30.8vw; 
+    padding-right: 10vw;
     
 }
 .right{
@@ -201,3 +205,4 @@ li EditableLabel {
   width: 16.66vw;
   margin-right: 30.8vw; 
 }
+

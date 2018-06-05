@@ -116,13 +116,13 @@ class StudentView extends Component {
                             First Name: {el.student_first}, 
                             Last Name: {el.student_last} 
                             <br />
-                            Phone: {el.student_phone}
-                            Email: {el.student_email} 
+                            Phone: {el.student_phone},
+                             Email: {el.student_email} 
                             <br/>
                             Address: {el.student_address}, 
-                            City: {el.student_city}, 
-                            State: {el.student_state}, 
-                            Zipcode: {el.student_zip}</p></li>
+                             City: {el.student_city}, 
+                             State: {el.student_state}, 
+                             Zipcode: {el.student_zip}</p></li>
                         </ul>
                     </div>
                 </div>
