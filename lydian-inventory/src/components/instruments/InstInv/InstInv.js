@@ -37,17 +37,9 @@ class InstInv extends Component {
     deletePost(id) {
         if (window.confirm('Are you sure you want to delete this instrument?')) {
             axios.delete(`/instrument/delete/${id}`).then(res => {
-                // console.log(res.data)
                 this.setState({ all_instruments: res.data })
             });
-        } 
-        // else {
-        //     // Do nothing!
-        // }
-        // axios.delete(`/instrument/delete/${id}`).then(res => {
-        //     // console.log(res.data)
-        //     this.setState({ all_instruments: res.data })
-        // });
+        }
     }
 
 
@@ -111,12 +103,12 @@ class InstInv extends Component {
                 <div key={el.inst_id} className="checkbox">
                     <input type='checkbox' checked={this.state.checked == el.inst_id} onChange={this.checkboxHandler} value={el.inst_id} />
                     <div className="invItem">
-                    <ul>
-                    <li><p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}
-                    <br/>
-                    Make: {el.make}, Model: {el.model}, Year: {el.inst_year}, Purchase Price: {el.purchase_price}
-                    </p></li>
-                    </ul>
+                        <ul>
+                            <li><p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}
+                                <br />
+                                Make: {el.make}, Model: {el.model}, Year: {el.inst_year}, Purchase Price: {el.purchase_price}
+                            </p></li>
+                        </ul>
                     </div>
                 </div>
 
@@ -138,7 +130,7 @@ class InstInv extends Component {
 
                             {/* search input and filtering */}
                             <span className="input"><input onChange={(e) => this.filterHandler(e.target.value)} type="text" />
-                            <span></span>
+                                <span></span>
                             </span>
                             <button>Search</button>
                         </div>
@@ -154,18 +146,7 @@ class InstInv extends Component {
                                 <Link to={`/instrument/update/${this.state.checked}`}><button>Update</button></Link>
                                 <button onClick={() => this.deletePost(this.state.checked)}>Delete</button>
                             </div>
-                            <div className="addBtn">
-                                {/* <p>Add an Instrument</p>
-                                <Link to='/instrument/add'><button>Add</button></Link> */}
-                            </div>
                         </div>
-
-                       
-
-
-                        {/* <div>
-                            <Link to={`/instrument/assign/${this.state.checked}`}><button>Assign</button></Link>
-                        </div> */}
 
                     </div>
                     <div className="sideBar">
