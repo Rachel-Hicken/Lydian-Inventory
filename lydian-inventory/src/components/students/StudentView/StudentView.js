@@ -36,10 +36,13 @@ class StudentView extends Component {
 
     //remove an studnet from db
     deleteStudent(id) {
-        axios.delete(`/student/delete/${id}`).then(res => {
-            // console.log(res.data)
-            this.setState({ all_students: res.data })
-        });
+        if (window.confirm('Are you sure you want to delete this student?')) {
+            axios.delete(`/student/delete/${id}`).then(res => {
+                // console.log(res.data)
+                this.setState({ all_students: res.data })
+            });
+        } 
+       
     }
 
 

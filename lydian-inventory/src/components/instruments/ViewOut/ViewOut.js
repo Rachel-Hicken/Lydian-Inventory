@@ -81,7 +81,7 @@ class ViewOut extends Component {
 
     returnDateHandler(date) {
         this.setState({
-            returnDate: date.startOf('day').format('LL')
+            returnDate: date
         })
     }
 

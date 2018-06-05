@@ -35,10 +35,19 @@ class InstInv extends Component {
 
     //remove an instrument from inventory
     deletePost(id) {
-        axios.delete(`/instrument/delete/${id}`).then(res => {
-            console.log(res.data)
-            this.setState({ all_instruments: res.data })
-        });
+        if (window.confirm('Are you sure you want to delete this instrument?')) {
+            axios.delete(`/instrument/delete/${id}`).then(res => {
+                // console.log(res.data)
+                this.setState({ all_instruments: res.data })
+            });
+        } 
+        // else {
+        //     // Do nothing!
+        // }
+        // axios.delete(`/instrument/delete/${id}`).then(res => {
+        //     // console.log(res.data)
+        //     this.setState({ all_instruments: res.data })
+        // });
     }
 
 
