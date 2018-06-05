@@ -102,8 +102,12 @@ class InstInv extends Component {
                 <div key={el.inst_id} className="checkbox">
                     <input type='checkbox' checked={this.state.checked == el.inst_id} onChange={this.checkboxHandler} value={el.inst_id} />
                     <div className="invItem">
-                    <p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</p>
-                    <p>Make: {el.make}, Model: {el.model}, Year: {el.inst_year}, Purchase Price: {el.purchase_price}</p>
+                    <ul>
+                    <li><p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}
+                    <br/>
+                    Make: {el.make}, Model: {el.model}, Year: {el.inst_year}, Purchase Price: {el.purchase_price}
+                    </p></li>
+                    </ul>
                     </div>
                 </div>
 

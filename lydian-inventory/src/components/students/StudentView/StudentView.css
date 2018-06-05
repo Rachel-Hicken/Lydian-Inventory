@@ -1,0 +1,23 @@
+li .stud {
+    text-decoration: none;
+    color: #000;
+    border-bottom: 1px solid #ccc;
+    
+  
+    -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+    -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+    -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+    -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+    transition: font-size 0.3s ease, background-color 0.3s ease;
+    display: block;
+    width: 600px;
+  }
+  
+  li .studEdit{
+    width: 200px;
+      
+  }
+
+  li .stud:hover {
+    font-size: 18px;
+  }

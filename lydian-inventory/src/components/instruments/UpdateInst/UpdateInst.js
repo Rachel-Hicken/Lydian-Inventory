@@ -168,7 +168,7 @@ class UpdateInst extends Component {
             <div className="main">
                 <div className="mainBody">
                     {/* {this.props.instId} */}
-                    <p className="instructions">Click in the field to edit text</p>
+                    <h2>Click in the field to edit text</h2>
 
                     <div key={el.inst_id} >
                         {/* <p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</p>
@@ -178,41 +178,42 @@ class UpdateInst extends Component {
                         onFocus={this._handleFocus}
                         onFocusOut={this._handleFocusOut}
                     /> */}
-                        <p>School ID:</p>
-                        <EditableLabel text={el.inst_school_id}
+                        <li>School ID:</li>
+                        <li><p><EditableLabel text={el.inst_school_id}
                             onFocus={this.instSchoolID_handleFocus}
                             onFocusOut={this.instSchoolID_handleFocusOut}
-                        />
-                        <p>Type:</p>
-                        <EditableLabel text={el.inst_type}
+                            className="info"
+                        /></p></li>
+                        <li>Type:</li>
+                        <li><p><EditableLabel text={el.inst_type}
                             onFocus={this.type_handleFocus}
                             onFocusOut={this.type_handleFocusOut}
-                        />
-                        <p>Serial Number:</p>
-                        <EditableLabel text={el.serial_num}
+                        /></p></li>
+                        <li>Serial Number:</li>
+                        <li><p><EditableLabel text={el.serial_num}
                             onFocus={this.serialNum_handleFocus}
                             onFocusOut={this.serialNum_handleFocusOut}
-                        />
-                        <p>Make:</p>
-                        <EditableLabel text={el.make}
+                        /></p></li>
+                        <li>Make:</li>
+                        <li><p><EditableLabel text={el.make}
                             onFocus={this.make_handleFocus}
                             onFocusOut={this.make_handleFocusOut}
-                        />
-                        <p>Model:</p>
-                        <EditableLabel text={el.model}
+                        /></p></li>
+                        <li>Model:</li>
+                        <li><p><EditableLabel text={el.model}
                             onFocus={this.model_handleFocus}
                             onFocusOut={this.model_handleFocusOut}
-                        />
-                        <p>Year:</p>
-                        <EditableLabel text={el.inst_year}
+                        /></p></li>
+                        <li>Year:</li>
+                        <li><p><EditableLabel text={el.inst_year}
                             onFocus={this.year_handleFocus}
                             onFocusOut={this.year_handleFocusOut}
-                        />
-                        <p>Purchase Price:</p>
-                        <EditableLabel text={el.purchase_price}
+                        /></p></li>
+                        <li>Purchase Price:</li>
+                        <li><p><EditableLabel text={el.purchase_price}
                             onFocus={this.price_handleFocus}
                             onFocusOut={this.price_handleFocusOut}
-                        />
+                        /></p></li>
                     </div>
                 </div>
                 <div className="buttonBarNoNav">

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { get_student_id } from '../../../ducks/reducer';
 import { connect } from 'react-redux';
 import Nav from '../../Nav/Nav';
+import './StudentView.css';
 
 
 class StudentView extends Component {
@@ -109,8 +110,20 @@ class StudentView extends Component {
                 <div key={el.student_id} className="checkbox">
                     <input type='checkbox' checked={this.state.checked == el.student_id} onChange={this.checkboxHandler} value={el.student_id} />
                     <div className="invItem">
-                        <p>School ID: {el.student_school_id}, First Name: {el.student_first}, Last Name: {el.student_last}, Phone: {el.student_phone}</p>
-                        <p>Email: {el.student_email}, Address: {el.student_address}, City: {el.student_city}, State: {el.student_state}, Zipcode: {el.student_zip}</p>
+                        <ul>
+                            <li><p className="stud">
+                            School ID: {el.student_school_id}, 
+                            First Name: {el.student_first}, 
+                            Last Name: {el.student_last} 
+                            <br />
+                            Phone: {el.student_phone}
+                            Email: {el.student_email} 
+                            <br/>
+                            Address: {el.student_address}, 
+                            City: {el.student_city}, 
+                            State: {el.student_state}, 
+                            Zipcode: {el.student_zip}</p></li>
+                        </ul>
                     </div>
                 </div>
 
