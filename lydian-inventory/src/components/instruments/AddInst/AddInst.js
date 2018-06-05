@@ -14,7 +14,9 @@ export default class Add_Inst extends Component {
             make: 'war',
             model: 'awer',
             inst_year: '1234',
-            purchase_price: '234'
+            purchase_price: '234',
+            jokeSetup: '',
+            punchline: ''
         }
         this.addInst = this.addInst.bind(this);
         this.schoolIdHandler = this.schoolIdHandler.bind(this);
@@ -26,8 +28,18 @@ export default class Add_Inst extends Component {
         this.priceHandler = this.priceHandler.bind(this);
     }
 
+    componentDidMount(){
+        axios.get('https://08ad1pao69.execute-api.us-east-1.amazonaws.com/dev/random_joke').then(res=>{
+            this.setState({
+                jokeSetup: res.data.setup, 
+                punchline: res.data.punchline
+            });
+        })
+    }
+
     addInst(value) {
         axios.post('/instrument/add', this.state).then(res => {
+            alert(`Answer: ${this.state.punchline}`)
             this.props.history.push('/instruments')
         })
     }
@@ -78,6 +90,10 @@ export default class Add_Inst extends Component {
         // console.log(this.props)
         return (
             <div className="mainBody">
+                <h1 className="title">Joke of the Day:</h1>
+                <p>{this.state.jokeSetup}</p>
+
+                
                 <h1 className="title">Add an Instrument</h1>
                 <p>Instrument School ID:</p>
                 <input onChange={(e) => this.schoolIdHandler(e.target.value)} type="text" value={this.state.inst_school_id} />
@@ -93,6 +109,8 @@ export default class Add_Inst extends Component {
                 <input onChange={(e) => this.yearHandler(e.target.value)} type="text" value={this.state.inst_year} />
                 <p>Purchase Price:</p>
                 <input onChange={(e) => this.priceHandler(e.target.value)} type="text" value={this.state.purchase_price} />
+                
+                
                 <div className="buttonBarNoNav">
                 <div className="updateBtnsNoNav">
                     <button onClick={this.addInst}>Add</button>

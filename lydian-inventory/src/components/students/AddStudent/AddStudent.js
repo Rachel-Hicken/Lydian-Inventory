@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 export default class AddStudent extends Component {
@@ -15,7 +15,9 @@ export default class AddStudent extends Component {
             student_address: 'I live somewhere S 234 W',
             student_city: 'Provo',
             student_state: 'UT',
-            student_zip: 12345
+            student_zip: 12345,
+            jokeSetup: '',
+            punchline: ''
         }
         this.addStudent = this.addStudent.bind(this);
         this.studentIdHandler = this.studentIdHandler.bind(this);
@@ -30,8 +32,18 @@ export default class AddStudent extends Component {
 
     }
 
+    componentDidMount() {
+        axios.get('https://08ad1pao69.execute-api.us-east-1.amazonaws.com/dev/random_joke').then(res => {
+            this.setState({
+                jokeSetup: res.data.setup,
+                punchline: res.data.punchline
+            });
+        })
+    }
+
     addStudent(value) {
         axios.post('/student/add', this.state).then(res => {
+            alert(`Answer: ${this.state.punchline}`)
             this.props.history.push('/students')
         })
     }
@@ -91,6 +103,10 @@ export default class AddStudent extends Component {
         // console.log(this.props)
         return (
             <div className="mainBody">
+                <h1 className="title">Joke of the Day:</h1>
+                <p>{this.state.jokeSetup}</p>
+
+                
                 <h1 className="titleNoNav">Add Student</h1>
                 <p>School ID:</p>
                 <input onChange={(e) => this.studentIdHandler(e.target.value)} type="text" value={this.state.student_school_id} />
@@ -110,7 +126,8 @@ export default class AddStudent extends Component {
                 <input onChange={(e) => this.stateHandler(e.target.value)} type="text" value={this.state.student_state} />
                 <p>Zipcode:</p>
                 <input onChange={(e) => this.zipHandler(e.target.value)} type="text" value={this.state.student_zip} />
-                
+
+
                 <div className="buttonBarNoNav">
                     <div className="updateBtnsNoNav">
                         <button onClick={this.addStudent}>Add Student</button>
