@@ -15,6 +15,7 @@ class AssignInst extends Component {
         super(props)
         this.state = {
             instrument: [],
+            instrumentID: '',
             students: [],
             criteria: 'student_school_id',
             checked: -1,
@@ -33,13 +34,16 @@ class AssignInst extends Component {
         this.dueDateHandler = this.dueDateHandler.bind(this);
         this.checkoutHandler = this.checkoutHandler.bind(this);
         this.assignInst = this.assignInst.bind(this);
+        this.emailHandler = this.emailHandler.bind(this);
+        this.firstNameHandler = this.firstNameHandler.bind(this);
     }
 
     componentDidMount() {
         //get selected instrument
         axios.get(`/instrument/view/${this.props.instId}`).then(res => {
             this.setState({
-                instrument: res.data[0]
+                instrument: res.data[0],
+                instrumentID: res.data[0].inst_school_id
             });
             toast.success("Successfully got Instruments")
         }).catch(() => toast.error("Failed to Fetch Instruments"));
@@ -64,7 +68,7 @@ class AssignInst extends Component {
                 toast.success("Successfully got Instruments")
             }).catch(() => toast.error("Failed to Fetch Instruments"))
             .then(()=>{
-                axios.post(``)
+                axios.post(`/email`, {to: this.state.to, text: `Dear ${this.state.first}, The instrument ${this.state.instrumentID} has been checked out to you. Please be sure to return the instrument on or before ${moment(this.state.due_date).format('MMM DD, YYYY')}.  If you have any questions contact your instructor.`})
             })
     }
 
@@ -93,7 +97,7 @@ class AssignInst extends Component {
         })
     }
 
-    checkboxHandler(event) {
+    checkboxHandler(event, first, email) {
         const target = event.target;
         const value = target.value;
         console.log(value)
@@ -102,7 +106,8 @@ class AssignInst extends Component {
             checked: value
         });
         this.props.get_student_id(value);
-
+        this.firstNameHandler(first)
+        this.emailHandler(email)
     }
 
     filterHandler(filter) {
@@ -111,14 +116,21 @@ class AssignInst extends Component {
         })
     }
 
+    emailHandler(email){
+        this.setState({
+            to: email
+        })
+    }
+    firstNameHandler(first){
+        this.setState({
+            first: first
+        })
+    }
+
     render() {
         let el = this.state.instrument;
-        // console.log(this.inst_school_id)
-        // console.log(this.props.instId)
         // console.log(this.state.instrument)
         // console.log(this.state.students)
-        // console.log(this.state.dueDate)
-        // console.log(this.state.checkoutDate)
 
         let students = this.state.students.filter((el, i) => {
             switch (this.state.criteria) {
@@ -152,20 +164,22 @@ class AssignInst extends Component {
         }).map(el => {
             return (
                 <div key={el.student_id} className="checkbox">
-                    <input type='checkbox' checked={this.state.checked == el.student_id} onChange={this.checkboxHandler} value={el.student_id} />
+                    <input type='checkbox' checked={this.state.checked == el.student_id} onChange={(e)=>this.checkboxHandler(e, el.student_first, el.student_email)} value={el.student_id} />
                     <ul>
-                    <li><p className="assign">School ID: {el.student_school_id}, First Name: {el.student_first}, Last Name: {el.student_last}, Phone: {el.student_phone}</p></li>
+                    <li><p className="assign">School ID: {el.student_school_id}, First Name: {el.student_first}, Last Name: {el.student_last}, Phone: {el.student_phone}, Email: {el.student_email}</p></li>
                     </ul>
                 </div>
 
             )
         })
 
-        let student = this.state.students.filter((el, i) => {
-            if (this.state.checked === el.student_id){
-
-            }
-        })
+        // let student = this.state.students.filter((el, i) => {
+        //     if (this.state.checked === el.student_id){
+        //         this.emailHandler(el.student_email),
+        //         this.firstNameHandler(el.student_first)
+        //         console.log('hit')
+        //     }
+        // })
 
         return (
             <div className="main">

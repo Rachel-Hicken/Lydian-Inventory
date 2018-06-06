@@ -1,3 +1,9 @@
+const nodemailer = require('nodemailer');
+const {
+    TRANSPORT_EMAIL,
+    TRANSPORT_PASSWORD
+}= process.env;
+
 module.exports = {
     create_student: (req, res, next) => {
         const dbInstance = req.app.get('db');
@@ -52,6 +58,8 @@ module.exports = {
     },
     send_email: (req, res, next) => {
         //nodemailer
+        const { to, text } = req.body;
+
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
@@ -62,16 +70,17 @@ module.exports = {
 
         const mailOptions = {
             from: TRANSPORT_EMAIL, // sender address
-            to: 'rachkh22@gmail.com', // list of receivers
-            subject: 'Testing, Testing', // Subject line
-            html: `<p>You have an instrument checked out</p>`// plain text body
+            to: to, // list of receivers
+            subject: 'Your Instrument Assignment', // Subject line
+            // text: text,
+            html: text// plain text body
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
                 res.send(error)
             }
-            console.log('Message %s send: %s', info.messageId, info.response);
+            // console.log('Message %s send: %s', info.messageId, info.response);
             res.status(200).send(info);
         });
     }
