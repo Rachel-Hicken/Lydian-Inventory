@@ -125,7 +125,11 @@ class ViewAvailable extends Component {
                             </select>
 
                             {/* search input and filtering */}
-                            <input onChange={(e) => this.filterHandler(e.target.value)} type="search" />
+                            <input 
+                            onChange={(e) => this.filterHandler(e.target.value)} 
+                            type="search" 
+                            placeholder="Search..."
+                            />
                         </div>
 
                         <div className="inventoryList">

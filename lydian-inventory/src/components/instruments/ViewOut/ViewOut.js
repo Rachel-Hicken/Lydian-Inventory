@@ -177,7 +177,11 @@ class ViewOut extends Component {
                         </select>
 
                         {/* search input and filtering */}
-                        <input onChange={(e) => this.filterHandler(e.target.value)} type="search" />
+                        <input 
+                        onChange={(e) => this.filterHandler(e.target.value)} 
+                        type="search" 
+                        placeholder="Search.."
+                        />
                     </div>
                     <p className="instructions">Select One to Return</p>
 

@@ -178,7 +178,6 @@ class AssignInst extends Component {
                         <li>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</li>
                         {/* <p>Make: {el.make}, Model: {el.model}, Year: {el.inst_year}, Purchase Price: {el.purchase_price}</p> */}
                     </div>
-                    <div>
                         {/* Search for student to assign */}
                         {/* <p className="instructions">Search For a Student</p> */}
                         <div className="searchBar">
@@ -188,12 +187,15 @@ class AssignInst extends Component {
                                 <option value="student_last">Last Name</option>
                                 <option value="student_phone">Phone</option>
                             </select>
-                            <input onChange={(e) => this.filterHandler(e.target.value)} type="text" />
+                            <input 
+                            onChange={(e) => this.filterHandler(e.target.value)} 
+                            type="search"
+                            placeholder="Search..."
+                            />
                         </div>
                         <div className="inventoryList">
                             {students}
                         </div>
-                    </div>
                     {/* <div>
                         <p>Checkout Date</p>
                         <DatePicker
