@@ -37,8 +37,11 @@ class InstInv extends Component {
     deletePost(id) {
         if (window.confirm('Are you sure you want to delete this instrument?')) {
             axios.delete(`/instrument/delete/${id}`).then(res => {
-                this.setState({ all_instruments: res.data })
-            });
+                this.setState({ 
+                    all_instruments: res.data 
+                })
+            toast.success("Successfully got Instruments")
+            }).catch(() => toast.error(alert("Instrument has a depend record. Cannot be deleted")));
         }
     }
 

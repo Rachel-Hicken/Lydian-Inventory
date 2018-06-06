@@ -6,7 +6,7 @@
         background-image: url("../../img/trianglifyBlueGree-1.jpg"); 
         background-size: cover;
         height: 100vh;
-
+        padding-bottom: 10vh;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
@@ -38,4 +38,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+Datepicker{
+    height: 30px;
+}
+.dateText{
+    background: #8f9db8;
+    box-shadow: inset 8px 8px 20px rgba(141, 141, 141, 0.7);
+    width: auto;
+    height: auto;
+    font-size: 20px;
+    border-radius: 3px;
+    margin-left: 5px;
+    padding: 2px;
+}
+.datePicker{
+    padding: 10px;
+    margin: 7px 4px 7px 4px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    background-color: #fff;
+    border: 1px solid #dfdfdf;
+    border-top: none;
+    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.075);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.075);
+    font-size: 15px;
 }

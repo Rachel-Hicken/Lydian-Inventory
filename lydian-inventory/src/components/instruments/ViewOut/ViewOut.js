@@ -194,8 +194,8 @@ class ViewOut extends Component {
                     <div className="buttonBarNoNav">
 
                         <div className="updateBtnsNoNav">
-                            <p>Return Date:</p>
-                            <DatePicker
+                            <p className="dateText">Return Date:</p>
+                            <DatePicker className="datePicker"
                                 selected={this.state.returnDate}
                                 onChange={this.returnDateHandler}
                             />

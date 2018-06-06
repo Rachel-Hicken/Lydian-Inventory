@@ -223,13 +223,13 @@ class AssignInst extends Component {
                         />
                     </div> */}
                     <div className="buttonBarNoNav">
-                    <p>Checkout Date</p>
-                        <DatePicker
+                    <p className="dateText">Checkout Date</p>
+                        <DatePicker className="datePicker"
                             selected={this.state.checkoutDate}
                             onChange={this.checkoutHandler}
                         />
-                        <p>Due Date</p>
-                        <DatePicker
+                        <p className="dateText">Due Date</p>
+                        <DatePicker className="datePicker"
                             selected={this.state.dueDate}
                             onChange={this.dueDateHandler}
                         />

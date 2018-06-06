@@ -12,12 +12,12 @@
     width: 100%;
 }
 .mainBodyInst{
+  
         background-image: url("../../../img/trianglifyBlueGree-1.jpg"); 
         background-size: cover;
         background-attachment: fixed;
         display: flex;
         flex-direction: column;
-        flex-wrap: nowrap;
         justify-content: flex-start;
         align-items: center;
         align-content: stretch;
