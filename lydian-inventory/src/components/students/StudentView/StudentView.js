@@ -148,9 +148,7 @@ class StudentView extends Component {
                             </select>
 
                             {/* search input and filtering */}
-                            <input onChange={(e) => this.filterHandler(e.target.value)} type="text" />
-                            <button>Search</button>
-                            <p>{this.search}</p>
+                            <input onChange={(e) => this.filterHandler(e.target.value)} type="search" />
                         </div>
 
                         <div className="inventoryList">

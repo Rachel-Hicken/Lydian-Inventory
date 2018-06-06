@@ -129,10 +129,7 @@ class InstInv extends Component {
                             </select>
 
                             {/* search input and filtering */}
-                            <span className="input"><input onChange={(e) => this.filterHandler(e.target.value)} type="text" />
-                                <span></span>
-                            </span>
-                            <button>Search</button>
+                            <input onChange={(e) => this.filterHandler(e.target.value)} type="search" />
                         </div>
 
                         <div className="inventoryList">
