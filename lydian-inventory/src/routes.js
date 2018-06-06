@@ -6,7 +6,6 @@ import InstInv from './components/instruments/InstInv/InstInv';
 import AddInst from './components/instruments/AddInst/AddInst';
 import AssignInst from './components/instruments/AssignInst/AssignInst';
 import UpdateInst from './components/instruments/UpdateInst/UpdateInst';
-import ReturnInst from './components/instruments/ReturnInst/ReturnInst';
 import ViewInst from './components/instruments/ViewInst/ViewInst';
 import ViewAvailable from './components/instruments/ViewAvailable/ViewAvailable';
 import ViewOut from './components/instruments/ViewOut/ViewOut';
@@ -25,7 +24,6 @@ export default (
             <Route path='/instrument/add' component={AddInst} />
             <Route path='/instrument/assign/:id' component={AssignInst} />
             <Route path='/instrument/update/:id' component={UpdateInst} />
-            {/* <Route path='/instrument/return/:id' component={ReturnInst} /> */}
             <Route path='/instruments/view' component={ViewInst} />
             <Route path='/instruments/available' component={ViewAvailable}/>
             <Route path='/instruments/out' component={ViewOut}/>
