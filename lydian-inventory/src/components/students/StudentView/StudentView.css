@@ -12,7 +12,7 @@
     padding-bottom: 10vh;
 }
 
-li .stud {
+/* li .stud {
     text-decoration: none;
     color: #000;
     border-bottom: 1px solid #ccc;
@@ -26,20 +26,20 @@ li .stud {
     display: block;
     width: 600px;
   }
-  
-  li .studEdit{
+   */
+  .studEdit{
     width: 310px;
     font-size: 20px;
   }
-  li .studEdit:hover {
+  .studEdit:hover {
     font-size: 22px;
     background: rgba(223,234,213,0.6);
   }
-  li .emailEdit{
+  .emailEdit{
     width: 310px;
     font-size: 17px;
   }
-  li .emailEdit:hover {
+  .emailEdit:hover {
     font-size: 19px;
     background: rgba(223,234,213,0.6);
   }

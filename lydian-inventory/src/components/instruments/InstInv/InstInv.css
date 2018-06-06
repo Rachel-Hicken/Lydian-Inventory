@@ -61,6 +61,19 @@
     overflow-x: hidden; 
     padding-top: 20px;
 }
+.sideTitle{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 20px;
+}
+.sideLink{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 20px;
+  font-weight: bold;  
+  color: #115576;
+  text-decoration: none;
+  padding-top: 10px;
+  margin-left: 10px;
+}
 
 select{
   -webkit-border-radius: 5px;
@@ -119,6 +132,13 @@ button:active{
     position:relative;
 	top:1px;
 }
+
+.editLabel{
+  background: rgba(223,234,213,0.6);
+  height: 35px;
+  font-size: 18px;
+}
+
 
 .inventoryList{
     background: rgba(223,234,213,0.6);
@@ -198,11 +218,11 @@ li EditableLabel {
     font-size: 18px;
   }
 
-  li .instEdit{
+ .instEdit{
     width: 200px;
     font-size: 20px;
   }
-  li .instEdit:hover{
+  .instEdit:hover{
     font-size: 22px;
     background: rgba(223,234,213,0.6);
   }

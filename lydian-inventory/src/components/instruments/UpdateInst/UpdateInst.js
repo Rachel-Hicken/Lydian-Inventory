@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import EditableLabel from 'react-inline-editing';
-import './UpdateInst.css';
 import '../noNav.css'
 import '../InstInv/InstInv.css'
 
@@ -139,44 +138,65 @@ class UpdateInst extends Component {
 
                         <div className="left">
                             <li className="label">School ID:</li>
-                            <li><p className="instEdit"><EditableLabel text={el.inst_school_id}
-                                onFocus={this.instSchoolID_handleFocus}
-                                onFocusOut={this.instSchoolID_handleFocusOut}
-                                className="info"
-                            /></p></li>
+                            <li className="instEdit">
+                                <EditableLabel
+                                    inputClassName='editLabel'
+                                    text={el.inst_school_id}
+                                    onFocus={this.instSchoolID_handleFocus}
+                                    onFocusOut={this.instSchoolID_handleFocusOut}
+                                    className="info"
+                                /></li>
                             <li className="label">Type:</li>
-                            <li><p className="instEdit"><EditableLabel text={el.inst_type}
-                                onFocus={this.type_handleFocus}
-                                onFocusOut={this.type_handleFocusOut}
-                            /></p></li>
+                            <li className="instEdit">
+                                <EditableLabel
+                                    inputClassName='editLabel'
+                                    text={el.inst_type}
+                                    onFocus={this.type_handleFocus}
+                                    onFocusOut={this.type_handleFocusOut}
+                                /></li>
                             <li className="label">Serial Number:</li>
-                            <li><p className="instEdit"><EditableLabel text={el.serial_num}
-                                onFocus={this.serialNum_handleFocus}
-                                onFocusOut={this.serialNum_handleFocusOut}
-                            /></p></li>
+                            <li className="instEdit">
+                                <EditableLabel
+                                    inputClassName='editLabel'
+                                    text={el.serial_num}
+                                    onFocus={this.serialNum_handleFocus}
+                                    onFocusOut={this.serialNum_handleFocusOut}
+                                /></li>
                         </div>
 
                         <div className="right">
                             <li className="label">Make:</li>
-                            <li><p className="instEdit"><EditableLabel text={el.make}
-                                onFocus={this.make_handleFocus}
-                                onFocusOut={this.make_handleFocusOut}
-                            /></p></li>
+                            <li className="instEdit">
+                                <EditableLabel
+                                    inputClassName='editLabel'
+                                    text={el.make}
+                                    onFocus={this.make_handleFocus}
+                                    onFocusOut={this.make_handleFocusOut}
+                                /></li>
                             <li className="label">Model:</li>
-                            <li><p className="instEdit"><EditableLabel text={el.model}
-                                onFocus={this.model_handleFocus}
-                                onFocusOut={this.model_handleFocusOut}
-                            /></p></li>
+                            <li className="instEdit">
+                                <EditableLabel
+                                    inputClassName='editLabel'
+                                    text={el.model}
+                                    onFocus={this.model_handleFocus}
+                                    onFocusOut={this.model_handleFocusOut}
+                                /></li>
                             <li className="label">Year:</li>
-                            <li><p className="instEdit"><EditableLabel text={el.inst_year}
-                                onFocus={this.year_handleFocus}
-                                onFocusOut={this.year_handleFocusOut}
-                            /></p></li>
+                            <li className="instEdit">
+                                <EditableLabel
+                                    inputClassName='editLabel'
+                                    text={el.inst_year}
+                                    onFocus={this.year_handleFocus}
+                                    onFocusOut={this.year_handleFocusOut}
+                                /></li>
                             <li className="label">Purchase Price:</li>
-                            <li><p className="instEdit"><EditableLabel text={el.purchase_price}
-                                onFocus={this.price_handleFocus}
-                                onFocusOut={this.price_handleFocusOut}
-                            /></p></li>
+                            <li className="instEdit">
+                                <EditableLabel
+                                    inputClassName='editLabel'
+                                    text={el.purchase_price}
+                                    onFocus={this.price_handleFocus}
+                                    onFocusOut={this.price_handleFocusOut}
+                                /></li>
                         </div>
                     </div>
                 </div>

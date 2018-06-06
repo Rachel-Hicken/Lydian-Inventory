@@ -37,10 +37,10 @@ class InstInv extends Component {
     deletePost(id) {
         if (window.confirm('Are you sure you want to delete this instrument?')) {
             axios.delete(`/instrument/delete/${id}`).then(res => {
-                this.setState({ 
-                    all_instruments: res.data 
+                this.setState({
+                    all_instruments: res.data
                 })
-            toast.success("Successfully got Instruments")
+                toast.success("Successfully got Instruments")
             }).catch(() => toast.error(alert("Instrument has a depend record. Cannot be deleted")));
         }
     }
@@ -132,10 +132,10 @@ class InstInv extends Component {
                             </select>
 
                             {/* search input and filtering */}
-                            <input 
-                            onChange={(e) => this.filterHandler(e.target.value)} 
-                            type="search"
-                            placeholder="Search.."
+                            <input
+                                onChange={(e) => this.filterHandler(e.target.value)}
+                                type="search"
+                                placeholder="Search.."
                             />
                         </div>
 
@@ -154,10 +154,16 @@ class InstInv extends Component {
 
                     </div>
                     <div className="sideBar">
-                        <h1>View Instruments</h1>
-                        <Link to="/instruments/view"><p>All</p></Link>
-                        <Link to="/instruments/out"><p>Checked Out</p></Link>
-                        <Link to="/instruments/available"><p>Available</p></Link>
+                        <h1 className="sideTitle">View Instruments:</h1>
+                        {/* <Link to="/instruments/view">
+                            <p className="sideLink">All</p>
+                        </Link> */}
+                        <Link to="/instruments/out">
+                            <p className="sideLink">Checked Out</p>
+                        </Link>
+                        <Link to="/instruments/available">
+                            <p className="sideLink">Available</p>
+                        </Link>
                     </div>
                 </div>
             </div>
