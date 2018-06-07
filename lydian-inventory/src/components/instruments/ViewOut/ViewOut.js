@@ -19,13 +19,16 @@ class ViewOut extends Component {
             search: '',
             criteria: 'inst_school_id',
             checked: -1,
-            returnDate: moment()
+            returnDate: moment(),
+            instrumentID: ''
         }
         this.returnInst = this.returnInst.bind(this);
 
         this.filterHandler = this.filterHandler.bind(this);
         this.selectHandler = this.selectHandler.bind(this);
         this.checkboxHandler = this.checkboxHandler.bind(this);
+        this.emailHandler = this.emailHandler.bind(this);
+        this.firstNameHandler = this.firstNameHandler.bind(this);
         this.returnDateHandler = this.returnDateHandler.bind(this);
 
     }
@@ -34,7 +37,8 @@ class ViewOut extends Component {
     componentDidMount() {
         axios.get('/instruments/out').then(res => {
             this.setState({
-                out_instruments: res.data
+                out_instruments: res.data,
+                instrumentID: res.data[0].inst_school_id
             })
             toast.success("Successfully got Instruments")
         }).catch(() => toast.error("Failed to Fetch Instruments"));
@@ -51,7 +55,10 @@ class ViewOut extends Component {
                 })
                 this.props.history.push('/instruments')
                 toast.success("Successfully got Instruments")
-            }).catch(() => toast.error("Failed to Fetch Instruments"));
+            }).catch(() => toast.error("Failed to Fetch Instruments"))
+            .then(()=>{
+                axios.post(`/email`, {to: this.state.to, text: `Dear ${this.state.first}, Thank you for returning the instrument ${this.state.instrumentID}. It was returned on ${moment(this.state.returnDate).format('MMM DD, YYYY')}.`})
+            })
     }
 
     //search field handlers
@@ -68,7 +75,7 @@ class ViewOut extends Component {
     }
 
     //checkbox info to props
-    checkboxHandler(event) {
+    checkboxHandler(event, first, email) {
         const target = event.target;
         const value = target.value;
         console.log(value)
@@ -77,6 +84,19 @@ class ViewOut extends Component {
             checked: value
         });
         this.props.get_status_id(value);
+        this.firstNameHandler(first);
+        this.emailHandler(email);
+    }
+
+    emailHandler(email){
+        this.setState({
+            to: email
+        })
+    }
+    firstNameHandler(first){
+        this.setState({
+            first: first
+        })
     }
 
     returnDateHandler(date) {
@@ -143,7 +163,7 @@ class ViewOut extends Component {
         }).map(el => {
             return (
                 <div key={el.status_id} className="checkbox">
-                    <input type='checkbox' checked={this.state.checked == el.status_id} onChange={this.checkboxHandler} value={el.status_id} />
+                    <input type='checkbox' checked={this.state.checked == el.status_id} onChange={(e)=>this.checkboxHandler(e, el.student_first, el.student_email)} value={el.status_id} />
                     <div className="invItem">
                         <ul>
                             <li><p className="out">School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}
