@@ -1,14 +1,16 @@
 require('dotenv').config()
 const express = require('express'),
-      bodyParser = require('body-parser'),
-      massive = require('massive'),
-      session = require('express-session'),
-      passport = require('passport'),
-      Auth0Strategy = require('passport-auth0'),
-      nodemailer = require('nodemailer');
-    //   stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+    bodyParser = require('body-parser'),
+    massive = require('massive'),
+    session = require('express-session'),
+    passport = require('passport'),
+    Auth0Strategy = require('passport-auth0'),
+    nodemailer = require('nodemailer'),
+    path = require('path');
+    
+//   stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 const ic = require('./instrument_controller'),
-      sc = require('./student_controller');
+    sc = require('./student_controller');
 
 
 
@@ -21,19 +23,22 @@ const {
     CALLBACK_URL,
     CONNECTION_STRING,
     TRANSPORT_EMAIL,
-    TRANSPORT_PASSWORD
-}= process.env;
+    TRANSPORT_PASSWORD,
+    SUCCESS_REDIRECT
+} = process.env;
 
 const app = express();
 
 
 
 //massive
-massive(CONNECTION_STRING).then((db)=>{
+massive(CONNECTION_STRING).then((db) => {
     console.log('connected to db');
-    app.set('db',db);
+    app.set('db', db);
 })
 
+/////////////////Middleware/////////////////////
+app.use(express.static(`${__dirname}/../build`));
 app.use(bodyParser.json());
 app.use(session({
     secret: SESSION_SECRET,
@@ -51,39 +56,41 @@ passport.use(new Auth0Strategy({
     clientSecret: CLIENT_SECRET,
     callbackURL: CALLBACK_URL,
     scope: 'openid profile'
-},(accessToken, refreshToken, extraParams, profile, done)=>{
+}, (accessToken, refreshToken, extraParams, profile, done) => {
     let db = app.get('db');
-    let {displayName, picture, id}=profile;
-    db.find_user([id]).then((foundUser)=>{
-        if (foundUser[0]){
+    let { displayName, picture, id } = profile;
+    db.find_user([id]).then((foundUser) => {
+        if (foundUser[0]) {
             done(null, foundUser[0].id)
-        }else{
-            db.create_user([displayName, picture, id]).then((user)=>{
+        } else {
+            db.create_user([displayName, picture, id]).then((user) => {
                 done(null, user[0].id)
             })
         }
     })
 }))
 
-passport.serializeUser((id, done)=>{
+passport.serializeUser((id, done) => {
     done(null, id);
 })
 
-passport.deserializeUser((id, done)=>{
-    app.get('db').find_session_user([id]).then((user)=>{
+passport.deserializeUser((id, done) => {
+    app.get('db').find_session_user([id]).then((user) => {
         done(null, user[0])
     })
 })
 
+
+/////////////////////ENDPOINT////////////////////////////////////
 //Endpoints for login/authentication
 app.get('/login', passport.authenticate('auth0'));
-app.get('/auth/callback', passport.authenticate('auth0',{
-    successRedirect: 'http://localhost:3000/#/private'
+app.get('/auth/callback', passport.authenticate('auth0', {
+    successRedirect: process.env.SUCCESS_REDIRECT
 }))
-app.get('/auth/me', function(req,res){
-    if (req.user){
+app.get('/auth/me', function (req, res) {
+    if (req.user) {
         res.status(200).send(req.user);
-    }else{
+    } else {
         res.status(401).send('Denied!')
     }
 })
@@ -123,6 +130,8 @@ app.get('/student/view/:id', sc.view_student);
 //endpoint for email
 app.post('/email', sc.send_email);
 
+
+
 /////////////////////////Stripe//////////////////////////////
 // app.post('/api/payment', function(req, res, next){
 //     // convert amount to pennies
@@ -146,7 +155,7 @@ app.post('/email', sc.send_email);
 //       }
 //     }
 //     const convertedAmt = parseInt(pennies.join(''));
-  
+
 //     const charge = stripe.charges.create({
 //         amount: convertedAmt, // amount in cents, again
 //         currency: 'usd',
@@ -160,9 +169,12 @@ app.post('/email', sc.send_email);
 //         // }
 //     });
 //   });
-  //////////////////////END STRIPE////////////////////////////
+//////////////////////END STRIPE////////////////////////////
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
-
-app.listen(SERVER_PORT, ()=>{
-    console.log(`Listening to port ${SERVER_PORT}`)})
+app.listen(SERVER_PORT, () => {
+    console.log(`Listening to port ${SERVER_PORT}`)
+})

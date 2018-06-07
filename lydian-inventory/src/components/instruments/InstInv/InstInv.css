@@ -166,7 +166,7 @@ ul {
 }
 
 li {
-  font: 200 16px/1.5 Helvetica, Verdana, sans-serif;
+  font: 200 18px/1.5 Helvetica, Verdana, sans-serif;
   list-style-type: none;
 }
 
@@ -174,10 +174,6 @@ li {
   font-weight: bold;
   font-size: 20px;
 }
-
-/* li:last-child {
-  border: none;
-} */
 
 li p {
   text-decoration: none;
@@ -191,11 +187,11 @@ li p {
   -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
   transition: font-size 0.3s ease, background-color 0.3s ease;
   display: block;
-  width: 550px;
+  width: 625px;
 }
 
 li p:hover {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 
