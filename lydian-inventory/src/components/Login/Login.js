@@ -7,7 +7,8 @@ import './Login.css'
 export default function Login() {
     return (
         <div className='loginPg'>
-            <nav>
+            <nav className="lgNav">
+                <div className="loginNav">
                 <div className='company_name'>
                     <p className="lydian">Lydian</p>
                     <p className="inventory"> Inventory</p>
@@ -17,8 +18,8 @@ export default function Login() {
                         <button className="loginBtn">Login</button>
                     </a>
                 </div>
+                </div>
             </nav>
-            <img className='home_img' src="https://images.pexels.com/photos/210854/pexels-photo-210854.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt='temporarypic' />
         </div>
     )
 }

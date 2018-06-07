@@ -14,6 +14,7 @@
 .mainBodyInst{
   
         background-image: url("../../../img/trianglifyBlueGree-1.jpg"); 
+        min-height: 70vh;
         background-size: cover;
         background-attachment: fixed;
         display: flex;

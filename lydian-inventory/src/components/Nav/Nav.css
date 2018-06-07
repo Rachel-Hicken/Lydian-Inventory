@@ -1,15 +1,20 @@
 nav{
     height: 16vh;
-    width: 100%;
+    width: 100vw;
     background: #115576;
     position: fixed;
   }
+.navContainer{
+  display: flex;
+}
 .navBtn{
-  width: 25%;
+  width: 25vw;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-right: 2%;
+  margin-right: 2vw;
+  margin-top: 3.5vh;
+  
 }
 .homeBtn{
   -moz-box-shadow: 0px 10px 14px -7px #276873;
