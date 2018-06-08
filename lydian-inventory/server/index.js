@@ -7,10 +7,11 @@ const express = require('express'),
     Auth0Strategy = require('passport-auth0'),
     nodemailer = require('nodemailer'),
     path = require('path');
-    
+
 //   stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 const ic = require('./instrument_controller'),
-    sc = require('./student_controller');
+      sc = require('./student_controller'),
+      fc = require('./fees_controller');
 
 
 
@@ -129,6 +130,14 @@ app.get('/student/view/:id', sc.view_student);
 
 //endpoint for email
 app.post('/email', sc.send_email);
+
+//ENDPOINTS FOR FEES
+//view studentfes
+app.get('/fees/student/:id', fc.fee_view_student);
+//associated fees for student
+app.get('/fees/student/list/:id', fc.fee_student_list);
+
+
 
 
 

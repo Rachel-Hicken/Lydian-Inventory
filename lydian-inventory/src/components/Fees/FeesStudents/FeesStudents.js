@@ -57,7 +57,6 @@ class FeesStudents extends Component {
             checked: value
         });
         this.props.get_student_id(value);
-        // console.log(checked)
     }
 
     render() {
@@ -126,7 +125,7 @@ class FeesStudents extends Component {
                 <Nav />
                 <div className="main">
                     <div className="mainBodyStud">
-                        <h1 className="title">Student Directory</h1>
+                        <h1 className="title">Student List</h1>
                         <div className="searchBar">
                             <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">
                                 <option value="student_school_id">Student School ID</option>
