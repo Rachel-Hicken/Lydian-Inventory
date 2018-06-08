@@ -48,9 +48,9 @@ module.exports = {
     },
     assign_inst: (req, res, next) => {
         const dbInstance = req.app.get('db');
-        const {student_id, checkout_date, due_date, return_date} = req.body
+        const {student_id, checkout_date, due_date, return_date, fee} = req.body
         const {params} = req;
-        dbInstance.assign_inst([params.id, student_id, checkout_date, due_date, return_date])
+        dbInstance.assign_inst([params.id, student_id, checkout_date, due_date, return_date, fee])
         .then(() => res.status(200).send())
         .catch((e) => { console.log(e); res.status(500).send("Couldn't get assign_inst")});
     },

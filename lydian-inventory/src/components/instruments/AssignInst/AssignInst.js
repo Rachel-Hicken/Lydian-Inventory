@@ -23,6 +23,7 @@ class AssignInst extends Component {
             student: '',
             checkoutDate: moment(),
             dueDate: moment(),
+            fee: 0,
             returnDate: null,
             to: '',
             first: ''
@@ -36,6 +37,7 @@ class AssignInst extends Component {
         this.assignInst = this.assignInst.bind(this);
         this.emailHandler = this.emailHandler.bind(this);
         this.firstNameHandler = this.firstNameHandler.bind(this);
+        this.feeHandler = this.feeHandler.bind(this);
     }
 
     componentDidMount() {
@@ -56,10 +58,10 @@ class AssignInst extends Component {
         }).catch(() => toast.error("Failed to Fetch Students"));
     }
 
-    assignInst(student_id, checkout_date, due_date, return_date) {
+    assignInst(student_id, checkout_date, due_date, return_date, fee) {
         console.log(this);
         axios.put(`/instrument/assign/${this.props.instId}`,
-            { student_id: this.state.checked, checkout_date: this.state.checkoutDate, due_date: this.state.dueDate, return_date: this.state.returnDate })
+            { student_id: this.state.checked, checkout_date: this.state.checkoutDate, due_date: this.state.dueDate, return_date: this.state.returnDate, fee: this.state.fee })
             .then(res => {
                 this.setState({
                     instrument: res.data
@@ -88,6 +90,12 @@ class AssignInst extends Component {
     dueDateHandler(date) {
         this.setState({
             dueDate: date
+        })
+    }
+
+    feeHandler(fee){
+        this.setState({
+            fee: fee
         })
     }
 
@@ -233,6 +241,8 @@ class AssignInst extends Component {
                             selected={this.state.dueDate}
                             onChange={this.dueDateHandler}
                         />
+                        <p className="feeText">Fee:</p>
+                        <input type="number" onChange={(e)=>this.feeHandler(e.target.value)} className="feeInput"/>
                         <div className="updateBtnsNoNav">
                         
                             <button onClick={this.assignInst}

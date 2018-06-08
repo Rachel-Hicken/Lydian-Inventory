@@ -164,6 +164,9 @@ class InstInv extends Component {
                         <Link to="/instruments/available">
                             <p className="sideLink">Available</p>
                         </Link>
+                        <Link to="/fees/main">
+                            <p className="sideLink">Fees</p>
+                        </Link>
                     </div>
                 </div>
             </div>
