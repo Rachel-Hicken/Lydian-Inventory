@@ -6,12 +6,12 @@ const express = require('express'),
     passport = require('passport'),
     Auth0Strategy = require('passport-auth0'),
     nodemailer = require('nodemailer'),
-    path = require('path');
+    path = require('path'),
+    stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-//   stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 const ic = require('./instrument_controller'),
-      sc = require('./student_controller'),
-      fc = require('./fees_controller');
+    sc = require('./student_controller'),
+    fc = require('./fees_controller');
 
 
 
@@ -142,42 +142,48 @@ app.get('/fees/student/list/:id', fc.fee_student_list);
 
 
 /////////////////////////Stripe//////////////////////////////
-// app.post('/api/payment', function(req, res, next){
-//     // convert amount to pennies
-//     const amountArray = req.body.amount.toString().split('');
-//     const pennies = [];
-//     for (var i = 0; i < amountArray.length; i++) {
-//       if(amountArray[i] === ".") {
-//         if (typeof amountArray[i + 1] === "string") {
-//           pennies.push(amountArray[i + 1]);
-//         } else {
-//           pennies.push("0");
-//         }
-//         if (typeof amountArray[i + 2] === "string") {
-//           pennies.push(amountArray[i + 2]);
-//         } else {
-//           pennies.push("0");
-//         }
-//           break;
-//       } else {
-//           pennies.push(amountArray[i])
-//       }
-//     }
-//     const convertedAmt = parseInt(pennies.join(''));
+app.post('/payment', function (req, res, next) {
+    // convert amount to pennies
+    const amountArray = req.body.amount.toString().split('');
+    const pennies = [];
+    for (var i = 0; i < amountArray.length; i++) {
+        if (amountArray[i] === ".") {
+            if (typeof amountArray[i + 1] === "string") {
+                pennies.push(amountArray[i + 1]);
+            } else {
+                pennies.push("0");
+            }
+            if (typeof amountArray[i + 2] === "string") {
+                pennies.push(amountArray[i + 2]);
+            } else {
+                pennies.push("0");
+            }
+            break;
+        } else {
+            pennies.push(amountArray[i])
+        }
+    }
+    const convertedAmt = parseInt(pennies.join(''));
 
-//     const charge = stripe.charges.create({
-//         amount: convertedAmt, // amount in cents, again
-//         currency: 'usd',
-//         source: req.body.token.id,
-//         description: 'Test charge from react app'
-//     }, function(err, charge) {
-//         if (err) return res.sendStatus(500)
-//         return res.sendStatus(200);
-//         // if (err && err.type === 'StripeCardError') {
-//         //   // The card has been declined
-//         // }
-//     });
-//   });
+    const charge = stripe.charges.create({
+        amount: convertedAmt, // amount in cents, again
+        currency: 'usd',
+        source: req.body.token.id,
+        description: 'Test charge from react app'
+    }, function (err, charge) {
+        
+        const dbInstance = req.app.get('db');
+        const { status_id } = req.body;
+
+        if (err) return res.sendStatus(500)
+        if (err && err.type === 'StripeCardError') {
+            // The card has been declined
+        }
+        dbInstance.update_payment([status_id])
+            .then(() => res.status(200).send())
+            .catch((e) => { console.log(e); res.status(500).send("Couldn't update payment date in db")});
+    });
+});
 //////////////////////END STRIPE////////////////////////////
 
 app.get('*', (req, res) => {

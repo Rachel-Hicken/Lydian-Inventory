@@ -3,9 +3,10 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
-import { get_student_id } from '../../../ducks/reducer';
+import { get_student_id, get_status_id } from '../../../ducks/reducer';
 import '../../instruments/noNav.css';
 import '../../instruments/InstInv/InstInv.css';
+import StripeCheckout from 'react-stripe-checkout';
 
 class FeesPay extends Component {
     constructor(props) {
@@ -21,6 +22,7 @@ class FeesPay extends Component {
         }
 
         this.checkboxHandler = this.checkboxHandler.bind(this);
+        this.feeHandler = this.feeHandler.bind(this);
     }
 
     componentDidMount() {
@@ -40,6 +42,17 @@ class FeesPay extends Component {
             })
             toast.success("Successfully got Students")
         }).catch(() => toast.error("Failed to Fetch Students"));
+    }
+
+    onToken = (token) => {
+        token.card = void 0;
+        axios.post('/payment', { token, amount: this.state.fee, status_id: this.state.status_id }).then(response => {
+            this.setState({
+                redirect: true
+            })
+            alert('Thanks for your purchase')
+        });
+
     }
 
     // assignInst(student_id, checkout_date, due_date, return_date, fee) {
@@ -65,11 +78,11 @@ class FeesPay extends Component {
     //     })
     // }
 
-    // feeHandler(fee){
-    //     this.setState({
-    //         fee: fee
-    //     })
-    // }
+    feeHandler(fee){
+        this.setState({
+            fee: fee
+        })
+    }
 
     // selectHandler(value) {
     //     this.setState({
@@ -77,32 +90,37 @@ class FeesPay extends Component {
     //     })
     // }
 
-    checkboxHandler(event, first, email) {
+    checkboxHandler(event, fee) {
         const target = event.target;
         const value = target.value;
         console.log(value)
-
+        const amount = (fee * 100)
+        
         this.setState({
-            checked: value
+            checked: value,
+            fee: amount
         });
         this.props.get_status_id(value);
+        this.feeHandler(amount)
     }
 
-    filterHandler(filter) {
-        this.setState({
-            search: filter
-        })
-    }
+
+
+    // filterHandler(filter) {
+    //     this.setState({
+    //         search: filter
+    //     })
+    // }
 
     render() {
         let el = this.state.student;
         // console.log(this.state.instrument)
         // console.log(this.state.students)
-
+        console.log(this.state.fee)
         let assignments = this.state.assignments.map(el => {
             return (
                 <div key={el.status_id} className="checkbox">
-                    <input type='checkbox' checked={this.state.checked == el.status_id} onChange={this.checkboxHandler} value={el.status_id} />
+                    <input type='checkbox' checked={this.state.checked == el.status_id} onChange={(e)=>this.checkboxHandler(e, el.fee)} value={el.status_id} />
                     <ul>
                         <li><p className="assign">School ID: {el.inst_school_id}, Check Out Date: {el.checkout_date}, Return Date: {el.return_date}, Fee: {el.fee}, Payment Status: {el.status}</p></li>
                     </ul>
@@ -126,7 +144,11 @@ class FeesPay extends Component {
                     </div>
                     <div className="buttonBarNoNav">
                         <div className="updateBtnsNoNav">
-                            <button onClick={this.payHandler}>Pay Fees</button>
+                            <StripeCheckout
+                                token={this.onToken}
+                                stripeKey={'pk_test_XSsmVPCU6CEqksYbBJySqq2Z'}
+                                amount={this.state.fee} // The amount displayed at the bottom of the payment form
+                            />
                             <Link to='/fees/main'><button>Cancel</button></Link>
                         </div>
                     </div>
@@ -136,10 +158,10 @@ class FeesPay extends Component {
     }
 }
 
-function mapStateToProps(state){
-    return{
+function mapStateToProps(state) {
+    return {
         studentID: state.studentID
     }
 }
 
-export default connect(mapStateToProps, { get_student_id })(FeesPay);
+export default connect(mapStateToProps, { get_student_id , get_status_id})(FeesPay);
