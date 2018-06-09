@@ -1,6 +1,25 @@
 .private{
     height: 100%;
 	width: 100%;
+	background-image: url("../Login/trianglifyBlueGree.png"); 
+    background-size: cover;
+}
+.privateFees{
+	height: 100vh;
+	width: 100vw;
+	background-image: url("../Login/trianglifyBlueGree.png"); 
+    background-size: cover;
+	position: fixed;
+	top: 0;
+}
+.feesBtns{
+	height: 100vh;
+	width: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
+	margin-top: 50vh;
 }
 
 .welcome{
@@ -81,16 +100,13 @@
 	top:1px;
 }
 .instStudBtns{
-	background-image: url("../Login/trianglifyBlueGree.png"); 
-	height: 80vh;
+	height: 100vh;
 	width: auto;
-	background-size: cover;
-    display: flex;
+	display: flex;
 	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: center;
+	justify-content: start;
 	align-items: center;
-	align-content: stretch;
+	margin-top: 25vh;
 	/* background-size: cover; */
 	/* display: flex;
 	flex-direction: column;

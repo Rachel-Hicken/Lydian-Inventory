@@ -3,6 +3,7 @@ nav{
     width: 100vw;
     background: #115576;
     position: fixed;
+    top: 0;
   }
 .navContainer{
   display: flex;

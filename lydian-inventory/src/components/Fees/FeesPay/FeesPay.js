@@ -107,11 +107,12 @@ class FeesPay extends Component {
                 <div className="mainBody">
                     {/* Display Student seleceted from FeesStudents */}
                     <h1 className="titleNoNav">Fees List</h1>
-                    <p className="instructions">Select Item to Pay For:</p>
 
                     <div key={el.student_id} >
-                        <li>School ID: {el.student_school_id}, First: {el.student_first}, Last: {el.student_last}, Phone: {el.student_phone}</li>
+                        <li className="liCheckOut">School ID: {el.student_school_id}, First: {el.student_first}, Last: {el.student_last}, Phone: {el.student_phone}</li>
                     </div>
+                    <p className="instructions">Select Item to Pay For:</p>
+                    
                     <div className="inventoryList">
                         {assignments}
                     </div>

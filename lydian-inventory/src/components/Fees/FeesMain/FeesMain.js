@@ -7,15 +7,15 @@ import Nav from '../../Nav/Nav';
 export default class FeesMain extends Component{
     render(){
         return(
-            <div className="private">
+            <div className="privateFees">
                 <Nav/>
-            <div className="instStudBtns">
+            <div className="feesBtns">
                 <Link to='/fees/students'>
                 <button className='instruments'>Student Fees</button>
                 </Link>
-                <Link to='/fees/view'>
+                {/* <Link to='/fees/view'>
                 <button className='students'>View Unpaid</button>
-                </Link>
+                </Link> */}
             </div>
         </div>
         )

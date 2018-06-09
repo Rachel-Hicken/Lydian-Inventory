@@ -182,6 +182,7 @@ li {
 .liCheckOut{
   font: 200 24px/1.5 Helvetica, Verdana, sans-serif;
   list-style-type: none;
+  padding-bottom: 2vh;
 }
 
 .label{

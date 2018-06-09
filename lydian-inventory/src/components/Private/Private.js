@@ -21,7 +21,7 @@ class Private extends Component {
                         <div className="private">
                             <div className='userInfo'>
                                 <h1 className='welcome'>Welcome to</h1>
-                                <h1 className='lydianWelcome'>Lydian!</h1>                                
+                                <h1 className='lydianWelcome'>Lydian!</h1>
                                 <div className="accountInfo">
                                     <p className="accountName">Account Name: {user_name} </p>
                                     <img className="loginPic" src={img} alt='' />
@@ -34,7 +34,12 @@ class Private extends Component {
                             </div>
                         </div>
                         :
-                        <Link to='/'><button>login</button></Link>
+                        <div className="private">
+                            <div className="instStudBtns">
+
+                                <Link to='/'><button>login</button></Link>
+                            </div>
+                        </div>
                 }
 
             </div>
