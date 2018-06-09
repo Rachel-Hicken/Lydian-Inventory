@@ -136,6 +136,8 @@ app.post('/email', sc.send_email);
 app.get('/fees/student/:id', fc.fee_view_student);
 //associated fees for student
 app.get('/fees/student/list/:id', fc.fee_student_list);
+//update paid date in db
+app.put('/fees/paid/:id', fc.update_payment);
 
 
 
@@ -171,17 +173,13 @@ app.post('/payment', function (req, res, next) {
         source: req.body.token.id,
         description: 'Test charge from react app'
     }, function (err, charge) {
-        
-        const dbInstance = req.app.get('db');
-        const { status_id } = req.body;
-
+      
         if (err) return res.sendStatus(500)
+
         if (err && err.type === 'StripeCardError') {
-            // The card has been declined
+            return alert('The card has been declined')
         }
-        dbInstance.update_payment([status_id])
-            .then(() => res.status(200).send())
-            .catch((e) => { console.log(e); res.status(500).send("Couldn't update payment date in db")});
+    return res.sendStatus(200);
     });
 });
 //////////////////////END STRIPE////////////////////////////

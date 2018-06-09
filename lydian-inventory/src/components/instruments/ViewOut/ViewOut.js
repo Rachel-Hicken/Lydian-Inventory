@@ -185,7 +185,7 @@ class ViewOut extends Component {
         return (
             <div className="main">
                 <div className="mainBody">
-                    <h1 className="title">CHECKED OUT INSTRUMENTS</h1>
+                    <h1 className="title">INSTRUMENT CHECK IN</h1>
                     <div className="searchBar">
                         <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">
                             <option value="inst_school_id">Instrument School ID</option>
@@ -203,7 +203,7 @@ class ViewOut extends Component {
                         placeholder="Search.."
                         />
                     </div>
-                    <p className="instructions">Select One to Return</p>
+                    {/* <p className="instructions">Select One to Return</p> */}
 
                     <div className="inventoryList">
                         {instruments}

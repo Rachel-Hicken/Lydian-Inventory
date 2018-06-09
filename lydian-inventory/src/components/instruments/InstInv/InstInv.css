@@ -179,6 +179,10 @@ li {
   font: 200 18px/1.5 Helvetica, Verdana, sans-serif;
   list-style-type: none;
 }
+.liCheckOut{
+  font: 200 24px/1.5 Helvetica, Verdana, sans-serif;
+  list-style-type: none;
+}
 
 .label{
   font-weight: bold;

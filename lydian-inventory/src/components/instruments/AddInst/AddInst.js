@@ -8,13 +8,13 @@ export default class Add_Inst extends Component {
     constructor() {
         super()
         this.state = {
-            inst_school_id: 'erwe',
-            inst_type: 'awer',
-            serial_num: 'awe',
-            make: 'war',
-            model: 'awer',
-            inst_year: '1234',
-            purchase_price: '234',
+            inst_school_id: 'Test1',
+            inst_type: 'violin',
+            serial_num: 'vln1234',
+            make: 'strad',
+            model: 's34',
+            inst_year: '1774',
+            purchase_price: '123234',
             jokeSetup: '',
             punchline: ''
         }

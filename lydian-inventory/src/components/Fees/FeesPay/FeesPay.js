@@ -7,6 +7,8 @@ import { get_student_id, get_status_id } from '../../../ducks/reducer';
 import '../../instruments/noNav.css';
 import '../../instruments/InstInv/InstInv.css';
 import StripeCheckout from 'react-stripe-checkout';
+import moment from 'moment';
+
 
 class FeesPay extends Component {
     constructor(props) {
@@ -18,7 +20,8 @@ class FeesPay extends Component {
             fee: 0,
             statusID: '',
             to: '',
-            first: ''
+            first: '',
+            paidDate: moment()
         }
 
         this.checkboxHandler = this.checkboxHandler.bind(this);
@@ -46,56 +49,36 @@ class FeesPay extends Component {
 
     onToken = (token) => {
         token.card = void 0;
-        axios.post('/payment', { token, amount: this.state.fee, status_id: this.state.status_id }).then(response => {
+        axios.post('/payment', { token, amount: this.state.fee }).then(response => {
             this.setState({
                 redirect: true
             })
             alert('Thanks for your purchase')
-        });
-
+        }).then(
+        axios.put(`/fees/paid/${this.state.statusID}`)
+            .then(res => {
+                this.setState({
+                    paidDate: res.data.paid_date
+                })
+                toast.success("Successfully updated paid date")
+            }).catch(() => toast.error("Failed to update paid date"))
+            .then(()=>{
+                axios.post(`/email`, {to: this.state.to, text: `Dear ${this.state.first}, You payment was received on ${moment(this.state.paidDate).format('MMM DD, YYYY')}.  Thank you and have a nice day.`})
+            }))
     }
 
-    // assignInst(student_id, checkout_date, due_date, return_date, fee) {
-    //     console.log(this);
-    //     axios.put(`/instrument/assign/${this.props.instId}`,
-    //         { student_id: this.state.checked, checkout_date: this.state.checkoutDate, due_date: this.state.dueDate, return_date: this.state.returnDate, fee: this.state.fee })
-    //         .then(res => {
-    //             this.setState({
-    //                 instrument: res.data
-    //             })
-    //             this.props.history.push('/instruments')
-    //             toast.success("Successfully got Instruments")
-    //         }).catch(() => toast.error("Failed to Fetch Instruments"))
-    //         // .then(()=>{
-    //         //     axios.post(`/email`, {to: this.state.to, text: `Dear ${this.state.first}, The instrument ${this.state.instrumentID} has been checked out to you. Please be sure to return the instrument on or before ${moment(this.state.due_date).format('MMM DD, YYYY')}.  If you have any questions contact your instructor.`})
-    //         // })
-    // }
-
-    // studentHandler(email, first) {
-    //     this.setState({
-    //         to: email,
-    //         first: first
-    //     })
-    // }
-
-    feeHandler(fee){
+    feeHandler(fee) {
         this.setState({
             fee: fee
         })
     }
-
-    // selectHandler(value) {
-    //     this.setState({
-    //         criteria: value
-    //     })
-    // }
 
     checkboxHandler(event, fee) {
         const target = event.target;
         const value = target.value;
         console.log(value)
         const amount = (fee * 100)
-        
+
         this.setState({
             checked: value,
             fee: amount
@@ -104,25 +87,15 @@ class FeesPay extends Component {
         this.feeHandler(amount)
     }
 
-
-
-    // filterHandler(filter) {
-    //     this.setState({
-    //         search: filter
-    //     })
-    // }
-
     render() {
         let el = this.state.student;
-        // console.log(this.state.instrument)
-        // console.log(this.state.students)
         console.log(this.state.fee)
         let assignments = this.state.assignments.map(el => {
             return (
                 <div key={el.status_id} className="checkbox">
-                    <input type='checkbox' checked={this.state.checked == el.status_id} onChange={(e)=>this.checkboxHandler(e, el.fee)} value={el.status_id} />
+                    <input type='checkbox' checked={this.state.checked == el.status_id} onChange={(e) => this.checkboxHandler(e, el.fee)} value={el.status_id} />
                     <ul>
-                        <li><p className="assign">School ID: {el.inst_school_id}, Check Out Date: {el.checkout_date}, Return Date: {el.return_date}, Fee: {el.fee}, Payment Status: {el.status}</p></li>
+                        <li><p className="assign">School ID: {el.inst_school_id}, Check Out Date: {moment(el.checkout_date).format('MMM DD, YYYY')}, Return Date: {moment(el.return_date).format('MMM DD, YYYY')}, Fee: {el.fee}, Payment Status: {el.status}</p></li>
                     </ul>
                 </div>
 
@@ -164,4 +137,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { get_student_id , get_status_id})(FeesPay);
+export default connect(mapStateToProps, { get_student_id, get_status_id })(FeesPay);

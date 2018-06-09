@@ -15,7 +15,8 @@
         align-content: stretch;
 }
 .titleNoNav{
-    font-size: 28px;
+    font-size: 36px;
+    font-weight: bold;
     display: flex;
     justify-content: center;
     align-content: center;

@@ -1,3 +1,4 @@
 UPDATE inst_status
-SET paid_date = NOW()
-WHERE status_id = $1;
+SET paid_date = CURRENT_TIMESTAMP
+WHERE status_id = $1
+RETURNING *;

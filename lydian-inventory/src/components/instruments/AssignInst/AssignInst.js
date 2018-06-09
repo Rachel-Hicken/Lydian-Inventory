@@ -193,11 +193,11 @@ class AssignInst extends Component {
             <div className="main">
                 <div className="mainBody">
                     {/* Display instrument seleceted from InstInv */}
-                    <h1 className="titleNoNav">Assign an Instrument</h1>
-                    <p className="instructions">Instrument Being Assigned:</p>
+                    <h1 className="titleNoNav">Instrument Check Out</h1>
+                    {/* <p className="instructions">Instrument Being Assigned:</p> */}
 
                     <div key={el.inst_id} >
-                        <li>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</li>
+                        <li className="liCheckOut">School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</li>
                         {/* <p>Make: {el.make}, Model: {el.model}, Year: {el.inst_year}, Purchase Price: {el.purchase_price}</p> */}
                     </div>
                         {/* Search for student to assign */}
