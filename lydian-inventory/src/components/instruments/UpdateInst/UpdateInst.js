@@ -132,7 +132,7 @@ class UpdateInst extends Component {
         return (
             <div className="main">
                 <div className="mainBody">
-                    <h2>Click in the field to edit text</h2>
+                    <h1 className="title">Click in the field to edit text</h1>
 
                     <div key={el.inst_id} className="updateEl">
 

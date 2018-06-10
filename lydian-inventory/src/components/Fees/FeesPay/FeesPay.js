@@ -54,8 +54,8 @@ class FeesPay extends Component {
                 redirect: true
             })
             alert('Thanks for your purchase')
-        }).then(
-        axios.put(`/fees/paid/${this.state.statusID}`)
+        })
+        .then(()=>{axios.put(`/fees/paid/${this.state.statusID}`)
             .then(res => {
                 this.setState({
                     paidDate: res.data.paid_date
@@ -64,7 +64,7 @@ class FeesPay extends Component {
             }).catch(() => toast.error("Failed to update paid date"))
             .then(()=>{
                 axios.post(`/email`, {to: this.state.to, text: `Dear ${this.state.first}, You payment was received on ${moment(this.state.paidDate).format('MMM DD, YYYY')}.  Thank you and have a nice day.`})
-            }))
+            })})
     }
 
     feeHandler(fee) {
