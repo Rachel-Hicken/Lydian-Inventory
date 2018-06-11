@@ -69,8 +69,8 @@ class AssignInst extends Component {
                 this.props.history.push('/instruments')
                 toast.success("Successfully got Instruments")
             }).catch(() => toast.error("Failed to Fetch Instruments"))
-            .then(()=>{
-                axios.post(`/email`, {to: this.state.to, text: `Dear ${this.state.first}, The instrument ${this.state.instrumentID} has been checked out to you. Please be sure to return the instrument on or before ${moment(this.state.due_date).format('MMM DD, YYYY')}.  If you have any questions contact your instructor.`})
+            .then(() => {
+                axios.post(`/email`, { to: this.state.to, text: `Dear ${this.state.first}, The instrument ${this.state.instrumentID} has been checked out to you. Please be sure to return the instrument on or before ${moment(this.state.due_date).format('MMM DD, YYYY')}.  If you have any questions contact your instructor.` })
             })
     }
 
@@ -93,7 +93,7 @@ class AssignInst extends Component {
         })
     }
 
-    feeHandler(fee){
+    feeHandler(fee) {
         this.setState({
             fee: fee
         })
@@ -124,12 +124,12 @@ class AssignInst extends Component {
         })
     }
 
-    emailHandler(email){
+    emailHandler(email) {
         this.setState({
             to: email
         })
     }
-    firstNameHandler(first){
+    firstNameHandler(first) {
         this.setState({
             first: first
         })
@@ -172,9 +172,9 @@ class AssignInst extends Component {
         }).map(el => {
             return (
                 <div key={el.student_id} className="checkbox">
-                    <input type='checkbox' checked={this.state.checked == el.student_id} onChange={(e)=>this.checkboxHandler(e, el.student_first, el.student_email)} value={el.student_id} />
+                    <input type='checkbox' checked={this.state.checked == el.student_id} onChange={(e) => this.checkboxHandler(e, el.student_first, el.student_email)} value={el.student_id} />
                     <ul>
-                    <li><p className="assign">School ID: {el.student_school_id}, First Name: {el.student_first}, Last Name: {el.student_last}, Phone: {el.student_phone}, Email: {el.student_email}</p></li>
+                        <li><p className="assign">School ID: {el.student_school_id}, First Name: {el.student_first}, Last Name: {el.student_last}, Phone: {el.student_phone}, Email: {el.student_email}</p></li>
                     </ul>
                 </div>
 
@@ -200,24 +200,24 @@ class AssignInst extends Component {
                         <li className="liCheckOut">School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</li>
                         {/* <p>Make: {el.make}, Model: {el.model}, Year: {el.inst_year}, Purchase Price: {el.purchase_price}</p> */}
                     </div>
-                        {/* Search for student to assign */}
-                        {/* <p className="instructions">Search For a Student</p> */}
-                        <div className="searchBar">
-                            <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">
-                                <option value="student_school_id">Student School ID</option>
-                                <option value="student_first">First Name</option>
-                                <option value="student_last">Last Name</option>
-                                <option value="student_phone">Phone</option>
-                            </select>
-                            <input 
-                            onChange={(e) => this.filterHandler(e.target.value)} 
+                    {/* Search for student to assign */}
+                    {/* <p className="instructions">Search For a Student</p> */}
+                    <div className="searchBar">
+                        <select onChange={(e) => this.selectHandler(e.target.value)} name="searchCriteria">
+                            <option value="student_school_id">Student School ID</option>
+                            <option value="student_first">First Name</option>
+                            <option value="student_last">Last Name</option>
+                            <option value="student_phone">Phone</option>
+                        </select>
+                        <input
+                            onChange={(e) => this.filterHandler(e.target.value)}
                             type="search"
                             placeholder="Search..."
-                            />
-                        </div>
-                        <div className="inventoryList">
-                            {students}
-                        </div>
+                        />
+                    </div>
+                    <div className="inventoryList">
+                        {students}
+                    </div>
                     {/* <div>
                         <p>Checkout Date</p>
                         <DatePicker
@@ -231,18 +231,19 @@ class AssignInst extends Component {
                         />
                     </div> */}
                     <div className="buttonBarNoNav">
-                    <p className="dateText">Checkout Date</p>
+                        <p className="dateText">Checkout Date</p>
                         <DatePicker className="datePicker"
                             selected={this.state.checkoutDate}
                             onChange={this.checkoutHandler}
                         />
                         <p className="dateText">Due Date</p>
-                        <DatePicker className="datePicker"
+                        <DatePicker
+                            className="datePicker"
                             selected={this.state.dueDate}
                             onChange={this.dueDateHandler}
                         />
                         <p className="dateText">Fee</p>
-                        <input type="number" onChange={(e)=>this.feeHandler(e.target.value)} className="feeInput"/>
+                        <input type="number" onChange={(e) => this.feeHandler(e.target.value)} className="feeInput" />
                         <div className="updateBtnsNoNav">
                             <button onClick={this.assignInst}>Assign</button>
                             <Link to='/instruments/available'><button>Cancel</button></Link>

@@ -6,8 +6,8 @@
     
         background-image: url("../../img/trianglifyBlueGree-1.jpg"); 
         background-size: cover;
-        height: 100vh;
-        /* padding-bottom: 10vh; */
+        min-height: 100vh;
+        padding-bottom: 10vh;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;

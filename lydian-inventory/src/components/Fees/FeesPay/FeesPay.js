@@ -26,6 +26,7 @@ class FeesPay extends Component {
 
         this.checkboxHandler = this.checkboxHandler.bind(this);
         this.feeHandler = this.feeHandler.bind(this);
+        this.getList = this.getList.bind(this);
     }
 
     componentDidMount() {
@@ -38,6 +39,10 @@ class FeesPay extends Component {
             });
             toast.success("Successfully got Instruments")
         }).catch(() => toast.error("Failed to Fetch Instruments"));
+        this.getList();
+    }
+
+    getList(){
         // get all students
         axios.get(`/fees/student/list/${this.props.studentID}`).then(res => {
             this.setState({
@@ -53,10 +58,11 @@ class FeesPay extends Component {
             this.setState({
                 redirect: true
             })
-            alert('Thanks for your purchase')
+            // alert('Thanks for your purchase')
         })
-        .then(()=>{axios.put(`/fees/paid/${this.state.statusID}`)
+        .then(()=>{axios.put(`/fees/paid/${this.state.checked}`)
             .then(res => {
+                // console.log('ALSKDJFAO;IWEO3892749823498')
                 this.setState({
                     paidDate: res.data.paid_date
                 })
@@ -64,6 +70,7 @@ class FeesPay extends Component {
             }).catch(() => toast.error("Failed to update paid date"))
             .then(()=>{
                 axios.post(`/email`, {to: this.state.to, text: `Dear ${this.state.first}, You payment was received on ${moment(this.state.paidDate).format('MMM DD, YYYY')}.  Thank you and have a nice day.`})
+                this.getList();
             })})
     }
 
