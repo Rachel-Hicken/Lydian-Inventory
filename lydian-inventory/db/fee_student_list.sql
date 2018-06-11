@@ -3,4 +3,4 @@ case when a.paid_date ISNULL then 'UNPAID' else 'PAID' end as Status
 from instruments i
 inner join inst_status a
 on i.inst_id = a.inst_id
-where student_id = 1
+where student_id = $1

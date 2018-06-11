@@ -102,3 +102,6 @@ Datepicker{
     font-size: 28px;
     margin-bottom: 35px;
 }
+StripeCheckout{
+    padding: 10px;
+}

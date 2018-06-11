@@ -42,7 +42,7 @@ class FeesPay extends Component {
         this.getList();
     }
 
-    getList(){
+    getList() {
         // get all students
         axios.get(`/fees/student/list/${this.props.studentID}`).then(res => {
             this.setState({
@@ -58,20 +58,22 @@ class FeesPay extends Component {
             this.setState({
                 redirect: true
             })
-            // alert('Thanks for your purchase')
         })
-        .then(()=>{axios.put(`/fees/paid/${this.state.checked}`)
-            .then(res => {
-                // console.log('ALSKDJFAO;IWEO3892749823498')
-                this.setState({
-                    paidDate: res.data.paid_date
+            .then(() => {
+                axios.put(`/fees/paid/${this.state.checked}`)
+                .then(res => {
+                    // console.log('ALSKDJFAO;IWEO3892749823498')
+                    this.setState({
+                        paidDate: res.data.paid_date
+                    })
+                    alert('Thanks for your payment')
+                    toast.success("Successfully updated paid date")
+                }).catch(() => toast.error("Failed to update paid date"))
+                .then(() => {
+                    axios.post(`/email`, { to: this.state.to, text: `Dear ${this.state.first}, You payment was received on ${moment(this.state.paidDate).format('MMM DD, YYYY')}.  Thank you and have a nice day.` })
+                    this.getList();
                 })
-                toast.success("Successfully updated paid date")
-            }).catch(() => toast.error("Failed to update paid date"))
-            .then(()=>{
-                axios.post(`/email`, {to: this.state.to, text: `Dear ${this.state.first}, You payment was received on ${moment(this.state.paidDate).format('MMM DD, YYYY')}.  Thank you and have a nice day.`})
-                this.getList();
-            })})
+            })
     }
 
     feeHandler(fee) {
@@ -96,6 +98,7 @@ class FeesPay extends Component {
 
     render() {
         let el = this.state.student;
+        console.log(this.props.studentID)
         console.log(this.state.fee)
         let assignments = this.state.assignments.map(el => {
             return (
@@ -119,7 +122,7 @@ class FeesPay extends Component {
                         <li className="liCheckOut">School ID: {el.student_school_id}, First: {el.student_first}, Last: {el.student_last}, Phone: {el.student_phone}</li>
                     </div>
                     <p className="instructions">Select Item to Pay For:</p>
-                    
+
                     <div className="inventoryList">
                         {assignments}
                     </div>
