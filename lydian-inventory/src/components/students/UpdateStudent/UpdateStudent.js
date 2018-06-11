@@ -164,7 +164,9 @@ class UpdateStudent extends Component {
         return (
             <div className="main">
                 <div className="mainBody">
-                    <h2>Click in the field to edit text</h2>
+                <div className="updateContainer">
+                
+                    <h1 className="title">Click in the field to edit text</h1>
 
                     <div key={el.student_id} className="updateEl" >
                         <div className="left">
@@ -243,6 +245,7 @@ class UpdateStudent extends Component {
                                 onFocusOut={this.zip_handleFocusOut}
                             /></li>
                         </div>
+                    </div>
                     </div>
                     <div className="buttonBarNoNav">
                         <div className="updateBtnsNoNav">

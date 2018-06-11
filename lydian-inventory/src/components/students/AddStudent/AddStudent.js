@@ -104,28 +104,86 @@ export default class AddStudent extends Component {
         return (
             <div className="mainBody">
                 <h1 className="title">Joke of the Day:</h1>
-                <p>{this.state.jokeSetup}</p>
+                <p className="joke">{this.state.jokeSetup}</p>
 
-                
+
                 <h1 className="titleNoNav">Add Student</h1>
-                <p>School ID:</p>
-                <input onChange={(e) => this.studentIdHandler(e.target.value)} type="text" value={this.state.student_school_id} />
-                <p>First:</p>
-                <input onChange={(e) => this.firstNameHandler(e.target.value)} type="text" value={this.state.student_first} />
-                <p>Last:</p>
-                <input onChange={(e) => this.lastNameHandler(e.target.value)} type="text" value={this.state.student_last} />
-                <p>Email:</p>
-                <input onChange={(e) => this.emailHandler(e.target.value)} type="text" value={this.state.student_email} />
-                <p>Phone:</p>
-                <input onChange={(e) => this.phoneHandler(e.target.value)} type="text" value={this.state.student_phone} />
-                <p>Address:</p>
-                <input onChange={(e) => this.addressHandler(e.target.value)} type="text" value={this.state.student_address} />
-                <p>City:</p>
-                <input onChange={(e) => this.cityHandler(e.target.value)} type="text" value={this.state.student_city} />
-                <p>State:</p>
-                <input onChange={(e) => this.stateHandler(e.target.value)} type="text" value={this.state.student_state} />
-                <p>Zipcode:</p>
-                <input onChange={(e) => this.zipHandler(e.target.value)} type="text" value={this.state.student_zip} />
+
+                <div className="addContainerStud">
+                    <div className="addDiv">
+                    <p className="addCat">School ID:</p>
+                    <input
+                        className="addInput"
+                        onChange={(e) => this.studentIdHandler(e.target.value)}
+                        type="text"
+                        value={this.state.student_school_id} />
+                    </div>
+                    <div className="addDiv">
+                    <p className="addCat">First:</p>
+                    <input
+                        className="addInput"
+                        onChange={(e) => this.firstNameHandler(e.target.value)}
+                        type="text"
+                        value={this.state.student_first} />
+                    </div>  
+                    <div className="addDiv">
+                                          
+                    <p className="addCat">Last:</p>
+                    <input
+                        className="addInput"
+                        onChange={(e) => this.lastNameHandler(e.target.value)}
+                        type="text"
+                        value={this.state.student_last} />
+                    </div>
+                    <div className="addDiv">
+                    <p className="addCat">Email:</p>
+                    <input
+                        className="addInput"
+                        onChange={(e) => this.emailHandler(e.target.value)}
+                        type="text"
+                        value={this.state.student_email} />
+                    </div>
+                    <div className="addDiv">
+                    <p className="addCat">Phone:</p>
+                    <input
+                        className="addInput"
+                        onChange={(e) => this.phoneHandler(e.target.value)}
+                        type="text"
+                        value={this.state.student_phone} />
+                    </div>
+                    <div className="addDiv">
+                    <p className="addCat">Address:</p>
+                    <input
+                        className="addInput"
+                        onChange={(e) => this.addressHandler(e.target.value)}
+                        type="text"
+                        value={this.state.student_address} />
+                    </div>
+                    <div className="addDiv">
+                    <p className="addCat">City:</p>
+                    <input
+                        className="addInput"
+                        onChange={(e) => this.cityHandler(e.target.value)}
+                        type="text"
+                        value={this.state.student_city} />
+                    </div>
+                    <div className="addDiv">
+                    <p className="addCat">State:</p>
+                    <input
+                        className="addInput"
+                        onChange={(e) => this.stateHandler(e.target.value)}
+                        type="text"
+                        value={this.state.student_state} />
+                    </div>
+                    <div className="addDiv">
+                    <p className="addCat">Zipcode:</p>
+                    <input
+                        className="addInput"
+                        onChange={(e) => this.zipHandler(e.target.value)}
+                        type="text"
+                        value={this.state.student_zip} />
+                    </div>
+                </div>
 
 
                 <div className="buttonBarNoNav">

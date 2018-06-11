@@ -30,18 +30,18 @@
    */
   .studEdit{
     width: 310px;
-    font-size: 20px;
+    font-size: 36px;
   }
   .studEdit:hover {
-    font-size: 22px;
+    font-size: 38px;
     background: rgba(223,234,213,0.6);
   }
   .emailEdit{
     width: 310px;
-    font-size: 17px;
+    font-size: 26px;
   }
   .emailEdit:hover {
-    font-size: 19px;
+    font-size: 28px;
     background: rgba(223,234,213,0.6);
   }
 

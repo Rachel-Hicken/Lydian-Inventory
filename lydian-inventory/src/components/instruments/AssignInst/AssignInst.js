@@ -241,13 +241,10 @@ class AssignInst extends Component {
                             selected={this.state.dueDate}
                             onChange={this.dueDateHandler}
                         />
-                        <p className="feeText">Fee:</p>
+                        <p className="dateText">Fee</p>
                         <input type="number" onChange={(e)=>this.feeHandler(e.target.value)} className="feeInput"/>
                         <div className="updateBtnsNoNav">
-                        
-                            <button onClick={this.assignInst}
-                            
-                            >Assign</button>
+                            <button onClick={this.assignInst}>Assign</button>
                             <Link to='/instruments/available'><button>Cancel</button></Link>
                         </div>
                     </div>

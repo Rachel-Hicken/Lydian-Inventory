@@ -97,7 +97,7 @@ class ViewAvailable extends Component {
             if (el.status === 'Available') {
                 return (
                     <div key={el.inst_id} className="checkbox">
-                        <input type='checkbox' checked={this.state.checked == el.inst_id} onChange={this.checkboxHandler} value={el.inst_id} />
+                        <input classname="checkboxLG" type='checkbox' checked={this.state.checked == el.inst_id} onChange={this.checkboxHandler} value={el.inst_id} />
                         <div className="invItem">
                         <ul>
                             <li><p>School ID: {el.inst_school_id}, Type: {el.inst_type}, Serial Number: {el.serial_num}</p></li>
@@ -135,7 +135,7 @@ class ViewAvailable extends Component {
                         <div className="inventoryList">
                             {instruments}
                         </div>
-                        <p>Happy Name Day: {this.state.nameDay} !!!</p>
+                        <p className="joke">Happy Name Day: {this.state.nameDay} !!!</p>
 
 
 

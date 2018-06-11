@@ -27,22 +27,22 @@
 }
 .lydian{
     font-family: 'Lovers Quarrel', cursive;
-    font-size: 80px;
+    font-size: 95px;
     color: rgb(133, 192, 194);
     text-shadow: 2px 2px #272727;
     display: flex;
     margin-left: 2vw;
     margin-right: 1vw;
-    margin-top: 4vh;
+    margin-top: 3vh;
     
 }
 .inventory{
     font-family: 'Playfair Display', serif;
-    font-size: 45px;
+    font-size: 55px;
     color: #67989A;
     display: flex;
     align-content: center;
-    margin-top: 5.25vh;
+    margin-top: 4.5vh;
     
 }
 
@@ -69,7 +69,7 @@
 	cursor:pointer;
 	color:#ddfff9;
 	font-family:Arial;
-	font-size:16px;
+	font-size:24px;
 	font-weight:bold;
 	padding:13px 15px;
 	text-decoration:none;

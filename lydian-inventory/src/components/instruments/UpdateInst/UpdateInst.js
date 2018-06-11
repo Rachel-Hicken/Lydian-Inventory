@@ -132,71 +132,73 @@ class UpdateInst extends Component {
         return (
             <div className="main">
                 <div className="mainBody">
-                    <h1 className="title">Click in the field to edit text</h1>
+                    <div className="updateContainer">
+                        <h1 className="title">Click in the field to edit text</h1>
 
-                    <div key={el.inst_id} className="updateEl">
+                        <div key={el.inst_id} className="updateEl">
 
-                        <div className="left">
-                            <li className="label">School ID:</li>
-                            <li className="instEdit">
-                                <EditableLabel
-                                    inputClassName='editLabel'
-                                    text={el.inst_school_id}
-                                    onFocus={this.instSchoolID_handleFocus}
-                                    onFocusOut={this.instSchoolID_handleFocusOut}
-                                    className="info"
-                                /></li>
-                            <li className="label">Type:</li>
-                            <li className="instEdit">
-                                <EditableLabel
-                                    inputClassName='editLabel'
-                                    text={el.inst_type}
-                                    onFocus={this.type_handleFocus}
-                                    onFocusOut={this.type_handleFocusOut}
-                                /></li>
-                            <li className="label">Serial Number:</li>
-                            <li className="instEdit">
-                                <EditableLabel
-                                    inputClassName='editLabel'
-                                    text={el.serial_num}
-                                    onFocus={this.serialNum_handleFocus}
-                                    onFocusOut={this.serialNum_handleFocusOut}
-                                /></li>
-                        </div>
+                            <div className="left">
+                                <li className="label">School ID:</li>
+                                <li className="instEdit">
+                                    <EditableLabel
+                                        inputClassName='editLabel'
+                                        text={el.inst_school_id}
+                                        onFocus={this.instSchoolID_handleFocus}
+                                        onFocusOut={this.instSchoolID_handleFocusOut}
+                                        className="info"
+                                    /></li>
+                                <li className="label">Type:</li>
+                                <li className="instEdit">
+                                    <EditableLabel
+                                        inputClassName='editLabel'
+                                        text={el.inst_type}
+                                        onFocus={this.type_handleFocus}
+                                        onFocusOut={this.type_handleFocusOut}
+                                    /></li>
+                                <li className="label">Serial Number:</li>
+                                <li className="instEdit">
+                                    <EditableLabel
+                                        inputClassName='editLabel'
+                                        text={el.serial_num}
+                                        onFocus={this.serialNum_handleFocus}
+                                        onFocusOut={this.serialNum_handleFocusOut}
+                                    /></li>
+                            </div>
 
-                        <div className="right">
-                            <li className="label">Make:</li>
-                            <li className="instEdit">
-                                <EditableLabel
-                                    inputClassName='editLabel'
-                                    text={el.make}
-                                    onFocus={this.make_handleFocus}
-                                    onFocusOut={this.make_handleFocusOut}
-                                /></li>
-                            <li className="label">Model:</li>
-                            <li className="instEdit">
-                                <EditableLabel
-                                    inputClassName='editLabel'
-                                    text={el.model}
-                                    onFocus={this.model_handleFocus}
-                                    onFocusOut={this.model_handleFocusOut}
-                                /></li>
-                            <li className="label">Year:</li>
-                            <li className="instEdit">
-                                <EditableLabel
-                                    inputClassName='editLabel'
-                                    text={el.inst_year}
-                                    onFocus={this.year_handleFocus}
-                                    onFocusOut={this.year_handleFocusOut}
-                                /></li>
-                            <li className="label">Purchase Price:</li>
-                            <li className="instEdit">
-                                <EditableLabel
-                                    inputClassName='editLabel'
-                                    text={el.purchase_price}
-                                    onFocus={this.price_handleFocus}
-                                    onFocusOut={this.price_handleFocusOut}
-                                /></li>
+                            <div className="right">
+                                <li className="label">Make:</li>
+                                <li className="instEdit">
+                                    <EditableLabel
+                                        inputClassName='editLabel'
+                                        text={el.make}
+                                        onFocus={this.make_handleFocus}
+                                        onFocusOut={this.make_handleFocusOut}
+                                    /></li>
+                                <li className="label">Model:</li>
+                                <li className="instEdit">
+                                    <EditableLabel
+                                        inputClassName='editLabel'
+                                        text={el.model}
+                                        onFocus={this.model_handleFocus}
+                                        onFocusOut={this.model_handleFocusOut}
+                                    /></li>
+                                <li className="label">Year:</li>
+                                <li className="instEdit">
+                                    <EditableLabel
+                                        inputClassName='editLabel'
+                                        text={el.inst_year}
+                                        onFocus={this.year_handleFocus}
+                                        onFocusOut={this.year_handleFocusOut}
+                                    /></li>
+                                <li className="label">Purchase Price:</li>
+                                <li className="instEdit">
+                                    <EditableLabel
+                                        inputClassName='editLabel'
+                                        text={el.purchase_price}
+                                        onFocus={this.price_handleFocus}
+                                        onFocusOut={this.price_handleFocusOut}
+                                    /></li>
+                            </div>
                         </div>
                     </div>
                 </div>

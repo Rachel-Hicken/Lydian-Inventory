@@ -135,7 +135,7 @@ class InstInv extends Component {
                             <input
                                 onChange={(e) => this.filterHandler(e.target.value)}
                                 type="search"
-                                placeholder="Search.."
+                                placeholder="Search..."
                             />
                         </div>
 

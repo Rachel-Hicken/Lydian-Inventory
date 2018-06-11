@@ -1,12 +1,13 @@
 .instructions{
     font-size: 32px;
+    font-weight: bold;
 }
 .mainBody{
     
         background-image: url("../../img/trianglifyBlueGree-1.jpg"); 
         background-size: cover;
         height: 100vh;
-        padding-bottom: 10vh;
+        /* padding-bottom: 10vh; */
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
@@ -23,6 +24,7 @@
     align-items: flex-start;
     top: 0;
     padding-bottom: 20px;
+    margin-top: 20px;
 }
 .buttonBarNoNav{
     display: flex;
@@ -41,20 +43,21 @@
     align-items: center;
 }
 Datepicker{
-    height: 30px;
+    height: 40px;
 }
 .dateText{
     background: #8f9db8;
     box-shadow: inset 8px 8px 20px rgba(141, 141, 141, 0.7);
     width: auto;
     height: auto;
-    font-size: 20px;
+    font-size: 28px;
     border-radius: 3px;
     margin-left: 5px;
+    margin-right: 5px;
     padding: 2px;
 }
 .datePicker{
-    padding: 10px;
+    padding: 18px;
     margin: 7px 4px 7px 4px;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
@@ -64,11 +67,38 @@ Datepicker{
     border-top: none;
     -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.075);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.075);
-    font-size: 15px;
+    font-size: 22px;
 }
-.feeText{
-    font-size: 14px;
-}
+
 .feeInput{
-    width: 50px;
+    width: 5vw;
+    height: 5vh;
+    font-size: 22px;
+}
+
+
+.addContainerInst{
+    display: inline;
+    padding-right: 12vw;
+}
+.addContainerStud{
+    display: inline;
+    padding-right: 6vw;
+}
+.addDiv{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 8px;
+}
+.addCat{
+    font-size: 26px;    
+}
+.addInput{
+    padding: 10px;
+    font-size: 22px;
+}
+.joke{
+    font-size: 28px;
+    margin-bottom: 35px;
 }

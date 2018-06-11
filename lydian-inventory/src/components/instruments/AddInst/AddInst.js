@@ -28,10 +28,10 @@ export default class Add_Inst extends Component {
         this.priceHandler = this.priceHandler.bind(this);
     }
 
-    componentDidMount(){
-        axios.get('https://08ad1pao69.execute-api.us-east-1.amazonaws.com/dev/random_joke').then(res=>{
+    componentDidMount() {
+        axios.get('https://08ad1pao69.execute-api.us-east-1.amazonaws.com/dev/random_joke').then(res => {
             this.setState({
-                jokeSetup: res.data.setup, 
+                jokeSetup: res.data.setup,
                 punchline: res.data.punchline
             });
         })
@@ -91,30 +91,75 @@ export default class Add_Inst extends Component {
         return (
             <div className="mainBody">
                 <h1 className="title">Joke of the Day:</h1>
-                <p>{this.state.jokeSetup}</p>
+                <p className="joke">{this.state.jokeSetup}</p>
 
-                
+
                 <h1 className="title">Add an Instrument</h1>
-                <p>Instrument School ID:</p>
-                <input onChange={(e) => this.schoolIdHandler(e.target.value)} type="text" value={this.state.inst_school_id} />
-                <p>Type:</p>
-                <input onChange={(e) => this.typeHandler(e.target.value)} type="text" value={this.state.inst_type} />
-                <p>Serial Number:</p>
-                <input onChange={(e) => this.serialNumHandler(e.target.value)} type="text" value={this.state.serial_num} />
-                <p>Make:</p>
-                <input onChange={(e) => this.makeHandler(e.target.value)} type="text" value={this.state.make} />
-                <p>Model:</p>
-                <input onChange={(e) => this.modelHandler(e.target.value)} type="text" value={this.state.model} />
-                <p>Year:</p>
-                <input onChange={(e) => this.yearHandler(e.target.value)} type="text" value={this.state.inst_year} />
-                <p>Purchase Price:</p>
-                <input onChange={(e) => this.priceHandler(e.target.value)} type="text" value={this.state.purchase_price} />
-                
-                
+
+                <div className="addContainerInst">
+                    <div className="addDiv">
+                    <p className="addCat">Instrument School ID:</p>
+                    <input
+                        className="addInput"
+                        onChange={(e) => this.schoolIdHandler(e.target.value)}
+                        type="text"
+                        value={this.state.inst_school_id} />
+                    </div>  
+                    <div className="addDiv">
+                    <p className="addCat">Type:</p>
+                    <input
+                        className="addInput"
+                        onChange={(e) => this.typeHandler(e.target.value)}
+                        type="text"
+                        value={this.state.inst_type} />
+                    </div>  
+                    <div className="addDiv">
+                    <p className="addCat">Serial Number:</p>
+                    <input
+                        className="addInput"
+                        onChange={(e) => this.serialNumHandler(e.target.value)}
+                        type="text"
+                        value={this.state.serial_num} />
+                    </div>  
+                    <div className="addDiv">
+                    <p className="addCat">Make:</p>
+                    <input
+                        className="addInput"
+                        onChange={(e) => this.makeHandler(e.target.value)}
+                        type="text"
+                        value={this.state.make} />
+                    </div>  
+                    <div className="addDiv">
+                    <p className="addCat">Model:</p>
+                    <input
+                        className="addInput"
+                        onChange={(e) => this.modelHandler(e.target.value)}
+                        type="text"
+                        value={this.state.model} />
+                    </div>  
+                    <div className="addDiv">
+                    <p className="addCat">Year:</p>
+                    <input
+                        className="addInput"
+                        onChange={(e) => this.yearHandler(e.target.value)}
+                        type="text"
+                        value={this.state.inst_year} />
+                    </div>  
+                    <div className="addDiv">
+                    <p className="addCat">Purchase Price:</p>
+                    <input
+                        className="addInput"
+                        onChange={(e) => this.priceHandler(e.target.value)}
+                        type="text"
+                        value={this.state.purchase_price} />
+                    </div>  
+                </div>
+
+
                 <div className="buttonBarNoNav">
-                <div className="updateBtnsNoNav">
-                    <button onClick={this.addInst}>Add</button>
-                    <Link to='/instruments'><button>Cancel</button></Link>
+                    <div className="updateBtnsNoNav">
+                        <button onClick={this.addInst}>Add</button>
+                        <Link to='/instruments'><button>Cancel</button></Link>
                     </div>
                 </div>
             </div>
