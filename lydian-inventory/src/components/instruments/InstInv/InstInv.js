@@ -41,7 +41,7 @@ class InstInv extends Component {
                     all_instruments: res.data
                 })
                 toast.success("Successfully got Instruments")
-            }).catch(() => toast.error(alert("Instrument has a depend record. Cannot be deleted")));
+            }).catch(() => toast.error(alert("Instrument has a dependent record. Cannot be deleted")));
         }
     }
 
